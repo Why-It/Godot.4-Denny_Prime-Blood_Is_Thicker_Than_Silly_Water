@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="shotgun_resource" load_steps=2 format=3 uid="uid://ql2tdfp65gja"]
+
+[ext_resource type="Script" path="res://Scripts/shotgun_resource.gd" id="1_p47kc"]
+
+[resource]
+script = ExtResource("1_p47kc")
+weapon_name = "Semi"
+activate_anim = "shotgun_semi_idle"
+shoot_anim = "shotgun_semi_idle"
+cycle_anim = "shotgun_semi_cycle"
+reload_anim = "shotgun_semi_reload"
+reload_anim_alt = ""
+deactivate_anim = "shotgun_semi_idle"
+out_of_ammo_anim = "shotgun_semi_ooa"
+cur_ammo = 1
+reserve_ammo = 20
+magazine = 6
+max_ammo = 30
+auto_fire = true

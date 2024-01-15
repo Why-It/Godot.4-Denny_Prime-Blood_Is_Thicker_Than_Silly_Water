@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="shotgun_resource" load_steps=2 format=3 uid="uid://doh2lubfongh0"]
+
+[ext_resource type="Script" path="res://Scripts/shotgun_resource.gd" id="1_jgk57"]
+
+[resource]
+script = ExtResource("1_jgk57")
+weapon_name = "Pump"
+activate_anim = "shotgun_pump_idle"
+shoot_anim = "shotgun_pump_idle"
+cycle_anim = "shotgun_pump_cycle"
+reload_anim = "shotgun_pump_reload"
+reload_anim_alt = ""
+deactivate_anim = "shotgun_pump_idle"
+out_of_ammo_anim = "shotgun_pump_ooa"
+cur_ammo = 1
+reserve_ammo = 12
+magazine = 6
+max_ammo = 24
+auto_fire = false

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="shotgun_resource" load_steps=2 format=3 uid="uid://braxnwkf7dvyj"]
+
+[ext_resource type="Script" path="res://Scripts/shotgun_resource.gd" id="1_jbnsj"]
+
+[resource]
+script = ExtResource("1_jbnsj")
+weapon_name = "Double"
+activate_anim = "shotgun_double_idle"
+shoot_anim = "shotgun_double_idle"
+cycle_anim = "shotgun_double_cycle"
+reload_anim = "shotgun_double_reload_bothshells"
+reload_anim_alt = "shotgun_double_reload_oneshell"
+deactivate_anim = "shotgun_double_idle"
+out_of_ammo_anim = "shotgun_double_ooa"
+cur_ammo = 2
+reserve_ammo = 10
+magazine = 0
+max_ammo = 16
+auto_fire = true

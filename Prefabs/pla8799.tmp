@@ -1,0 +1,463 @@
+[gd_scene load_steps=36 format=3 uid="uid://cali6q4pooh6b"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_1hsk7"]
+[ext_resource type="Texture2D" uid="uid://dp6rvpywn7uu0" path="res://Art/sprites/legs.png" id="2_ljb2m"]
+[ext_resource type="Texture2D" uid="uid://0ayqc1a7gplf" path="res://Art/sprites/Body_Holding_Pump.png" id="4_77n33"]
+[ext_resource type="Script" path="res://Prefabs/dynamic_camera.gd" id="5_5ic5q"]
+[ext_resource type="Texture2D" uid="uid://dbj4y3ffvy6af" path="res://Art/sprites/Shotgun_Pump.png" id="5_8yl6t"]
+[ext_resource type="Script" path="res://Prefabs/gun_manager.gd" id="5_vvv0y"]
+[ext_resource type="Texture2D" uid="uid://c0g7f2mq7fs8k" path="res://Art/sprites/HEad.png" id="5_y3yf8"]
+[ext_resource type="Texture2D" uid="uid://dgxdghrkcqfva" path="res://Art/sprites/Shotgun_SemiAuto.png" id="7_ooyx5"]
+[ext_resource type="Texture2D" uid="uid://yjgqfurfivcd" path="res://Art/sprites/Shotgun_Double.png" id="8_qxtpx"]
+
+[sub_resource type="Animation" id="Animation_6rxdk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Legs:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Torso:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Torso/Head:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("gun_manager/Shotgun0:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("gun_manager/Shotgun1:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("gun_manager/Shotgun2:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_lhfn1"]
+resource_name = "head_idle"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Torso/Head:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_v2h4e"]
+resource_name = "Idle"
+length = 0.05
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Legs:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.05),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_h76xk"]
+resource_name = "Walk"
+length = 0.600007
+loop_mode = 1
+step = 0.0666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Legs:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 5, 6, 7, 9, 11]
+}
+
+[sub_resource type="Animation" id="Animation_0syly"]
+resource_name = "torso_idle"
+length = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Torso:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ir6t2"]
+resource_name = "torso_shotgun_pump"
+length = 0.45
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Torso:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_pttqf"]
+resource_name = "shotgun00_idle"
+length = 0.10001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("gun_manager/Shotgun0:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_84w5y"]
+resource_name = "shotgun00_pump"
+length = 0.40001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("gun_manager/Shotgun0:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1]
+}
+
+[sub_resource type="Animation" id="Animation_w8wv2"]
+resource_name = "shotgun1_idle"
+length = 0.10001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("gun_manager/Shotgun1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_40w76"]
+resource_name = "shotgun1_cycle"
+length = 0.160004
+loop_mode = 1
+step = 0.04
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("gun_manager/Shotgun1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 0]
+}
+
+[sub_resource type="Animation" id="Animation_bk532"]
+resource_name = "shotgun1_reload"
+length = 0.50001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("gun_manager/Shotgun1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_c5w7o"]
+resource_name = "torso_reload"
+length = 0.200004
+loop_mode = 1
+step = 0.04
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Torso:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_vc0nq"]
+resource_name = "shotgun2_idle"
+length = 0.10001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("gun_manager/Shotgun2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_dwyx2"]
+resource_name = "shotgun2_reload"
+length = 1.00001
+loop_mode = 1
+step = 0.142857
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("gun_manager/Shotgun2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.142857, 0.285714, 0.428571, 0.571429, 0.714286, 0.857143),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 0]
+}
+
+[sub_resource type="Animation" id="Animation_etrpm"]
+resource_name = "shotgun2_reload_oneshell"
+length = 0.857157
+loop_mode = 1
+step = 0.142857
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("gun_manager/Shotgun2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.142857, 0.285714, 0.428571, 0.571429, 0.714286),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 6, 7, 4, 5, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_et7et"]
+_data = {
+"RESET": SubResource("Animation_6rxdk"),
+"head_idle": SubResource("Animation_lhfn1"),
+"legs_idle": SubResource("Animation_v2h4e"),
+"legs_walk": SubResource("Animation_h76xk"),
+"shotgun0_idle": SubResource("Animation_pttqf"),
+"shotgun0_pump": SubResource("Animation_84w5y"),
+"shotgun1_cycle": SubResource("Animation_40w76"),
+"shotgun1_idle": SubResource("Animation_w8wv2"),
+"shotgun1_reload": SubResource("Animation_bk532"),
+"shotgun2_idle": SubResource("Animation_vc0nq"),
+"shotgun2_reload_bothshells": SubResource("Animation_dwyx2"),
+"shotgun2_reload_oneshell": SubResource("Animation_etrpm"),
+"torso_idle": SubResource("Animation_0syly"),
+"torso_reload_placeholder": SubResource("Animation_c5w7o"),
+"torso_shotgun_pump": SubResource("Animation_ir6t2")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_elg0q"]
+animation = &"head_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4r24e"]
+animation = &"legs_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_a5lp7"]
+animation = &"legs_walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tlpua"]
+animation = &"legs_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oyofe"]
+animation = &"legs_walk"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_10vuu"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_4r24e")
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_a5lp7")
+blend_point_1/pos = 1.0
+blend_point_2/node = SubResource("AnimationNodeAnimation_tlpua")
+blend_point_2/pos = 0.0
+blend_point_3/node = SubResource("AnimationNodeAnimation_oyofe")
+blend_point_3/pos = 1.0
+min_space = 0.0
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7kon6"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bhnfn"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_juky7"]
+states/Start/position = Vector2(125, 100)
+states/head_idle/node = SubResource("AnimationNodeAnimation_elg0q")
+states/head_idle/position = Vector2(321, 100)
+states/legs_motion/node = SubResource("AnimationNodeBlendSpace1D_10vuu")
+states/legs_motion/position = Vector2(321, 42)
+transitions = ["Start", "legs_motion", SubResource("AnimationNodeStateMachineTransition_7kon6"), "Start", "head_idle", SubResource("AnimationNodeStateMachineTransition_bhnfn")]
+graph_offset = Vector2(-113, 19)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ns8m5"]
+radius = 8.5
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("player_legs", "player_torso")]
+script = ExtResource("1_1hsk7")
+player_legs = NodePath("Legs")
+player_torso = NodePath("Torso")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_et7et")
+}
+
+[node name="PlayerAnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_et7et")
+}
+tree_root = SubResource("AnimationNodeStateMachine_juky7")
+anim_player = NodePath("../AnimationPlayer")
+parameters/legs_motion/blend_position = -0.012012
+
+[node name="Placeholder" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_ns8m5")
+
+[node name="Legs" type="Sprite2D" parent="."]
+texture = ExtResource("2_ljb2m")
+hframes = 3
+vframes = 4
+
+[node name="Torso" type="Sprite2D" parent="."]
+texture = ExtResource("4_77n33")
+offset = Vector2(0, -7)
+hframes = 2
+vframes = 2
+
+[node name="Head" type="Sprite2D" parent="Torso"]
+texture = ExtResource("5_y3yf8")
+vframes = 2
+
+[node name="gun_manager" type="Node2D" parent="." node_paths=PackedStringArray("shotgun0", "shotgun1", "shotgun2")]
+script = ExtResource("5_vvv0y")
+shotgun0 = NodePath("Shotgun0")
+shotgun1 = NodePath("Shotgun1")
+shotgun2 = NodePath("Shotgun2")
+
+[node name="Shotgun0" type="Sprite2D" parent="gun_manager"]
+position = Vector2(0, -24)
+texture = ExtResource("5_8yl6t")
+hframes = 2
+vframes = 2
+
+[node name="Shotgun1" type="Sprite2D" parent="gun_manager"]
+visible = false
+position = Vector2(0, -24)
+texture = ExtResource("7_ooyx5")
+hframes = 2
+vframes = 2
+
+[node name="Shotgun2" type="Sprite2D" parent="gun_manager"]
+visible = false
+position = Vector2(0, -27)
+texture = ExtResource("8_qxtpx")
+hframes = 3
+vframes = 3
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = ExtResource("5_5ic5q")
+camera_target_factor = 4.0
