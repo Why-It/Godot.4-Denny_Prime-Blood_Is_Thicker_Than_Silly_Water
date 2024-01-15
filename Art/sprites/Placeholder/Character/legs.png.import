@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dp6rvpywn7uu0"
-path="res://.godot/imported/legs.png-50c5188cd5da15bb86c2dcc172d4f37b.ctex"
+path="res://.godot/imported/legs.png-11de83cf56cd7bc24c6c5b26803e7d8d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/sprites/legs.png"
-dest_files=["res://.godot/imported/legs.png-50c5188cd5da15bb86c2dcc172d4f37b.ctex"]
+source_file="res://Art/sprites/Placeholder/Character/legs.png"
+dest_files=["res://.godot/imported/legs.png-11de83cf56cd7bc24c6c5b26803e7d8d.ctex"]
 
 [params]
 

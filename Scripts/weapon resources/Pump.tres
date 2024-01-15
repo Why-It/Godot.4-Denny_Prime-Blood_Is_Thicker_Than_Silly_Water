@@ -5,15 +5,14 @@
 [resource]
 script = ExtResource("1_jgk57")
 weapon_name = "Pump"
-activate_anim = "shotgun_pump_idle"
-shoot_anim = "shotgun_pump_idle"
+activate_anim = "shotgun_pump_activate"
+deactivate_anim = "shotgun_pump_deactivate"
+idle_anim = "shotgun_pump_idle"
+fire_anim = "shotgun_pump_fire"
 cycle_anim = "shotgun_pump_cycle"
+ooa_anim = "shotgun_pump_ooa"
 reload_anim = "shotgun_pump_reload"
-reload_anim_alt = ""
-deactivate_anim = "shotgun_pump_idle"
-out_of_ammo_anim = "shotgun_pump_ooa"
-cur_ammo = 1
-reserve_ammo = 12
-magazine = 6
+loaded_ammo = 6
+reserve_ammo = 18
 max_ammo = 24
 auto_fire = false

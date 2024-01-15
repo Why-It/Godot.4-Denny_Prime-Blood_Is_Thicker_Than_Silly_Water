@@ -5,15 +5,14 @@
 [resource]
 script = ExtResource("1_p47kc")
 weapon_name = "Semi"
-activate_anim = "shotgun_semi_idle"
-shoot_anim = "shotgun_semi_idle"
+activate_anim = "shotgun_semi_activate"
+deactivate_anim = "shotgun_semi_deactivate"
+idle_anim = "shotgun_semi_idle"
+fire_anim = "shotgun_semi_fire"
 cycle_anim = "shotgun_semi_cycle"
+ooa_anim = "shotgun_semi_ooa"
 reload_anim = "shotgun_semi_reload"
-reload_anim_alt = ""
-deactivate_anim = "shotgun_semi_idle"
-out_of_ammo_anim = "shotgun_semi_ooa"
-cur_ammo = 1
-reserve_ammo = 20
-magazine = 6
+loaded_ammo = 5
+reserve_ammo = 25
 max_ammo = 30
-auto_fire = true
+auto_fire = false

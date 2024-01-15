@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2ki74c2t3qos"
-path="res://.godot/imported/PC Computer - Hotline Miami 2 Wrong Number - Biker Level Editor.png-f77f1dcf635c091374c90fee1fc51a41.ctex"
+uid="uid://0ayqc1a7gplf"
+path="res://.godot/imported/Body_Holding_Pump.png-529f25f86faef190cc318374024d214f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/sprites/PC Computer - Hotline Miami 2 Wrong Number - Biker Level Editor.png"
-dest_files=["res://.godot/imported/PC Computer - Hotline Miami 2 Wrong Number - Biker Level Editor.png-f77f1dcf635c091374c90fee1fc51a41.ctex"]
+source_file="res://Art/sprites/Placeholder/Character/Body_Holding_Pump.png"
+dest_files=["res://.godot/imported/Body_Holding_Pump.png-529f25f86faef190cc318374024d214f.ctex"]
 
 [params]
 

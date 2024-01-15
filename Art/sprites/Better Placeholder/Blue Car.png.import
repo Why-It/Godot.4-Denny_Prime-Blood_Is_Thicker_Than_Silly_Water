@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgxdghrkcqfva"
-path="res://.godot/imported/Shotgun_SemiAuto.png-ec9b034995a28993af312f9dcc82934d.ctex"
+uid="uid://g8k2v7qo2jll"
+path="res://.godot/imported/Blue Car.png-e9b7640e3e55615536a7766c1a6ae929.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/sprites/Shotgun_SemiAuto.png"
-dest_files=["res://.godot/imported/Shotgun_SemiAuto.png-ec9b034995a28993af312f9dcc82934d.ctex"]
+source_file="res://Art/sprites/Better Placeholder/Blue Car.png"
+dest_files=["res://.godot/imported/Blue Car.png-e9b7640e3e55615536a7766c1a6ae929.ctex"]
 
 [params]
 
