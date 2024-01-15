@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7web5l2qoeyt"
-path="res://.godot/imported/Shotgun_SemiAuto_Shoot.png-6b5b10ebbfa693a9df52c499ff780ea1.ctex"
+uid="uid://d4kb1tipxbuj7"
+path="res://.godot/imported/Character.png-7221655362ab2c1e7bd7bd17dd2f233c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/sprites/Shotgun_SemiAuto_Shoot.png"
-dest_files=["res://.godot/imported/Shotgun_SemiAuto_Shoot.png-6b5b10ebbfa693a9df52c499ff780ea1.ctex"]
+source_file="res://Art/sprites/Better Placeholder/Character.png"
+dest_files=["res://.godot/imported/Character.png-7221655362ab2c1e7bd7bd17dd2f233c.ctex"]
 
 [params]
 

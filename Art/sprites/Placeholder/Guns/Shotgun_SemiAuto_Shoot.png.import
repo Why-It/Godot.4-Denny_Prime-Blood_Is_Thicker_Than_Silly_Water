@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0x4n0ka7ql4c"
-path="res://.godot/imported/Shotgun_Double_Shoot.png-8ebdcc41698cddc2e73eae06b8998978.ctex"
+uid="uid://b7web5l2qoeyt"
+path="res://.godot/imported/Shotgun_SemiAuto_Shoot.png-c1b3e48d4a9744865e7bcd1c78536ece.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/sprites/Shotgun_Double_Shoot.png"
-dest_files=["res://.godot/imported/Shotgun_Double_Shoot.png-8ebdcc41698cddc2e73eae06b8998978.ctex"]
+source_file="res://Art/sprites/Placeholder/Guns/Shotgun_SemiAuto_Shoot.png"
+dest_files=["res://.godot/imported/Shotgun_SemiAuto_Shoot.png-c1b3e48d4a9744865e7bcd1c78536ece.ctex"]
 
 [params]
 

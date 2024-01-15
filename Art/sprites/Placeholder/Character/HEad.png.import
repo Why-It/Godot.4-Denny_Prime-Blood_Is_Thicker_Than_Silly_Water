@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yjgqfurfivcd"
-path="res://.godot/imported/Shotgun_Double.png-2c84f0b7c4efc0f0e7d6b4e89e4d24e0.ctex"
+uid="uid://c0g7f2mq7fs8k"
+path="res://.godot/imported/HEad.png-187aeb1c15e7f89becd2c48e489f83be.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/sprites/Shotgun_Double.png"
-dest_files=["res://.godot/imported/Shotgun_Double.png-2c84f0b7c4efc0f0e7d6b4e89e4d24e0.ctex"]
+source_file="res://Art/sprites/Placeholder/Character/HEad.png"
+dest_files=["res://.godot/imported/HEad.png-187aeb1c15e7f89becd2c48e489f83be.ctex"]
 
 [params]
 

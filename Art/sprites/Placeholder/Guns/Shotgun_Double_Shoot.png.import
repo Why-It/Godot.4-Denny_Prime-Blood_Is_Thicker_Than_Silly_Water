@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdk74ardiqoqa"
-path="res://.godot/imported/HouseCall.png-e34eeca518ebb4a0478f30b93a493735.ctex"
+uid="uid://b0x4n0ka7ql4c"
+path="res://.godot/imported/Shotgun_Double_Shoot.png-0aba70854a7658bf1f6e3dd056a0529e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/sprites/HouseCall.png"
-dest_files=["res://.godot/imported/HouseCall.png-e34eeca518ebb4a0478f30b93a493735.ctex"]
+source_file="res://Art/sprites/Placeholder/Guns/Shotgun_Double_Shoot.png"
+dest_files=["res://.godot/imported/Shotgun_Double_Shoot.png-0aba70854a7658bf1f6e3dd056a0529e.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0g7f2mq7fs8k"
-path="res://.godot/imported/HEad.png-4bb0eb3a9adc01578ebd3c7e479822f4.ctex"
+uid="uid://ckb322vkvnrsr"
+path="res://.godot/imported/Red Car.png-8bcb170ed2b32316b7b7c61ca635c6b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/sprites/HEad.png"
-dest_files=["res://.godot/imported/HEad.png-4bb0eb3a9adc01578ebd3c7e479822f4.ctex"]
+source_file="res://Art/sprites/Better Placeholder/Red Car.png"
+dest_files=["res://.godot/imported/Red Car.png-8bcb170ed2b32316b7b7c61ca635c6b0.ctex"]
 
 [params]
 

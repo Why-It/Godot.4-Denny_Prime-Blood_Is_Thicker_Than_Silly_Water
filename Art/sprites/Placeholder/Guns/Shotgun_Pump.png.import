@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csx0a6ufpwp17"
-path="res://.godot/imported/Shotgun_Pump_Shoot.png-d742fd944d7f00264371f6fa9ecb1300.ctex"
+uid="uid://dbj4y3ffvy6af"
+path="res://.godot/imported/Shotgun_Pump.png-0b801742be7bbc4487874973fc16dc04.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/sprites/Shotgun_Pump_Shoot.png"
-dest_files=["res://.godot/imported/Shotgun_Pump_Shoot.png-d742fd944d7f00264371f6fa9ecb1300.ctex"]
+source_file="res://Art/sprites/Placeholder/Guns/Shotgun_Pump.png"
+dest_files=["res://.godot/imported/Shotgun_Pump.png-0b801742be7bbc4487874973fc16dc04.ctex"]
 
 [params]
 

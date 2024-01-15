@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0ayqc1a7gplf"
-path="res://.godot/imported/Body_Holding_Pump.png-6448c2da9209e33e0b52758fa42b80ef.ctex"
+uid="uid://db668lr0hamx6"
+path="res://.godot/imported/Green Car.png-39d01197ee70974d0485c20e77c6dcd1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/sprites/Body_Holding_Pump.png"
-dest_files=["res://.godot/imported/Body_Holding_Pump.png-6448c2da9209e33e0b52758fa42b80ef.ctex"]
+source_file="res://Art/sprites/Better Placeholder/Green Car.png"
+dest_files=["res://.godot/imported/Green Car.png-39d01197ee70974d0485c20e77c6dcd1.ctex"]
 
 [params]
 
