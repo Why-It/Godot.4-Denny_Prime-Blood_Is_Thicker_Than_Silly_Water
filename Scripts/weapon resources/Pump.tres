@@ -15,4 +15,5 @@ reload_anim = "shotgun_pump_reload"
 loaded_ammo = 6
 reserve_ammo = 18
 max_ammo = 24
+pellet_spread = 1.0
 auto_fire = false

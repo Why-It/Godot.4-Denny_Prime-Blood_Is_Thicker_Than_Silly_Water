@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://cali6q4pooh6b"]
+[gd_scene load_steps=58 format=3 uid="uid://cali6q4pooh6b"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_1hsk7"]
 [ext_resource type="Texture2D" uid="uid://dp6rvpywn7uu0" path="res://Art/sprites/Placeholder/Character/legs.png" id="2_kj11g"]
@@ -889,6 +889,8 @@ transitions = ["Start", "head_idle", SubResource("AnimationNodeStateMachineTrans
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ns8m5"]
 radius = 8.5
 
+[sub_resource type="PackedScene" id="PackedScene_1p726"]
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("player_legs", "player_torso")]
 script = ExtResource("1_1hsk7")
 player_legs = NodePath("Legs")
@@ -944,7 +946,7 @@ vframes = 2
 [node name="gun_manager" type="Node2D" parent="Torso" node_paths=PackedStringArray("anim_player")]
 script = ExtResource("5_7cqo6")
 anim_player = NodePath("../../AnimationPlayer")
-bullet = ExtResource("15_6fl1e")
+bullet = SubResource("PackedScene_1p726")
 _weapon_resources = Array[Resource("res://Scripts/shotgun_resource.gd")]([ExtResource("6_cv1px"), ExtResource("7_3e4sf"), ExtResource("8_5810a")])
 starting_arsenal = Array[String](["Pump", "Semi", "Double"])
 
@@ -969,13 +971,11 @@ texture = ExtResource("11_kleun")
 hframes = 3
 vframes = 3
 
-[node name="Bullet" parent="Torso/gun_manager" instance=ExtResource("15_6fl1e")]
-visible = false
-position = Vector2(6.5, -25.5)
-
 [node name="Muzzle" type="Marker2D" parent="Torso/gun_manager"]
-position = Vector2(6.5, -25.5)
-rotation = -1.5708
+position = Vector2(6, -26)
+gizmo_extents = 5.0
+
+[node name="Bullet" parent="Torso/gun_manager" instance=ExtResource("15_6fl1e")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_callback = 0

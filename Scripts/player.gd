@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@onready var gun_manager : Node2D = $Torso/gun_manager
 
 @export var character_speed : float = 200
 
@@ -16,11 +17,8 @@ extends CharacterBody2D
 #Rotating the player character's limbs
 @export var player_legs : Node2D = null
 @export var player_torso : Node2D = null
-#Accessing the shotgun the player's currently using
-@export var cur_shotgun : int = 0
 
 func _ready():
-	#head_animation_tree
 	pass
 
 func _physics_process(_delta):
@@ -38,7 +36,6 @@ func _physics_process(_delta):
 	move_and_slide()
 	pick_new_state()
 	
-	#print(inputDirection)
 
 func update_animation_parameters(move_input : Vector2):
 	if (move_input != Vector2.ZERO):
@@ -61,6 +58,6 @@ func rotateTorso():
 	player_torso.look_at(get_global_mouse_position())
 	player_torso.rotation_degrees += 90
 	
-#func _input(event):
-	#if InputEvent == "Shoot":
-		
+func _input(event):
+	if event.is_action_pressed("Shoot"):
+		gun_manager.Shoot()
