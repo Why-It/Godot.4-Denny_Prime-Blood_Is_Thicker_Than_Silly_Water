@@ -2,6 +2,12 @@ extends Node2D
 
 @export var anim_player : AnimationPlayer
 
+#Shotgun Shooty Stuff
+@export var bullet : PackedScene
+@onready var muzzle : Node2D = $Muzzle
+var aim_dir = Vector2.RIGHT
+@export var spread : float = 0.5
+
 var cur_weapon = null
 
 var next_weapon : String
@@ -48,8 +54,10 @@ func Initilize(_starting_arsenal : Array):
 	cur_weapon = weapon_list[weapon_stack[0]]
 	enter()
 	
+func _physics_process(_delta):
+	aim_dir = global_position.direction_to(get_global_mouse_position())
+	
 func enter(): #Call when entering the next weapon
-	print(weapon_stack)
 	anim_player.queue(cur_weapon.activate_anim)
 	
 func exit(_next_weapon : String): #Call before changing weapons
@@ -62,6 +70,23 @@ func Change_Weapon(weapon_name : String):
 	cur_weapon = weapon_list[weapon_name]
 	next_weapon = ""
 	enter()
+	
+func Shoot():
+	
+	var p0 : float = randf_range(-20,20) * spread
+	var p1 : float = randf_range(-15,-15) * spread
+	var p2 : float = randf_range(-5,5) * spread
+	var p3 : float = randf_range(-5,5) * spread
+	var p4 : float = randf_range(-15,15) * spread
+	var p5 : float = randf_range(-20,20) * spread
+	
+	for angle in [p0, p1, p2, p3, p4]: #Instantiating a new pellet for every angle
+		var radians = deg_to_rad(angle)
+		var b = bullet.instantiate()
+		b.direction = aim_dir.rotated(radians)
+		b.global_position = $Muzzle.global_position #setting pellet position at muzzle of shotgun
+		get_tree().get_root().add_child(b)
+	
 
 
 func _on_animation_player_animation_finished(anim_name):

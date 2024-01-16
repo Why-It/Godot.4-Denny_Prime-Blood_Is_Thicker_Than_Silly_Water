@@ -16,4 +16,6 @@ class_name shotgun_resource
 @export var reserve_ammo : int
 @export var max_ammo : int
 
+@export var pellet_spread : float
+
 @export var auto_fire : bool
