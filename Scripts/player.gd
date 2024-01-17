@@ -1,22 +1,22 @@
 extends CharacterBody2D
 
-@onready var gun_manager : Node2D = $Torso/gun_manager
+@export var gun_manager : Node2D
 
 @export var character_speed : float = 200
 
 #Animation Shit
 #For Body
-
+@onready var body_animation_tree = $BodyAnimationTree
 #For Head
-@onready var head_animation_tree = $HeadAnimationTree
-@onready var head_state_machine = head_animation_tree.get("parameters/playback")
+#@onready var head_animation_tree = $HeadAnimationTree
+#@onready var head_state_machine = head_animation_tree.get("parameters/playback")
 #For Legs
 #parameters/legs_motion/blend_position
 @onready var legs_animation_tree = $LegsAnimationTree
 @onready var legs_state_machine =  legs_animation_tree.get("parameters/playback")
 #Rotating the player character's limbs
 @export var player_legs : Node2D = null
-@export var player_torso : Node2D = null
+@export var player : Node2D = null
 
 func _ready():
 	pass
@@ -32,7 +32,7 @@ func _physics_process(_delta):
 	
 	update_animation_parameters(inputDirection)
 	rotateLegs(inputDirection)
-	rotateTorso()
+	rotatePlayer()
 	move_and_slide()
 	pick_new_state()
 	
@@ -40,24 +40,29 @@ func _physics_process(_delta):
 func update_animation_parameters(move_input : Vector2):
 	if (move_input != Vector2.ZERO):
 		legs_animation_tree.set("parameters/legs_motion/blend_position", move_input)
+		body_animation_tree.set("parameters/body_motion/blend_position", move_input)
 		
 func pick_new_state():
 	if(velocity != Vector2.ZERO):
 		legs_animation_tree.set("parameters/legs_motion/blend_position", 1)
+		body_animation_tree.set("parameters/body_motion/blend_position", 1)
 	else:
 		legs_animation_tree.set("parameters/legs_motion/blend_position", 0)
-		
+		body_animation_tree.set("parameters/body_motion/blend_position", 0)
 	
 func rotateLegs(player_rotation: Vector2):
 	if player_rotation.x != 0 && player_rotation.y == 0:
-		player_legs.rotation_degrees = 90
+		player_legs.global_rotation_degrees = 90
 	else:
-		player_legs.set("rotation", (-player_rotation.x * player_rotation.y))
+		player_legs.set("global_rotation", (-player_rotation.x * player_rotation.y))
 	
-func rotateTorso():
-	player_torso.look_at(get_global_mouse_position())
-	player_torso.rotation_degrees += 90
+func rotatePlayer():
+	player.look_at(get_global_mouse_position())
+	player.rotation_degrees += 90
 	
 func _input(event):
 	if event.is_action_pressed("Shoot"):
 		gun_manager.Shoot()
+	
+	if event.is_action_pressed("Reload"):
+		gun_manager.Reload()

@@ -1,0 +1,109 @@
+[gd_scene load_steps=12 format=3 uid="uid://d1syj0vvcmd87"]
+
+[ext_resource type="Texture2D" uid="uid://bbcq3nhpamxc6" path="res://Art/sprites/Placeholder/enemy/enemy-Sheet.png" id="1_hydc3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_55qws"]
+radius = 12.0
+height = 42.0
+
+[sub_resource type="Animation" id="Animation_bwxgf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_rf7gm"]
+resource_name = "enemy_body_idle"
+length = 0.10001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_a160r"]
+resource_name = "enemy_walking"
+length = 0.90001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3so4i"]
+_data = {
+"RESET": SubResource("Animation_bwxgf"),
+"enemy_body_idle": SubResource("Animation_rf7gm"),
+"enemy_walking": SubResource("Animation_a160r")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qxw6t"]
+animation = &"enemy_body_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ho3c5"]
+animation = &"enemy_walking"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_373fh"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_qxw6t")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_ho3c5")
+blend_point_1/pos = 1.0
+min_space = 0.0
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6164u"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_seicc"]
+states/BlendSpace1D/node = SubResource("AnimationNodeBlendSpace1D_373fh")
+states/BlendSpace1D/position = Vector2(375, 100)
+transitions = ["Start", "BlendSpace1D", SubResource("AnimationNodeStateMachineTransition_6164u")]
+
+[node name="Enemy" type="CharacterBody2D" groups=["Enemies"]]
+
+[node name="EnemyCollider" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_55qws")
+
+[node name="EnemySprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_hydc3")
+flip_v = true
+hframes = 10
+
+[node name="EnemyAnimPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3so4i")
+}
+
+[node name="EnemyAnimTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3so4i")
+}
+tree_root = SubResource("AnimationNodeStateMachine_seicc")
+anim_player = NodePath("../EnemyAnimPlayer")
+parameters/BlendSpace1D/blend_position = -0.042042
