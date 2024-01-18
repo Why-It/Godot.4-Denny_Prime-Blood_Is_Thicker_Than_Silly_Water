@@ -5,15 +5,15 @@
 [resource]
 script = ExtResource("1_jbnsj")
 weapon_name = "Double"
-activate_anim = "shotgun_double_activate"
-deactivate_anim = "shotgun_double_deactivate"
-idle_anim = "shotgun_double_idle"
-fire_anim = "shotgun_double_fire"
-cycle_anim = "shotgun_double_idle"
-ooa_anim = "shotgun_double_ooa"
+activate_anim = "Guns/double_activate"
+deactivate_anim = "Guns/double_deactivate"
+idle_anim = "Guns/double_idle"
+fire_anim = "Guns/double_fire"
+cycle_anim = "Guns/double_cycle"
+ooa_anim = "Guns/double_ooa"
 reload_anim = ""
-dbs_reload_full = "shotgun_double_reload_bothshells"
-dbs_reload_half = "shotgun_double_reload_oneshell"
+dbs_reload_full = "Guns/double_reload_full"
+dbs_reload_half = "Guns/double_reload_half"
 loaded_ammo = 2
 max_loaded_ammo = 2
 reserve_ammo = 10

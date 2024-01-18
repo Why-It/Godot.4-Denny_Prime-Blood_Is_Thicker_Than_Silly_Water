@@ -1,0 +1,118 @@
+[gd_scene load_steps=18 format=3 uid="uid://cali6q4pooh6b"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_1hsk7"]
+[ext_resource type="AnimationLibrary" uid="uid://dun2jwvevqlhk" path="res://Art/animations/i_fucked_up.res" id="2_yer6h"]
+[ext_resource type="Texture2D" uid="uid://lk5kxw7250at" path="res://Art/sprites/Josh/Player/walk_2.png" id="8_wxtsl"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4r24e"]
+animation = &"legs_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_a5lp7"]
+animation = &"legs_walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tlpua"]
+animation = &"legs_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oyofe"]
+animation = &"legs_walk"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_10vuu"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_4r24e")
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_a5lp7")
+blend_point_1/pos = 1.0
+blend_point_2/node = SubResource("AnimationNodeAnimation_tlpua")
+blend_point_2/pos = 0.0
+blend_point_3/node = SubResource("AnimationNodeAnimation_oyofe")
+blend_point_3/pos = 1.0
+min_space = 0.0
+blend_mode = 1
+sync = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_shf4n"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_juky7"]
+states/Start/position = Vector2(125, 100)
+states/legs_motion/node = SubResource("AnimationNodeBlendSpace1D_10vuu")
+states/legs_motion/position = Vector2(315, 100)
+transitions = ["Start", "legs_motion", SubResource("AnimationNodeStateMachineTransition_shf4n")]
+graph_offset = Vector2(-179, -5)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1sfbd"]
+animation = &"torso_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_knkep"]
+animation = &"torso_walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2a7p6"]
+animation = &"torso_idle"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_m126r"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_1sfbd")
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_knkep")
+blend_point_1/pos = 1.0
+blend_point_2/node = SubResource("AnimationNodeAnimation_2a7p6")
+blend_point_2/pos = 0.0
+min_space = 0.0
+blend_mode = 1
+sync = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_aul8s"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_wo044"]
+states/body_motion/node = SubResource("AnimationNodeBlendSpace1D_m126r")
+states/body_motion/position = Vector2(378, 100)
+transitions = ["Start", "body_motion", SubResource("AnimationNodeStateMachineTransition_aul8s")]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ns8m5"]
+radius = 8.5
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("player_legs", "player")]
+script = ExtResource("1_1hsk7")
+player_legs = NodePath("PlayerBody/Legs")
+player = NodePath("PlayerBody")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": ExtResource("2_yer6h")
+}
+
+[node name="LegsAnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": ExtResource("2_yer6h")
+}
+tree_root = SubResource("AnimationNodeStateMachine_juky7")
+anim_player = NodePath("../AnimationPlayer")
+parameters/legs_motion/blend_position = 0.302823
+
+[node name="BodyAnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": ExtResource("2_yer6h")
+}
+tree_root = SubResource("AnimationNodeStateMachine_wo044")
+anim_player = NodePath("../AnimationPlayer")
+parameters/body_motion/blend_position = -0.0025663
+
+[node name="Placeholder" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_ns8m5")
+
+[node name="PlayerBody" type="Node2D" parent="."]
+
+[node name="Legs" type="Sprite2D" parent="PlayerBody"]
+texture = ExtResource("8_wxtsl")
+flip_v = true
+hframes = 27
+frame = 5
+
+[node name="Torso" type="Sprite2D" parent="PlayerBody"]
+position = Vector2(0, 5)
+texture = ExtResource("8_wxtsl")
+offset = Vector2(0, -7)
+flip_v = true
+hframes = 27
+frame = 9

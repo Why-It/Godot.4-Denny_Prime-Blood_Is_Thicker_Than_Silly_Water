@@ -1,15 +1,12 @@
 extends CharacterBody2D
 
-@export var gun_manager : Node2D
+@export var gun_manager : Node
 
 @export var character_speed : float = 200
 
 #Animation Shit
 #For Body
 @onready var body_animation_tree = $BodyAnimationTree
-#For Head
-#@onready var head_animation_tree = $HeadAnimationTree
-#@onready var head_state_machine = head_animation_tree.get("parameters/playback")
 #For Legs
 #parameters/legs_motion/blend_position
 @onready var legs_animation_tree = $LegsAnimationTree
@@ -36,6 +33,8 @@ func _physics_process(_delta):
 	move_and_slide()
 	pick_new_state()
 	
+	if gun_manager == null:
+		print("gun_manager is null (player)")
 
 func update_animation_parameters(move_input : Vector2):
 	if (move_input != Vector2.ZERO):
@@ -59,10 +58,5 @@ func rotateLegs(player_rotation: Vector2):
 func rotatePlayer():
 	player.look_at(get_global_mouse_position())
 	player.rotation_degrees += 90
-	
-func _input(event):
-	if event.is_action_pressed("Shoot"):
-		gun_manager.Shoot()
-	
-	if event.is_action_pressed("Reload"):
-		gun_manager.Reload()
+	gun_manager.look_at(get_global_mouse_position())
+	gun_manager.rotation_degrees += 90
