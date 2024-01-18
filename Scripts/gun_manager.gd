@@ -3,9 +3,11 @@ extends Node2D
 @export var anim_player : AnimationPlayer
 
 #Shotgun Shooty Stuff
-@export var bullet : PackedScene
+@onready var bullet = preload("res://Scenes/bullet.tscn")
 @onready var muzzle : Node2D = $Muzzle
 var aim_dir = Vector2.RIGHT
+var cur_ammo : int
+var cur_reserve : int
 
 @export var _weapon_resources : Array[shotgun_resource]
 var cur_weapon = null
@@ -41,8 +43,15 @@ func _input(event):
 		else:
 			weapon_indicator = max(weapon_indicator-1, 0)
 			exit(weapon_stack[weapon_indicator])
-		
 	
+	if event.is_action_pressed("Shoot"):
+		if continuous_reload == true:
+			continuous_reload = false
+		Shoot()
+	
+	if event.is_action_pressed("Reload"):
+		Reload()
+
 func Initilize(_starting_arsenal : Array):
 	
 	#creating the dictionary
@@ -54,8 +63,6 @@ func Initilize(_starting_arsenal : Array):
 	
 	cur_weapon = weapon_list[weapon_stack[0]]
 	enter()
-	
-	#print(weapon_list)
 
 
 func _physics_process(_delta):
@@ -70,12 +77,24 @@ func _physics_process(_delta):
 			
 			#print(shotgun.weapon_name + " spread is "+ str(shotgun.pellet_spread))
 	
+	if continuous_reload == true:
+		Reload()
+	
+	UpdateAmmo()
 	Spread_Shower_Update()
+
+func UpdateAmmo():
+	cur_ammo = cur_weapon.loaded_ammo
+	cur_reserve = cur_weapon.reserve_ammo
 
 func enter(): #Call when entering the next weapon
 	anim_player.queue(cur_weapon.activate_anim)
 	anim_player.queue(cur_weapon.idle_anim)
-	print("Current Ammo in Shotgun: " + str(cur_weapon.loaded_ammo))
+	cur_ammo = cur_weapon.loaded_ammo
+	cur_reserve = cur_weapon.reserve_ammo
+	#print(cur_weapon.reserve_ammo)
+	#print("current animation: " + str(anim_player.get_current_animation()))
+
 
 func exit(_next_weapon : String): #Call before changing weapons
 	if _next_weapon != cur_weapon.weapon_name:
@@ -84,7 +103,9 @@ func exit(_next_weapon : String): #Call before changing weapons
 			next_weapon = _next_weapon
 	
 func Change_Weapon(weapon_name : String):
+	#print(weapon_list[weapon_name])
 	cur_weapon = weapon_list[weapon_name]
+	#print(weapon_list[weapon_name])
 	next_weapon = ""
 	enter()
 
@@ -94,6 +115,8 @@ func Increase_Spread_Value():
 
 func Spread_Shower_Update():
 	spread_shower.set("value", cur_weapon.pellet_spread * 100.5)
+
+var continuous_reload : bool = false
 
 func Reload():
 	if anim_player.get_current_animation() == cur_weapon.idle_anim:
@@ -116,7 +139,12 @@ func Reload():
 					cur_weapon.loaded_ammo += 1
 				
 				anim_player.queue(cur_weapon.idle_anim)
-				print("Current Ammo in Shotgun: " + str(cur_weapon.loaded_ammo))
+				
+				if cur_weapon.loaded_ammo >= cur_weapon.max_loaded_ammo:
+					continuous_reload = false
+				else:
+					continuous_reload = true
+				#print("Current Ammo in Shotgun: " + str(cur_weapon.loaded_ammo))
 
 func Shoot():
 	if cur_weapon.loaded_ammo > 0:
@@ -142,7 +170,7 @@ func Shoot():
 			
 			anim_player.queue(cur_weapon.fire_anim)
 			cur_weapon.loaded_ammo -= 1
-			print("Current wepaon's loaded ammo = " + str(cur_weapon.loaded_ammo))
+			#print("Current wepaon's loaded ammo = " + str(cur_weapon.loaded_ammo))
 			if cur_weapon.auto_fire != true:
 				anim_player.queue(cur_weapon.cycle_anim)
 			anim_player.queue(cur_weapon.idle_anim)

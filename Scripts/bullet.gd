@@ -21,5 +21,8 @@ func _on_body_entered(body):
 	if body.is_in_group("Enemies"):
 		#print("hit")
 		gun_man.Increase_Spread_Value()
+		body.EnemyTakeDamage()
+	elif body.is_in_group("Player"):
+		body.PlayerTakeDamage(1)
 	#queue_free()
 	self.hide()

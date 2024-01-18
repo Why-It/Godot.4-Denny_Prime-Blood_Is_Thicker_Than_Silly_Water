@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://d1syj0vvcmd87"]
+[gd_scene load_steps=13 format=3 uid="uid://dh4t8qqxb0ui3"]
 
 [ext_resource type="Texture2D" uid="uid://bbcq3nhpamxc6" path="res://Art/sprites/Placeholder/enemy/enemy-Sheet.png" id="1_hydc3"]
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_mece3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_55qws"]
 radius = 12.0
@@ -84,6 +85,7 @@ states/BlendSpace1D/position = Vector2(375, 100)
 transitions = ["Start", "BlendSpace1D", SubResource("AnimationNodeStateMachineTransition_6164u")]
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemies"]]
+script = ExtResource("1_mece3")
 
 [node name="EnemyCollider" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccwl5bv648kxg"]
+
+[ext_resource type="Script" path="res://Scripts/dynamic_camera.gd" id="1_x6cud"]
+
+[node name="Camera2D" type="Camera2D"]
+zoom = Vector2(1.75, 1.75)
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = ExtResource("1_x6cud")
+camera_target_factor = 4.0

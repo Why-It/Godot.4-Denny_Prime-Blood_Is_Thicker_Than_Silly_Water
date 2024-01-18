@@ -1,13 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8xe1ba2r460d"]
+[gd_scene load_steps=4 format=3 uid="uid://bp5g1f6khondn"]
 
-[ext_resource type="Script" path="res://Prefabs/bullet.gd" id="1_38q0j"]
+[ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_3s2io"]
 [ext_resource type="Texture2D" uid="uid://c6cbg5tpeigy6" path="res://Art/sprites/Placeholder/Guns/pellet.png" id="2_dyish"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_26j36"]
 size = Vector2(1, 1)
 
 [node name="Bullet" type="Area2D"]
-script = ExtResource("1_38q0j")
+script = ExtResource("1_3s2io")
 
 [node name="bullet_collisionshape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_26j36")
