@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cid66ktr2t1v3"]
+[gd_scene load_steps=9 format=3 uid="uid://cid66ktr2t1v3"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_6wrqv"]
 [ext_resource type="PackedScene" uid="uid://du5m4i7ptxe4g" path="res://Levels/level_00.tscn" id="1_v8env"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://c5ctjtyxw6snc" path="res://Scenes/gui.tscn" id="4_m85pw"]
 [ext_resource type="PackedScene" uid="uid://cali6q4pooh6b" path="res://Scenes/player.tscn" id="5_26ra4"]
 [ext_resource type="PackedScene" uid="uid://dvfar3tkcrvek" path="res://Scenes/gun_manager.tscn" id="6_npyv1"]
+[ext_resource type="PackedScene" uid="uid://bp5g1f6khondn" path="res://Scenes/bullet.tscn" id="7_j28pr"]
+[ext_resource type="PackedScene" uid="uid://dh4t8qqxb0ui3" path="res://Scenes/enemy.tscn" id="8_xeemf"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_6wrqv")
@@ -21,3 +23,30 @@ zoom = Vector2(1, 1)
 
 [node name="gun_manager" parent="Player" instance=ExtResource("6_npyv1")]
 position = Vector2(0, 0)
+
+[node name="Bullet" parent="." instance=ExtResource("7_j28pr")]
+position = Vector2(2000, 2000)
+
+[node name="Enemy" parent="." instance=ExtResource("8_xeemf")]
+position = Vector2(-17, 223)
+
+[node name="Enemy2" parent="." instance=ExtResource("8_xeemf")]
+position = Vector2(170, 55)
+
+[node name="Enemy3" parent="." instance=ExtResource("8_xeemf")]
+position = Vector2(-262, 83)
+
+[node name="Enemy4" parent="." instance=ExtResource("8_xeemf")]
+position = Vector2(-222, 209)
+
+[node name="Enemy5" parent="." instance=ExtResource("8_xeemf")]
+position = Vector2(-305, 6)
+
+[node name="Enemy6" parent="." instance=ExtResource("8_xeemf")]
+position = Vector2(-134, -115)
+
+[node name="Enemy7" parent="." instance=ExtResource("8_xeemf")]
+position = Vector2(-206, -18)
+
+[node name="Enemy8" parent="." instance=ExtResource("8_xeemf")]
+position = Vector2(-182, 120)

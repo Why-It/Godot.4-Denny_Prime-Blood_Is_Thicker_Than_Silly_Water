@@ -3,7 +3,7 @@ extends Node2D
 @export var anim_player : AnimationPlayer
 
 #Shotgun Shooty Stuff
-@export var bullet : PackedScene
+@onready var bullet = preload("res://Scenes/bullet.tscn")
 @onready var muzzle : Node2D = $Muzzle
 var aim_dir = Vector2.RIGHT
 var cur_ammo : int
@@ -45,6 +45,8 @@ func _input(event):
 			exit(weapon_stack[weapon_indicator])
 	
 	if event.is_action_pressed("Shoot"):
+		if continuous_reload == true:
+			continuous_reload = false
 		Shoot()
 	
 	if event.is_action_pressed("Reload"):
@@ -61,8 +63,6 @@ func Initilize(_starting_arsenal : Array):
 	
 	cur_weapon = weapon_list[weapon_stack[0]]
 	enter()
-	
-	#print(weapon_list)
 
 
 func _physics_process(_delta):
@@ -76,6 +76,9 @@ func _physics_process(_delta):
 				shotgun.pellet_spread = 0.5
 			
 			#print(shotgun.weapon_name + " spread is "+ str(shotgun.pellet_spread))
+	
+	if continuous_reload == true:
+		Reload()
 	
 	UpdateAmmo()
 	Spread_Shower_Update()
@@ -113,6 +116,8 @@ func Increase_Spread_Value():
 func Spread_Shower_Update():
 	spread_shower.set("value", cur_weapon.pellet_spread * 100.5)
 
+var continuous_reload : bool = false
+
 func Reload():
 	if anim_player.get_current_animation() == cur_weapon.idle_anim:
 		if cur_weapon.reserve_ammo > 0:
@@ -134,6 +139,11 @@ func Reload():
 					cur_weapon.loaded_ammo += 1
 				
 				anim_player.queue(cur_weapon.idle_anim)
+				
+				if cur_weapon.loaded_ammo >= cur_weapon.max_loaded_ammo:
+					continuous_reload = false
+				else:
+					continuous_reload = true
 				#print("Current Ammo in Shotgun: " + str(cur_weapon.loaded_ammo))
 
 func Shoot():

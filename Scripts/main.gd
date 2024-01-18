@@ -4,6 +4,7 @@ extends Node
 @onready var camera = $Player/Camera2D
 @onready var gun_man = $Player/gun_manager
 @onready var gui = $GUI
+@onready var bullet = $Bullet
 
 func _ready():
 	
@@ -17,6 +18,10 @@ func _ready():
 		print("gui is null")
 	elif gun_man == null:
 		print("gun_man is null")
+	elif bullet == null:
+		print("bullet is null")
+	elif gun_man.bullet == null:
+		print("the bullet in gun_man is null")
 
 func _process(_delta):
 	gui.set("cur_ammo_gui", gun_man.cur_ammo)

@@ -3,6 +3,10 @@ extends CharacterBody2D
 @export var gun_manager : Node
 
 @export var character_speed : float = 200
+@export var player_health : int = 1
+
+@export var player_max_health : int = 2
+@export var player_min_health : int = 0
 
 #Animation Shit
 #For Body
@@ -16,7 +20,7 @@ extends CharacterBody2D
 @export var player : Node2D = null
 
 func _ready():
-	pass
+	player_health = player_max_health
 
 func _physics_process(_delta):
 	var inputDirection = Vector2(
@@ -32,6 +36,9 @@ func _physics_process(_delta):
 	rotatePlayer()
 	move_and_slide()
 	pick_new_state()
+	
+	if player_health <= player_min_health:
+		pass
 	
 	if gun_manager == null:
 		print("gun_manager is null (player)")
@@ -60,3 +67,12 @@ func rotatePlayer():
 	player.rotation_degrees += 90
 	gun_manager.look_at(get_global_mouse_position())
 	gun_manager.rotation_degrees += 90
+	
+func PlayerTakeDamage(damage : int):
+	player_health -= damage
+	
+	if player_health <= player_min_health:
+		PlayerDeath()
+
+func PlayerDeath():
+	queue_free()

@@ -1,11 +1,14 @@
-extends Area2D
+extends CharacterBody2D
 
+@export var EnemyType : int = 0
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+var enemy_health : int = 3
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func EnemyTakeDamage():
+	enemy_health -= 1
+	#print("hit taken")
+	if enemy_health <= 0:
+		EnemyDeath()
+		
+func EnemyDeath():
+	queue_free()
