@@ -1,7 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://dh4t8qqxb0ui3"]
+[gd_scene load_steps=18 format=3 uid="uid://dh4t8qqxb0ui3"]
 
 [ext_resource type="Texture2D" uid="uid://bbcq3nhpamxc6" path="res://Art/sprites/Placeholder/enemy/enemy-Sheet.png" id="1_hydc3"]
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_mece3"]
+[ext_resource type="Texture2D" uid="uid://deyukmegg7trn" path="res://Art/sprites/Placeholder/Attention.png" id="3_qwr0m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vffjd"]
+size = Vector2(37, 23)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_86bhi"]
+radius = 109.005
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_55qws"]
 radius = 12.0
@@ -20,6 +27,42 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Attention:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EnemySprite:flip_v")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EnemyCollider:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_rf7gm"]
@@ -55,10 +98,56 @@ tracks/0/keys = {
 "values": [1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
 
+[sub_resource type="Animation" id="Animation_6r8ve"]
+resource_name = "Attention!"
+length = 0.50001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Attention:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_hv5ou"]
+resource_name = "enemy_death"
+length = 0.30001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySprite:flip_v")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemyCollider:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3so4i"]
 _data = {
+"Attention!": SubResource("Animation_6r8ve"),
 "RESET": SubResource("Animation_bwxgf"),
 "enemy_body_idle": SubResource("Animation_rf7gm"),
+"enemy_death": SubResource("Animation_hv5ou"),
 "enemy_walking": SubResource("Animation_a160r")
 }
 
@@ -87,6 +176,21 @@ transitions = ["Start", "BlendSpace1D", SubResource("AnimationNodeStateMachineTr
 [node name="Enemy" type="CharacterBody2D" groups=["Enemies"]]
 script = ExtResource("1_mece3")
 
+[node name="Target" type="Marker2D" parent="."]
+position = Vector2(0, -30)
+
+[node name="MeleeRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeRange"]
+position = Vector2(0.5, -20.5)
+shape = SubResource("RectangleShape2D_vffjd")
+
+[node name="DetectionRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_86bhi")
+debug_color = Color(0, 0.603922, 0.682353, 0.419608)
+
 [node name="EnemyCollider" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
 rotation = 1.5708
@@ -96,6 +200,11 @@ shape = SubResource("CapsuleShape2D_55qws")
 texture = ExtResource("1_hydc3")
 flip_v = true
 hframes = 10
+
+[node name="Attention" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -24)
+texture = ExtResource("3_qwr0m")
 
 [node name="EnemyAnimPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -109,3 +218,8 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_seicc")
 anim_player = NodePath("../EnemyAnimPlayer")
 parameters/BlendSpace1D/blend_position = -0.042042
+
+[connection signal="body_entered" from="MeleeRange" to="." method="_on_melee_range_body_entered"]
+[connection signal="body_exited" from="MeleeRange" to="." method="_on_melee_range_body_exited"]
+[connection signal="body_entered" from="DetectionRange" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="DetectionRange" to="." method="_on_area_2d_body_exited"]

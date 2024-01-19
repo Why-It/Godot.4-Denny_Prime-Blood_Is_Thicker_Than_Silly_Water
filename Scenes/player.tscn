@@ -96,7 +96,7 @@ tree_root = SubResource("AnimationNodeStateMachine_wo044")
 anim_player = NodePath("../AnimationPlayer")
 parameters/body_motion/blend_position = -0.0025663
 
-[node name="Placeholder" type="CollisionShape2D" parent="."]
+[node name="PlayerCollider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_ns8m5")
