@@ -18,7 +18,7 @@ script = ExtResource("1_6wrqv")
 [node name="Player" parent="." instance=ExtResource("5_26ra4")]
 
 [node name="Camera2D" parent="Player" instance=ExtResource("2_d6hxi")]
-zoom = Vector2(1, 1)
+zoom = Vector2(0.8, 0.8)
 
 [node name="gun_manager" parent="Player" instance=ExtResource("6_npyv1")]
 position = Vector2(0, 0)

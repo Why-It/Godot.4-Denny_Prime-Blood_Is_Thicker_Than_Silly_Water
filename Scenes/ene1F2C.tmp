@@ -1,19 +1,18 @@
-[gd_scene load_steps=22 format=3 uid="uid://dh4t8qqxb0ui3"]
+[gd_scene load_steps=20 format=3 uid="uid://dh4t8qqxb0ui3"]
 
 [ext_resource type="Texture2D" uid="uid://bbcq3nhpamxc6" path="res://Art/sprites/Placeholder/enemy/enemy-Sheet.png" id="1_hydc3"]
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_mece3"]
 [ext_resource type="Texture2D" uid="uid://deyukmegg7trn" path="res://Art/sprites/Placeholder/Attention.png" id="3_qwr0m"]
-[ext_resource type="Texture2D" uid="uid://cy53b6syfs1fm" path="res://Art/sprites/Placeholder/Guns/handgun-Sheet.png" id="4_ujlrs"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_h337y"]
-radius = 30.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vffjd"]
+size = Vector2(37, 23)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_86bhi"]
-radius = 158.02
+radius = 109.005
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_55qws"]
-radius = 18.0
-height = 36.0
+radius = 12.0
+height = 42.0
 
 [sub_resource type="Animation" id="Animation_6r8ve"]
 resource_name = "Attention!"
@@ -81,59 +80,6 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("EnemySprite/Gun/Sprite2D:frame")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("EnemySprite/Gun/Sprite2D:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_vjuln"]
-resource_name = "enemy_aim"
-length = 0.10001
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("EnemySprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [7]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("EnemySprite/Gun/Sprite2D:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_rf7gm"]
 resource_name = "enemy_body_idle"
@@ -178,62 +124,6 @@ tracks/1/keys = {
 "update": 1,
 "values": [false, true]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("EnemySprite/Gun/Sprite2D:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_g5mbm"]
-resource_name = "enemy_melee"
-length = 0.40001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("EnemySprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 0]
-}
-
-[sub_resource type="Animation" id="Animation_006sb"]
-resource_name = "enemy_shoot_handgun"
-length = 0.40001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("EnemySprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [7]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("EnemySprite/Gun/Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4]
-}
 
 [sub_resource type="Animation" id="Animation_a160r"]
 resource_name = "enemy_walking"
@@ -251,17 +141,37 @@ tracks/0/keys = {
 "update": 1,
 "values": [1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("EnemySprite/Gun/Sprite2D:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
+
+[sub_resource type="Animation" id="Animation_g5mbm"]
+resource_name = "enemy_melee"
+length = 0.70001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 0]
+}
+
+[sub_resource type="Animation" id="Animation_vjuln"]
+resource_name = "enemy_aim"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [7]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3so4i"]
@@ -272,7 +182,6 @@ _data = {
 "enemy_body_idle": SubResource("Animation_rf7gm"),
 "enemy_death": SubResource("Animation_hv5ou"),
 "enemy_melee": SubResource("Animation_g5mbm"),
-"enemy_shoot_handgun": SubResource("Animation_006sb"),
 "enemy_walking": SubResource("Animation_a160r")
 }
 
@@ -300,7 +209,7 @@ transitions = ["Start", "BlendSpace1D", SubResource("AnimationNodeStateMachineTr
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemies"]]
 collision_layer = 4
-collision_mask = 15
+collision_mask = 7
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_mece3")
@@ -309,15 +218,12 @@ script = ExtResource("1_mece3")
 position = Vector2(0, -30)
 
 [node name="MeleeRange" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeRange"]
-shape = SubResource("CircleShape2D_h337y")
+position = Vector2(0.5, -20.5)
+shape = SubResource("RectangleShape2D_vffjd")
 
 [node name="DetectionRange" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
 shape = SubResource("CircleShape2D_86bhi")
@@ -332,17 +238,6 @@ shape = SubResource("CapsuleShape2D_55qws")
 texture = ExtResource("1_hydc3")
 flip_v = true
 hframes = 10
-
-[node name="Gun" type="Node2D" parent="EnemySprite"]
-
-[node name="Sprite2D" type="Sprite2D" parent="EnemySprite/Gun"]
-visible = false
-position = Vector2(12.695, -22.805)
-texture = ExtResource("4_ujlrs")
-hframes = 5
-
-[node name="Marker2D" type="Marker2D" parent="EnemySprite/Gun"]
-position = Vector2(12.5, -33)
 
 [node name="Attention" type="Sprite2D" parent="."]
 visible = false
@@ -368,7 +263,6 @@ wait_time = 0.75
 [node name="Nav" type="Node2D" parent="."]
 
 [node name="NavAgent" type="NavigationAgent2D" parent="Nav"]
-navigation_layers = 15
 debug_enabled = true
 
 [node name="RecalculateTimer" type="Timer" parent="Nav"]
@@ -377,9 +271,7 @@ autostart = true
 
 [connection signal="body_entered" from="MeleeRange" to="." method="_on_melee_range_body_entered"]
 [connection signal="body_exited" from="MeleeRange" to="." method="_on_melee_range_body_exited"]
-[connection signal="area_entered" from="DetectionRange" to="." method="_on_detection_range_area_entered"]
 [connection signal="body_entered" from="DetectionRange" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="DetectionRange" to="." method="_on_area_2d_body_exited"]
 [connection signal="animation_finished" from="EnemyAnimPlayer" to="." method="_on_enemy_anim_player_animation_finished"]
 [connection signal="timeout" from="AimTimer" to="." method="_on_aim_timer_timeout"]
-[connection signal="timeout" from="Nav/RecalculateTimer" to="." method="_on_recalculate_timer_timeout"]
