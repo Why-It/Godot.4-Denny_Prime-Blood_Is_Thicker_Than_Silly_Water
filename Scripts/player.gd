@@ -75,4 +75,4 @@ func PlayerTakeDamage(damage : int):
 		PlayerDeath()
 
 func PlayerDeath():
-	queue_free()
+	get_tree().reload_current_scene()
