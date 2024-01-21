@@ -20,6 +20,8 @@ var home_pos : Vector2
 var enemy_health : int = 3
 var is_dead : bool = false
 
+@onready var win_condition = $".."
+
 @export var enemySpeed : float = 185
 
 
@@ -64,6 +66,7 @@ func EnemyTakeDamage():
 	#print("hit taken")
 	if enemy_health <= 0:
 		is_dead = true
+		Death()
 
 
 #MELEE RANGE
@@ -149,8 +152,8 @@ func UpdateStateMachine():
 		else:
 			GetBetterPosition()
 	
-	if is_dead:
-		Death()
+	#if is_dead:
+	#	Death()
 
 #Might need later idk
 
@@ -220,7 +223,9 @@ func Death():
 		anim_player.play("enemy_death")
 		has_death_played = true
 		
-		print("dead")
+		win_condition.UpdateEnemyDeathCount()
+		
+		#print("dead")
 
 
 

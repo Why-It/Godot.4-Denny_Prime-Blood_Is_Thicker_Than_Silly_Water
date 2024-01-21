@@ -26,6 +26,10 @@ var weapon_list = {} #Dictionary of all weapons available to use
 
 func _ready():
 	Initilize(starting_arsenal) #Enter the state machine
+	for weapon in _weapon_resources:
+		weapon.loaded_ammo = weapon.max_loaded_ammo
+		weapon.pellet_spread = weapon.spread_min
+
 	
 func _input(event):
 	if event.is_action_released("Weapon_Next"):
@@ -90,6 +94,7 @@ func UpdateAmmo():
 func enter(): #Call when entering the next weapon
 	anim_player.queue(cur_weapon.activate_anim)
 	anim_player.queue(cur_weapon.idle_anim)
+	
 	cur_ammo = cur_weapon.loaded_ammo
 	cur_reserve = cur_weapon.reserve_ammo
 	#print(cur_weapon.reserve_ammo)

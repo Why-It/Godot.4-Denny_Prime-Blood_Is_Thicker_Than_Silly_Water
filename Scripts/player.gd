@@ -18,9 +18,13 @@ extends CharacterBody2D
 #Rotating the player character's limbs
 @export var player_legs : Node2D = null
 @export var player : Node2D = null
+#Rotating the indicator arrow towards the level exit
+@onready var arrow : Node = $Sprite2D
+@export var level_leave_node = Node
 
 func _ready():
 	player_health = player_max_health
+	isArrow_on = false
 
 func _physics_process(_delta):
 	var inputDirection = Vector2(
@@ -36,6 +40,9 @@ func _physics_process(_delta):
 	rotatePlayer()
 	move_and_slide()
 	pick_new_state()
+	
+	if isArrow_on:
+		rotateArrow()
 	
 	if player_health <= player_min_health:
 		pass
@@ -67,7 +74,19 @@ func rotatePlayer():
 	player.rotation_degrees += 90
 	gun_manager.look_at(get_global_mouse_position())
 	gun_manager.rotation_degrees += 90
-	
+
+var isArrow_on : bool = false
+func rotateArrow():
+	arrow.look_at(level_leave_node.global_position)
+	arrow.rotation_degrees += 90
+
+func toggleArrow():
+	isArrow_on = !isArrow_on
+	if !arrow.get("visible") && isArrow_on:
+		arrow.set("visible", true)
+	else:
+		arrow.set("visible", false)
+
 func PlayerTakeDamage(damage : int):
 	player_health -= damage
 	
