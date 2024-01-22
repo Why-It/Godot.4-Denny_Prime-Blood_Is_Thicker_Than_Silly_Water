@@ -1,11 +1,84 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5ctjtyxw6snc"]
+[gd_scene load_steps=4 format=3 uid="uid://c5ctjtyxw6snc"]
 
 [ext_resource type="Script" path="res://Scripts/gui.gd" id="1_es4pi"]
+[ext_resource type="Texture2D" uid="uid://scsjh2xl30wi" path="res://icon.svg" id="2_wuxgq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_84vji"]
+bg_color = Color(0, 0, 0, 0.231373)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.458824)
+shadow_size = 5
+shadow_offset = Vector2(0, 8.795)
 
 [node name="GUI" type="CanvasLayer"]
 script = ExtResource("1_es4pi")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="LeaveUI" type="MarginContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Rows" type="VBoxContainer" parent="LeaveUI"]
+layout_mode = 2
+
+[node name="TopRow" type="HBoxContainer" parent="LeaveUI/Rows"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Left" type="HBoxContainer" parent="LeaveUI/Rows/TopRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Middle" type="VBoxContainer" parent="LeaveUI/Rows/TopRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.23
+
+[node name="Label" type="Label" parent="LeaveUI/Rows/TopRow/Middle"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.807843, 0.235294, 0.235294, 1)
+theme_override_colors/font_shadow_color = Color(0.352941, 0.0705882, 0.0745098, 0.827451)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_84vji")
+text = "Make your way to the exit"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Right" type="HBoxContainer" parent="LeaveUI/Rows/TopRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="MiddleRow" type="HBoxContainer" parent="LeaveUI/Rows"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.97
+
+[node name="BottomRow" type="HBoxContainer" parent="LeaveUI/Rows"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GameplayUI" type="MarginContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -16,45 +89,212 @@ theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 
-[node name="Rows" type="VBoxContainer" parent="MarginContainer"]
+[node name="Rows" type="VBoxContainer" parent="GameplayUI"]
 layout_mode = 2
 
-[node name="TopRow" type="HBoxContainer" parent="MarginContainer/Rows"]
+[node name="TopRow" type="HBoxContainer" parent="GameplayUI/Rows"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MiddleRow" type="HBoxContainer" parent="MarginContainer/Rows"]
+[node name="MiddleRow" type="HBoxContainer" parent="GameplayUI/Rows"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 6.0
 
-[node name="BottomRow" type="HBoxContainer" parent="MarginContainer/Rows"]
+[node name="BottomRow" type="HBoxContainer" parent="GameplayUI/Rows"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Left" type="HBoxContainer" parent="MarginContainer/Rows/BottomRow"]
+[node name="Left" type="HBoxContainer" parent="GameplayUI/Rows/BottomRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Middle" type="HBoxContainer" parent="MarginContainer/Rows/BottomRow"]
+[node name="Middle" type="HBoxContainer" parent="GameplayUI/Rows/BottomRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Right" type="HBoxContainer" parent="MarginContainer/Rows/BottomRow"]
+[node name="Right" type="HBoxContainer" parent="GameplayUI/Rows/BottomRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Ammo" type="BoxContainer" parent="MarginContainer/Rows/BottomRow/Right"]
+[node name="Ammo" type="BoxContainer" parent="GameplayUI/Rows/BottomRow/Right"]
 layout_mode = 2
 
-[node name="CurrentAmmo" type="Label" parent="MarginContainer/Rows/BottomRow/Right/Ammo"]
+[node name="CurrentAmmo" type="Label" parent="GameplayUI/Rows/BottomRow/Right/Ammo"]
 layout_mode = 2
 text = "WW"
 
-[node name="VSeparator" type="VSeparator" parent="MarginContainer/Rows/BottomRow/Right/Ammo"]
+[node name="VSeparator" type="VSeparator" parent="GameplayUI/Rows/BottomRow/Right/Ammo"]
 layout_mode = 2
 
-[node name="ReserveAmmo" type="Label" parent="MarginContainer/Rows/BottomRow/Right/Ammo"]
+[node name="ReserveAmmo" type="Label" parent="GameplayUI/Rows/BottomRow/Right/Ammo"]
 layout_mode = 2
 text = "WW"
+
+[node name="LevelOverUI" type="MarginContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Rows" type="VBoxContainer" parent="LevelOverUI"]
+layout_mode = 2
+
+[node name="TopRow" type="HBoxContainer" parent="LevelOverUI/Rows"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MiddleRow" type="HBoxContainer" parent="LevelOverUI/Rows"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.97
+
+[node name="Left" type="HBoxContainer" parent="LevelOverUI/Rows/MiddleRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Middle" type="HBoxContainer" parent="LevelOverUI/Rows/MiddleRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.99
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelOverUI/Rows/MiddleRow/Middle"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Label" type="Label" parent="LevelOverUI/Rows/MiddleRow/Middle/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Level WWWWW"
+
+[node name="NextLevel" type="Button" parent="LevelOverUI/Rows/MiddleRow/Middle/VBoxContainer"]
+layout_mode = 2
+text = "Next Level"
+
+[node name="Restart" type="Button" parent="LevelOverUI/Rows/MiddleRow/Middle/VBoxContainer"]
+layout_mode = 2
+text = "Restart Level"
+
+[node name="MainMenu" type="Button" parent="LevelOverUI/Rows/MiddleRow/Middle/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="Right" type="HBoxContainer" parent="LevelOverUI/Rows/MiddleRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="BottomRow" type="HBoxContainer" parent="LevelOverUI/Rows"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Left" type="HBoxContainer" parent="LevelOverUI/Rows/BottomRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Middle" type="HBoxContainer" parent="LevelOverUI/Rows/BottomRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Right" type="HBoxContainer" parent="LevelOverUI/Rows/BottomRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="PauseMenuUI" type="MarginContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="TextureRect" type="TextureRect" parent="PauseMenuUI"]
+modulate = Color(0, 0, 0, 0.0980392)
+layout_mode = 2
+texture = ExtResource("2_wuxgq")
+
+[node name="Rows" type="VBoxContainer" parent="PauseMenuUI"]
+layout_mode = 2
+
+[node name="TopRow" type="HBoxContainer" parent="PauseMenuUI/Rows"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MiddleRow" type="HBoxContainer" parent="PauseMenuUI/Rows"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.97
+
+[node name="Left" type="HBoxContainer" parent="PauseMenuUI/Rows/MiddleRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Middle" type="HBoxContainer" parent="PauseMenuUI/Rows/MiddleRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.99
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenuUI/Rows/MiddleRow/Middle"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Label" type="Label" parent="PauseMenuUI/Rows/MiddleRow/Middle/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "PAUSED"
+
+[node name="Resume" type="Button" parent="PauseMenuUI/Rows/MiddleRow/Middle/VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="Restart" type="Button" parent="PauseMenuUI/Rows/MiddleRow/Middle/VBoxContainer"]
+layout_mode = 2
+text = "Restart Level"
+
+[node name="MainMenu" type="Button" parent="PauseMenuUI/Rows/MiddleRow/Middle/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="Right" type="HBoxContainer" parent="PauseMenuUI/Rows/MiddleRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="BottomRow" type="HBoxContainer" parent="PauseMenuUI/Rows"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Left" type="HBoxContainer" parent="PauseMenuUI/Rows/BottomRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Middle" type="HBoxContainer" parent="PauseMenuUI/Rows/BottomRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Right" type="HBoxContainer" parent="PauseMenuUI/Rows/BottomRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[connection signal="pressed" from="LevelOverUI/Rows/MiddleRow/Middle/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="LevelOverUI/Rows/MiddleRow/Middle/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="PauseMenuUI/Rows/MiddleRow/Middle/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenuUI/Rows/MiddleRow/Middle/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="PauseMenuUI/Rows/MiddleRow/Middle/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]

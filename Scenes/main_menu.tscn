@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=3 uid="uid://cprr0hmjyiuh1"]
+
+[ext_resource type="Theme" uid="uid://udap2b0yhsp7" path="res://Art/Styles/BUTTON.tres" id="1_0235s"]
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_f0yh6"]
+[ext_resource type="PackedScene" uid="uid://byled1opgohlw" path="res://Scenes/transition.tscn" id="2_ai0nt"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_f0yh6")
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Left" type="HBoxContainer" parent="BoxContainer"]
+layout_mode = 2
+
+[node name="Center" type="HBoxContainer" parent="BoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BoxContainer/Center"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="Play" type="Button" parent="BoxContainer/Center/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_0235s")
+text = "PLAY"
+
+[node name="LevelSelect" type="MenuButton" parent="BoxContainer/Center/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_0235s")
+keep_pressed_outside = true
+text = "Level Select"
+item_count = 4
+popup/item_0/text = "level_00"
+popup/item_0/id = 0
+popup/item_1/text = "1. Clyde's Place"
+popup/item_1/id = 1
+popup/item_2/text = "2. Massacre"
+popup/item_2/id = 2
+popup/item_3/text = "3. We Spreadin'"
+popup/item_3/id = 3
+
+[node name="Quit" type="Button" parent="BoxContainer/Center/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_0235s")
+text = "QUIT"
+
+[node name="Right" type="HBoxContainer" parent="BoxContainer"]
+layout_mode = 2
+
+[node name="Transition" parent="." instance=ExtResource("2_ai0nt")]
+layout_mode = 1
+
+[connection signal="pressed" from="BoxContainer/Center/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

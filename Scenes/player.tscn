@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://cali6q4pooh6b"]
+[gd_scene load_steps=20 format=3 uid="uid://cali6q4pooh6b"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_1hsk7"]
 [ext_resource type="AnimationLibrary" uid="uid://dun2jwvevqlhk" path="res://Art/animations/i_fucked_up.res" id="2_yer6h"]
+[ext_resource type="Texture2D" uid="uid://byboqsjhhsbd0" path="res://Art/sprites/Placeholder/pointer.png" id="4_1ocvp"]
 [ext_resource type="Texture2D" uid="uid://lk5kxw7250at" path="res://Art/sprites/Josh/Player/walk_2.png" id="8_wxtsl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ns8m5"]
@@ -129,3 +130,9 @@ offset = Vector2(0, -7)
 flip_v = true
 hframes = 27
 frame = 9
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_1ocvp")
+centered = false
+offset = Vector2(-16, -50)

@@ -35,7 +35,6 @@ func _on_area_entered(area):
 	get_node("bullet_collisionshape").set_deferred("disabled", true)
 	if area:
 		if !was_fired_from_enemy:
-			print("qaweicubn")
 			gun_man.Increase_Spread_Value()
 			area.owner.EnemyTakeDamage()
 		else:
