@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var gun_manager : Node
+@onready var gun_manager : Node = $gun_manager
 
 @export var character_speed : float = 200
 @export var player_health : int = 1

@@ -67,4 +67,5 @@ layout_mode = 2
 [node name="Transition" parent="." instance=ExtResource("2_ai0nt")]
 layout_mode = 1
 
+[connection signal="pressed" from="BoxContainer/Center/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="BoxContainer/Center/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

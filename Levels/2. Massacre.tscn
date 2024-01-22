@@ -1,8 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://4akej3pm78ps"]
+[gd_scene load_steps=26 format=3 uid="uid://4akej3pm78ps"]
 
+[ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_c0mxp"]
 [ext_resource type="Texture2D" uid="uid://dgjhsoj1qgm6g" path="res://Art/sprites/Josh/tiles/Florors.png" id="1_ojr7b"]
 [ext_resource type="Texture2D" uid="uid://g56ql4pj0b47" path="res://Art/sprites/Josh/tiles/walls_and_stairs.png" id="2_a261l"]
 [ext_resource type="PackedScene" uid="uid://dh4t8qqxb0ui3" path="res://Scenes/enemy.tscn" id="3_fjhnx"]
+[ext_resource type="PackedScene" uid="uid://cali6q4pooh6b" path="res://Scenes/player.tscn" id="3_x67pf"]
+[ext_resource type="PackedScene" uid="uid://ccwl5bv648kxg" path="res://Scenes/camera_2d.tscn" id="4_c01aj"]
+[ext_resource type="PackedScene" uid="uid://dvfar3tkcrvek" path="res://Scenes/gun_manager.tscn" id="5_sigbd"]
+[ext_resource type="PackedScene" uid="uid://bp5g1f6khondn" path="res://Scenes/bullet.tscn" id="6_cgdlu"]
+[ext_resource type="PackedScene" uid="uid://d285v72v0g232" path="res://Scenes/win_condition.tscn" id="7_auegh"]
+[ext_resource type="PackedScene" uid="uid://c5ctjtyxw6snc" path="res://Scenes/gui.tscn" id="9_uy0wf"]
+[ext_resource type="PackedScene" uid="uid://byled1opgohlw" path="res://Scenes/transition.tscn" id="10_i46ve"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_m432y"]
 vertices = PackedVector2Array(32, 32, -32, 32, -32, -32, 32, -32)
@@ -188,7 +196,12 @@ navigation_layer_0/layers = 15
 sources/4 = SubResource("TileSetAtlasSource_4xwjy")
 sources/5 = SubResource("TileSetAtlasSource_8pe16")
 
-[node name="Level_00" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j744w"]
+size = Vector2(112, 30)
+
+[node name="2_ Massacre" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_c0mxp")
 
 [node name="Tilemap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_uhcu1")
@@ -203,12 +216,44 @@ layer_2/tile_data = PackedInt32Array()
 layer_3/name = "Fourth Layer"
 layer_3/tile_data = PackedInt32Array()
 
-[node name="Enemy0" parent="." instance=ExtResource("3_fjhnx")]
+[node name="PausableScenes" type="Node" parent="."]
+process_mode = 1
+
+[node name="Player" parent="PausableScenes" node_paths=PackedStringArray("level_leave_node") instance=ExtResource("3_x67pf")]
+level_leave_node = NodePath("../WinCondition/Area2D2/CollisionShape2D")
+
+[node name="Camera2D" parent="PausableScenes/Player" instance=ExtResource("4_c01aj")]
+zoom = Vector2(0.8, 0.8)
+
+[node name="gun_manager" parent="PausableScenes/Player" instance=ExtResource("5_sigbd")]
+position = Vector2(0, 0)
+
+[node name="Bullet" parent="PausableScenes" instance=ExtResource("6_cgdlu")]
+position = Vector2(2000, 2000)
+
+[node name="WinCondition" parent="PausableScenes" node_paths=PackedStringArray("enemy_array") instance=ExtResource("7_auegh")]
+enemy_array = [NodePath("Enemy0"), NodePath("Enemy1"), NodePath("Enemy2")]
+
+[node name="Area2D2" type="Area2D" parent="PausableScenes/WinCondition"]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PausableScenes/WinCondition/Area2D2"]
+position = Vector2(-2, -1060)
+shape = SubResource("RectangleShape2D_j744w")
+
+[node name="Enemy0" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
 position = Vector2(-288, 136)
 
-[node name="Enemy1" parent="." instance=ExtResource("3_fjhnx")]
+[node name="Enemy1" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
 position = Vector2(213, 134)
 EnemyType = 1
 
-[node name="Enemy2" parent="." instance=ExtResource("3_fjhnx")]
+[node name="Enemy2" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
 position = Vector2(-1, -254)
+
+[node name="GUI" parent="." instance=ExtResource("9_uy0wf")]
+
+[node name="Transition" parent="." instance=ExtResource("10_i46ve")]
+
+[connection signal="area_entered" from="PausableScenes/WinCondition/Area2D2" to="PausableScenes/WinCondition" method="_on_area_2d_2_area_entered"]
