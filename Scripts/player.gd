@@ -87,7 +87,7 @@ func toggleArrow():
 	else:
 		arrow.set("visible", false)
 
-func PlayerTakeDamage(damage : int):
+func TakeDamage(damage : int):
 	player_health -= damage
 	
 	if player_health <= player_min_health:

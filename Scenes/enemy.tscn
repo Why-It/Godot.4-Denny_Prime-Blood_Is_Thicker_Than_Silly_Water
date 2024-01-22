@@ -109,7 +109,6 @@ tracks/5/keys = {
 [sub_resource type="Animation" id="Animation_vjuln"]
 resource_name = "enemy_aim"
 length = 0.10001
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

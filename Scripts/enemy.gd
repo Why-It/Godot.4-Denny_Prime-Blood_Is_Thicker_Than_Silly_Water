@@ -32,14 +32,18 @@ func _physics_process(_delta):
 		if in_detection_range == true:
 			SightCheck()
 		move_and_slide()
-		UpdateStateMachine()
+		if !has_death_played:
+			UpdateStateMachine()
 		RotateEnemy()
 
 func RecalcPath():
+	#print("recalculating path")
 	if target_node:
 		nav_agent.target_position = target_node.global_position
+		#print("recalc is target")
 	else:
 		nav_agent.target_position = home_pos
+		#print("reclac is home")
 
 func SightCheck():
 	var space_state = get_world_2d().direct_space_state
@@ -61,8 +65,8 @@ func RotateEnemy():
 		enemy_sprite.look_at((target_node.global_position))
 		enemy_sprite.rotation_degrees += 90
 
-func EnemyTakeDamage():
-	enemy_health -= 1
+func TakeDamage(dmg : int):
+	enemy_health -= dmg
 	#print("hit taken")
 	if enemy_health <= 0:
 		is_dead = true
@@ -95,7 +99,8 @@ func _on_area_2d_body_entered(body): #Enemy checks for if the plyer is in detect
 
 func _on_area_2d_body_exited(body): #Player leaving detection range
 	if body.is_in_group("Player"):
-		in_detection_range = false
+		#in_detection_range = false
+		pass
 
 
 
@@ -126,31 +131,35 @@ func UpdateStateMachine():
 	if detect_switch:
 		init_target_to_player()
 	if LoS:
-		if !cur_state == "Idle" || "Patrol":
+		if cur_state == "Idle" || "Patrol":
 			#target.set("global_position", player.global_position)
 			pass
+	else:
+		if cur_state == "GetBetterPosition":
+			#if nav_agent.is_navigation_finished():
+			#	return
+			axis = to_local(nav_agent.get_next_path_position()).normalized()
+			velocity = axis * enemySpeed
 	
 	if cur_state == "Chase":
-		#position += (target.position - position).normalized() * enemySpeed
-		#velocity = (target.global_position - position).normalized() * enemySpeed
 		
 		# Navmesh Shit
-		if nav_agent.is_navigation_finished():
-			return
+		#if nav_agent.is_navigation_finished():
+		#	return
 		axis = to_local(nav_agent.get_next_path_position()).normalized()
 		velocity = axis * enemySpeed
 		
 		if in_melee_range:
 			AttackMelee()
-	if cur_state == "GetBetterPosition" && !LoS:
-		#velocity = (target.global_position - position).normalized() * enemySpeed
-		pass
 	
-	if cur_state == "Aim":
-		if LoS:
-			pass
-		else:
-			GetBetterPosition()
+	
+
+	
+	#if cur_state == "Aim":
+	#	if LoS:
+	#		pass
+	#	else:
+	#		GetBetterPosition()
 	
 	#if is_dead:
 	#	Death()
@@ -190,29 +199,38 @@ func AttackMelee():
 
 func Aim(): # If the enemy has a LoS, aim for a couple frames then shoot. If they lose LoS, go to better position
 	cur_state = "Aim"
+	
+	StopMovement()
+	
+	
 	anim_player.play("enemy_aim")
 	aim_timer.start(time_for_aiming)
+	#print(target_node)
+
 
 func GetBetterPosition():
 	cur_state = "GetBetterPosition"
 	
-	print("Getting a better position!")
+	#print("Getting a better position!")
 
 var aim_dir = Vector2.RIGHT
 
 func AttackShoot():
-	cur_state = "AttackShoot"
-	#print("Bang")
-	
-	aim_dir = global_position.direction_to(player.global_position)
-	
-	var radians = deg_to_rad(0.0)
-	var b = bullet.instantiate()
-	b.global_position = muzzle.global_position
-	b.direction = aim_dir.rotated(radians)
-	owner.add_child(b)
-	b.was_fired_from_enemy = true
-	Aim()
+	if !has_death_played:
+		
+		cur_state = "AttackShoot"
+		#print("Bang")
+		
+		aim_dir = global_position.direction_to(player.global_position)
+		
+		var radians = deg_to_rad(0.0)
+		var b = bullet.instantiate()
+		b.global_position = muzzle.global_position
+		b.direction = aim_dir.rotated(radians)
+		owner.add_child(b)
+		b.was_fired_from_enemy = true
+		
+		Aim()
 
 var has_death_played : bool = false
 func Death():
@@ -227,12 +245,12 @@ func Death():
 		
 		#print("dead")
 
-
-
-
 func _on_aim_timer_timeout():
-	if cur_state == "Aim":
+	#if cur_state == "Aim":
+	if LoS:
 		AttackShoot()
+	else:
+		GetBetterPosition()
 
 
 func _on_enemy_anim_player_animation_finished(anim_name):
@@ -255,14 +273,11 @@ func _on_enemy_anim_player_animation_finished(anim_name):
 func _on_recalculate_timer_timeout():
 	RecalcPath()
 
+
 var detect_switch : bool = false
 var this_is_fucking_stupid = null
+
 func _on_detection_range_area_entered(area):
-	
-	#if body.is_in_group("Player"):
-		#player = body
-	
-	#in_detection_range = true
 	detect_switch = true
 	this_is_fucking_stupid = area.owner
 
@@ -270,4 +285,9 @@ func _on_detection_range_area_entered(area):
 func init_target_to_player():
 	if LoS == true:
 		target_node = this_is_fucking_stupid
-		detect_switch = false
+
+func StopMovement():
+	if nav_agent.is_navigation_finished():
+		return
+	axis = to_local(nav_agent.get_next_path_position()).normalized()
+	velocity = Vector2(0,0)
