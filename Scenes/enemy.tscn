@@ -9,7 +9,7 @@
 radius = 30.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_86bhi"]
-radius = 158.02
+radius = 287.016
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_55qws"]
 radius = 18.0
@@ -368,7 +368,6 @@ wait_time = 0.75
 
 [node name="NavAgent" type="NavigationAgent2D" parent="Nav"]
 navigation_layers = 15
-debug_enabled = true
 
 [node name="RecalculateTimer" type="Timer" parent="Nav"]
 wait_time = 0.1
