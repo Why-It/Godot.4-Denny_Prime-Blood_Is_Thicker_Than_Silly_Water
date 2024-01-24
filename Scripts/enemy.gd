@@ -262,7 +262,7 @@ func _on_enemy_anim_player_animation_finished(anim_name):
 			Aim()
 	
 	if anim_name == "enemy_melee":
-		player.PlayerTakeDamage(1)
+		player.TakeDamage(1)
 		if EnemyType == 0:
 			Chase()
 		if EnemyType == 1:
