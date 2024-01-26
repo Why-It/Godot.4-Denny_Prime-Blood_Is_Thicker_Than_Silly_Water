@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://lk5kxw7250at" path="res://Art/sprites/Josh/Player/walk_2.png" id="8_wxtsl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ns8m5"]
-radius = 10.5
-height = 34.0
+radius = 12.5
+height = 33.0
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4r24e"]
 animation = &"legs_idle"
@@ -73,7 +73,7 @@ states/body_motion/position = Vector2(378, 100)
 transitions = ["Start", "body_motion", SubResource("AnimationNodeStateMachineTransition_aul8s")]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_quwkg"]
-radius = 16.0312
+radius = 14.0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("player_legs", "player") groups=["Player"]]
 collision_layer = 2
