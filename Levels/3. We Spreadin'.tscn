@@ -42,7 +42,7 @@ position = Vector2(-200, 500)
 level_leave_node = NodePath("../WinCondition/Area2D2/CollisionShape2D")
 
 [node name="Camera2D" parent="PausableScenes/Player" instance=ExtResource("5_evkkf")]
-zoom = Vector2(0.8, 0.8)
+zoom = Vector2(0.65, 0.65)
 
 [node name="gun_manager" parent="PausableScenes/Player" instance=ExtResource("6_gt5nf")]
 position = Vector2(0, 0)

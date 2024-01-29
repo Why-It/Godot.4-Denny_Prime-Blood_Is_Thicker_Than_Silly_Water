@@ -101,4 +101,4 @@ func _on_next_level_pressed():
 	elif get_tree().current_scene.name == "2_ Massacre":
 		lvl_tran.PlayExit("res://Levels/3. We Spreadin'.tscn")
 	elif get_tree().current_scene.name == "3_ We Spreadin'":
-		lvl_tran.PlayExit("res://Scenes/main_menu.tscn")
+		lvl_tran.PlayExit("res://Scenes/credits.tscn")

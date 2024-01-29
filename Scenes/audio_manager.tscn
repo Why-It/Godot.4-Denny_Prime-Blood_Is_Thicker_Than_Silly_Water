@@ -1,0 +1,60 @@
+[gd_scene load_steps=14 format=3 uid="uid://bjxuanrrabulo"]
+
+[ext_resource type="AudioStream" uid="uid://5yxraig8cep0" path="res://Audio/Music/Cyber_Racer_Lunareh.wav" id="1_6auaw"]
+[ext_resource type="AudioStream" uid="uid://dx7ipqpmmm8uq" path="res://Audio/Music/Prototype_JedStark.wav" id="2_ak5ik"]
+[ext_resource type="AudioStream" uid="uid://vx321lmfr0tx" path="res://Audio/SFX/Alert_0.wav" id="3_1y1ug"]
+[ext_resource type="AudioStream" uid="uid://dkhc1rudkusxn" path="res://Audio/SFX/Alert_1.wav" id="4_pt2xc"]
+[ext_resource type="AudioStream" uid="uid://d2rrvcxam3f3a" path="res://Audio/SFX/Alert_2.wav" id="5_6vkua"]
+[ext_resource type="AudioStream" uid="uid://brx1ukl6m54t2" path="res://Audio/SFX/Alert_3.wav" id="6_rhsl8"]
+[ext_resource type="AudioStream" uid="uid://ck4lult6jn01n" path="res://Audio/SFX/Alert_4.wav" id="7_1jy7t"]
+[ext_resource type="AudioStream" uid="uid://bag4aa2rq6q4v" path="res://Audio/SFX/die_0.wav" id="8_3020m"]
+[ext_resource type="AudioStream" uid="uid://cnn7ld01ryl6p" path="res://Audio/SFX/hurt_0.wav" id="9_o8x3o"]
+[ext_resource type="AudioStream" uid="uid://dmd1o3nd8pdig" path="res://Audio/SFX/hurt_1.wav" id="10_xhxf1"]
+[ext_resource type="AudioStream" uid="uid://daewjjdy1hr8q" path="res://Audio/SFX/swing_0.wav" id="11_kjp8j"]
+[ext_resource type="AudioStream" uid="uid://c7tw45kwed01i" path="res://Audio/SFX/swing_1.wav" id="12_mob1e"]
+[ext_resource type="AudioStream" uid="uid://cw5dtr6i1tt5v" path="res://Audio/SFX/swing_2.wav" id="13_ti8hs"]
+
+[node name="AudioManager" type="Node"]
+
+[node name="Music" type="Node2D" parent="."]
+
+[node name="CyberRacer" type="AudioStreamPlayer2D" parent="Music"]
+stream = ExtResource("1_6auaw")
+
+[node name="Prototype" type="AudioStreamPlayer2D" parent="Music"]
+stream = ExtResource("2_ak5ik")
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="Alert_0" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("3_1y1ug")
+
+[node name="Alert_1" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("4_pt2xc")
+
+[node name="Alert_2" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("5_6vkua")
+
+[node name="Alert_3" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("6_rhsl8")
+
+[node name="Alert_4" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("7_1jy7t")
+
+[node name="Die_0" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("8_3020m")
+
+[node name="Hurt_0" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("9_o8x3o")
+
+[node name="Hurt_1" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("10_xhxf1")
+
+[node name="Swing_0" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("11_kjp8j")
+
+[node name="Swing_1" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("12_mob1e")
+
+[node name="Swing_2" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("13_ti8hs")
