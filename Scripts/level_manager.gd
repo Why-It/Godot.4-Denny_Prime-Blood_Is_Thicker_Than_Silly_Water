@@ -11,7 +11,6 @@ extends Node
 @export var is_paused : bool = false
 
 func _ready():
-	
 	player.set("gun_manager", gun_man)
 	is_paused = false
 	get_tree().paused = false

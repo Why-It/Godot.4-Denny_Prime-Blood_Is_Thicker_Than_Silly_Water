@@ -293,6 +293,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
+[connection signal="pressed" from="LevelOverUI/Rows/MiddleRow/Middle/VBoxContainer/NextLevel" to="." method="_on_next_level_pressed"]
 [connection signal="pressed" from="LevelOverUI/Rows/MiddleRow/Middle/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="LevelOverUI/Rows/MiddleRow/Middle/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="PauseMenuUI/Rows/MiddleRow/Middle/VBoxContainer/Resume" to="." method="_on_resume_pressed"]

@@ -36,7 +36,7 @@ func _on_area_entered(area):
 	if area:
 		if !was_fired_from_enemy:
 			gun_man.Increase_Spread_Value()
-			area.owner.EnemyTakeDamage()
+			area.owner.TakeDamage(1)
 		else:
-			area.owner.PlayerTakeDamage(1)
+			area.owner.TakeDamage(1)
 	self.hide()

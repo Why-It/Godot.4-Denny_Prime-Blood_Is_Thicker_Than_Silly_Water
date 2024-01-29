@@ -66,6 +66,8 @@ func _ready():
 	if lvl_tran == null:
 		print("lvl_tran is null")
 	
+	print(get_tree().current_scene.name)
+	
 	level_over_UI.set("visible", false)
 	pause_menu_UI.set("visible", false)
 	UpdateAmmoDetails()
@@ -91,3 +93,12 @@ func _on_restart_pressed():
 
 func _on_resume_pressed():
 	lvl_man.PAUSE()
+
+
+func _on_next_level_pressed():
+	if get_tree().current_scene.name == "1_ Clyde's Place":
+		lvl_tran.PlayExit("res://Levels/2. Massacre.tscn")
+	elif get_tree().current_scene.name == "2_ Massacre":
+		lvl_tran.PlayExit("res://Levels/3. We Spreadin'.tscn")
+	elif get_tree().current_scene.name == "3_ We Spreadin'":
+		lvl_tran.PlayExit("res://Scenes/credits.tscn")

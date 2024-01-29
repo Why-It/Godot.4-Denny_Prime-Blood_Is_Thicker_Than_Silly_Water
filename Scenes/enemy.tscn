@@ -6,10 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://cy53b6syfs1fm" path="res://Art/sprites/Placeholder/Guns/handgun-Sheet.png" id="4_ujlrs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h337y"]
-radius = 30.0
+radius = 27.0185
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_86bhi"]
-radius = 158.02
+radius = 287.016
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_55qws"]
 radius = 18.0
@@ -109,7 +109,6 @@ tracks/5/keys = {
 [sub_resource type="Animation" id="Animation_vjuln"]
 resource_name = "enemy_aim"
 length = 0.10001
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -369,7 +368,6 @@ wait_time = 0.75
 
 [node name="NavAgent" type="NavigationAgent2D" parent="Nav"]
 navigation_layers = 15
-debug_enabled = true
 
 [node name="RecalculateTimer" type="Timer" parent="Nav"]
 wait_time = 0.1

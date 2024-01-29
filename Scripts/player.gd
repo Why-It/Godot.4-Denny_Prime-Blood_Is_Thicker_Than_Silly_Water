@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var gun_manager : Node
+@onready var gun_manager : Node = $gun_manager
 
 @export var character_speed : float = 200
 @export var player_health : int = 1
@@ -87,7 +87,7 @@ func toggleArrow():
 	else:
 		arrow.set("visible", false)
 
-func PlayerTakeDamage(damage : int):
+func TakeDamage(damage : int):
 	player_health -= damage
 	
 	if player_health <= player_min_health:
