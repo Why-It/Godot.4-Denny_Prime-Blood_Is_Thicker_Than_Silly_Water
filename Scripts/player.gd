@@ -22,6 +22,12 @@ extends CharacterBody2D
 @onready var arrow : Node = $Sprite2D
 @export var level_leave_node = Node
 
+@onready var transition : Node = $"../../Transition"
+
+@onready var gui = $"../../GUI"
+
+@onready var audio_man = get_node("/root/AudioManager")
+
 func _ready():
 	player_health = player_max_health
 	isArrow_on = false
@@ -90,8 +96,12 @@ func toggleArrow():
 func TakeDamage(damage : int):
 	player_health -= damage
 	
+	
 	if player_health <= player_min_health:
 		PlayerDeath()
+	else:
+		audio_man.PlayHurt()
 
 func PlayerDeath():
-	get_tree().reload_current_scene()
+	audio_man.PlayDie()
+	gui.ToggleDeathUI()

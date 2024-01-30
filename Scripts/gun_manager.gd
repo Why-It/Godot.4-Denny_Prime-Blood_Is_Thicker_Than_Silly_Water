@@ -24,6 +24,8 @@ var weapon_list = {} #Dictionary of all weapons available to use
 #@export var spread : float
 @export var spread_shower : Node
 
+@onready var audio_man = get_node("/root/AudioManager")
+
 func _ready():
 	Initilize(starting_arsenal) #Enter the state machine
 	for weapon in _weapon_resources:

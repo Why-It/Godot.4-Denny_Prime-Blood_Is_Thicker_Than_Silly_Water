@@ -26,6 +26,10 @@ func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "tran_exit":
 		if get_tree().paused:
 			get_tree().paused = !get_tree().paused
+		
+		if scene_loader.cur_scene != "splash_screen.tscn":
+			pass
+		
 		audio_man.StopSong()
 		scene_loader.ChangeToScene(nextScene)
 

@@ -24,6 +24,8 @@ var is_dead : bool = false
 
 @export var enemySpeed : float = 185
 
+@onready var audio_man = get_node("/root/AudioManager")
+
 
 
 func _physics_process(_delta):
@@ -112,6 +114,8 @@ var cur_state : String
 
 func _ready():
 	
+	audio_man.StopSong()
+	audio_man.StartSong()
 	
 	home_pos = self.global_position
 	
@@ -181,6 +185,7 @@ func Attention(): # Enemy stops for half a second then either chases or aims at 
 		cur_state = "Attention"
 		#target.set("global_position", player.global_position)
 		anim_player.queue("Attention!")
+		audio_man.PlayAlert()
 		has_att_played = true
 		#pass onto the "animation has finished func
 
@@ -193,6 +198,7 @@ func AttackMelee():
 	
 	velocity = axis * 0
 	
+	audio_man.PlaySwing()
 	anim_player.play("enemy_melee")
 
 @export var time_for_aiming : float = 1.25
@@ -238,6 +244,7 @@ func Death():
 	if !has_death_played:
 		cur_state = "Death"
 		anim_player.stop()
+		audio_man.PlayDie()
 		anim_player.play("enemy_death")
 		has_death_played = true
 		

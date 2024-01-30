@@ -15,9 +15,13 @@
 [ext_resource type="AudioStream" uid="uid://c7tw45kwed01i" path="res://Audio/SFX/swing_1.wav" id="12_mob1e"]
 [ext_resource type="AudioStream" uid="uid://cw5dtr6i1tt5v" path="res://Audio/SFX/swing_2.wav" id="13_ti8hs"]
 
-[node name="AudioManager" type="Node2D"]
+[node name="AudioManager" type="Node" node_paths=PackedStringArray("_alert_sfx", "_swing", "_death", "_hurt")]
 process_mode = 3
 script = ExtResource("1_he6tr")
+_alert_sfx = [NodePath("SFX/Alert_0"), NodePath("SFX/Alert_1"), NodePath("SFX/Alert_2"), NodePath("SFX/Alert_3"), NodePath("SFX/Alert_4")]
+_swing = [NodePath("SFX/Swing_0"), NodePath("SFX/Swing_1"), NodePath("SFX/Swing_2")]
+_death = [NodePath("SFX/Die_0")]
+_hurt = [NodePath("SFX/Hurt_0"), NodePath("SFX/Hurt_1")]
 
 [node name="Music" type="Node2D" parent="."]
 
@@ -31,46 +35,46 @@ bus = &"MusicBus"
 
 [node name="SFX" type="Node2D" parent="."]
 
-[node name="Alert_0" type="AudioStreamPlayer2D" parent="SFX"]
+[node name="Alert_0" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("3_1y1ug")
 bus = &"SFXBus"
 
-[node name="Alert_1" type="AudioStreamPlayer2D" parent="SFX"]
+[node name="Alert_1" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("4_pt2xc")
 bus = &"SFXBus"
 
-[node name="Alert_2" type="AudioStreamPlayer2D" parent="SFX"]
+[node name="Alert_2" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("5_6vkua")
 bus = &"SFXBus"
 
-[node name="Alert_3" type="AudioStreamPlayer2D" parent="SFX"]
+[node name="Alert_3" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("6_rhsl8")
 bus = &"SFXBus"
 
-[node name="Alert_4" type="AudioStreamPlayer2D" parent="SFX"]
+[node name="Alert_4" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("7_1jy7t")
 bus = &"SFXBus"
 
-[node name="Die_0" type="AudioStreamPlayer2D" parent="SFX"]
+[node name="Die_0" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("8_3020m")
 bus = &"SFXBus"
 
-[node name="Hurt_0" type="AudioStreamPlayer2D" parent="SFX"]
+[node name="Hurt_0" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("9_o8x3o")
 bus = &"SFXBus"
 
-[node name="Hurt_1" type="AudioStreamPlayer2D" parent="SFX"]
+[node name="Hurt_1" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("10_xhxf1")
 bus = &"SFXBus"
 
-[node name="Swing_0" type="AudioStreamPlayer2D" parent="SFX"]
+[node name="Swing_0" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("11_kjp8j")
 bus = &"SFXBus"
 
-[node name="Swing_1" type="AudioStreamPlayer2D" parent="SFX"]
+[node name="Swing_1" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("12_mob1e")
 bus = &"SFXBus"
 
-[node name="Swing_2" type="AudioStreamPlayer2D" parent="SFX"]
+[node name="Swing_2" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("13_ti8hs")
 bus = &"SFXBus"

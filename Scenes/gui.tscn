@@ -293,9 +293,90 @@ layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
+[node name="DeathUI" type="MarginContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="TextureRect" type="TextureRect" parent="DeathUI"]
+modulate = Color(0, 0, 0, 0.0980392)
+layout_mode = 2
+texture = ExtResource("2_wuxgq")
+
+[node name="Rows" type="VBoxContainer" parent="DeathUI"]
+layout_mode = 2
+
+[node name="TopRow" type="HBoxContainer" parent="DeathUI/Rows"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MiddleRow" type="HBoxContainer" parent="DeathUI/Rows"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.97
+
+[node name="Left" type="HBoxContainer" parent="DeathUI/Rows/MiddleRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Middle" type="HBoxContainer" parent="DeathUI/Rows/MiddleRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.99
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DeathUI/Rows/MiddleRow/Middle"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Label" type="Label" parent="DeathUI/Rows/MiddleRow/Middle/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "YOU DIED"
+
+[node name="Restart" type="Button" parent="DeathUI/Rows/MiddleRow/Middle/VBoxContainer"]
+layout_mode = 2
+text = "Restart Level"
+
+[node name="MainMenu" type="Button" parent="DeathUI/Rows/MiddleRow/Middle/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="Right" type="HBoxContainer" parent="DeathUI/Rows/MiddleRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="BottomRow" type="HBoxContainer" parent="DeathUI/Rows"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Left" type="HBoxContainer" parent="DeathUI/Rows/BottomRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Middle" type="HBoxContainer" parent="DeathUI/Rows/BottomRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Right" type="HBoxContainer" parent="DeathUI/Rows/BottomRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
 [connection signal="pressed" from="LevelOverUI/Rows/MiddleRow/Middle/VBoxContainer/NextLevel" to="." method="_on_next_level_pressed"]
 [connection signal="pressed" from="LevelOverUI/Rows/MiddleRow/Middle/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="LevelOverUI/Rows/MiddleRow/Middle/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="PauseMenuUI/Rows/MiddleRow/Middle/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenuUI/Rows/MiddleRow/Middle/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="PauseMenuUI/Rows/MiddleRow/Middle/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="DeathUI/Rows/MiddleRow/Middle/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="DeathUI/Rows/MiddleRow/Middle/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]

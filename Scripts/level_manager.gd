@@ -11,6 +11,7 @@ extends Node
 
 
 @export var is_paused : bool = false
+var isPlayerDead : bool = false
 
 func _ready():
 	player.set("gun_manager", gun_man)
@@ -49,3 +50,7 @@ func _process(_delta):
 	gui.set("cur_ammo_gui", gun_man.cur_ammo)
 	gui.set("cur_reserve_gui", gun_man.cur_reserve)
 	gui.UpdateAmmoDetails()
+
+func PlayerHadDied():
+	is_paused = true
+	

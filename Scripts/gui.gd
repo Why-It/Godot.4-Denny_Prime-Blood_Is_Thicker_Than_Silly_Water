@@ -22,6 +22,8 @@ var cur_reserve_gui : int = 420
 @onready var leave_UI : Node = $LeaveUI
 @onready var player : Node = $"../PausableScenes/Player"
 
+@onready var death_UI : Node = $DeathUI
+
 
 var pUI_on : bool = false
 func TogglePauseUI():
@@ -93,6 +95,10 @@ func _on_restart_pressed():
 
 func _on_resume_pressed():
 	lvl_man.PAUSE()
+
+func ToggleDeathUI():
+	death_UI.set("visible", !death_UI.get("visible"))
+	get_tree().paused = true
 
 
 func _on_next_level_pressed():
