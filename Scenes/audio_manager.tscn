@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://bjxuanrrabulo"]
+[gd_scene load_steps=15 format=3 uid="uid://bjxuanrrabulo"]
 
 [ext_resource type="AudioStream" uid="uid://5yxraig8cep0" path="res://Audio/Music/Cyber_Racer_Lunareh.wav" id="1_6auaw"]
+[ext_resource type="Script" path="res://Scripts/audio_manager.gd" id="1_he6tr"]
 [ext_resource type="AudioStream" uid="uid://dx7ipqpmmm8uq" path="res://Audio/Music/Prototype_JedStark.wav" id="2_ak5ik"]
 [ext_resource type="AudioStream" uid="uid://vx321lmfr0tx" path="res://Audio/SFX/Alert_0.wav" id="3_1y1ug"]
 [ext_resource type="AudioStream" uid="uid://dkhc1rudkusxn" path="res://Audio/SFX/Alert_1.wav" id="4_pt2xc"]
@@ -14,47 +15,62 @@
 [ext_resource type="AudioStream" uid="uid://c7tw45kwed01i" path="res://Audio/SFX/swing_1.wav" id="12_mob1e"]
 [ext_resource type="AudioStream" uid="uid://cw5dtr6i1tt5v" path="res://Audio/SFX/swing_2.wav" id="13_ti8hs"]
 
-[node name="AudioManager" type="Node"]
+[node name="AudioManager" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_he6tr")
 
 [node name="Music" type="Node2D" parent="."]
 
-[node name="CyberRacer" type="AudioStreamPlayer2D" parent="Music"]
+[node name="CyberRacer" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("1_6auaw")
+bus = &"MusicBus"
 
-[node name="Prototype" type="AudioStreamPlayer2D" parent="Music"]
+[node name="Prototype" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("2_ak5ik")
+bus = &"MusicBus"
 
 [node name="SFX" type="Node2D" parent="."]
 
 [node name="Alert_0" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("3_1y1ug")
+bus = &"SFXBus"
 
 [node name="Alert_1" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("4_pt2xc")
+bus = &"SFXBus"
 
 [node name="Alert_2" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("5_6vkua")
+bus = &"SFXBus"
 
 [node name="Alert_3" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("6_rhsl8")
+bus = &"SFXBus"
 
 [node name="Alert_4" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("7_1jy7t")
+bus = &"SFXBus"
 
 [node name="Die_0" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("8_3020m")
+bus = &"SFXBus"
 
 [node name="Hurt_0" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("9_o8x3o")
+bus = &"SFXBus"
 
 [node name="Hurt_1" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("10_xhxf1")
+bus = &"SFXBus"
 
 [node name="Swing_0" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("11_kjp8j")
+bus = &"SFXBus"
 
 [node name="Swing_1" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("12_mob1e")
+bus = &"SFXBus"
 
 [node name="Swing_2" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("13_ti8hs")
+bus = &"SFXBus"

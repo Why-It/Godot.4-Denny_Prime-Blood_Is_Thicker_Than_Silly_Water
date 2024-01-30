@@ -84,5 +84,5 @@ size_flags_horizontal = 3
 [node name="Transition" parent="." instance=ExtResource("3_g7l6r")]
 layout_mode = 1
 
-[connection signal="pressed" from="BoxContainer/VBoxContainer2/VBoxContainer/BoxContainer/ReturnToMain" to="." method="_on_return_to_main_pressed"]
 [connection signal="pressed" from="BoxContainer/VBoxContainer2/VBoxContainer/BoxContainer/ReturnToMain" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="BoxContainer/VBoxContainer2/VBoxContainer/BoxContainer/ReturnToMain" to="." method="_on_return_to_main_pressed"]

@@ -2,6 +2,7 @@ extends Control
 
 @onready var player : Node
 @onready var scene_loader = get_node("/root/SceneLoader")
+@onready var audio_man = get_node("/root/AudioManager")
 @onready var anim_player = $AnimationPlayer
 
 
@@ -25,5 +26,6 @@ func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "tran_exit":
 		if get_tree().paused:
 			get_tree().paused = !get_tree().paused
+		audio_man.StopSong()
 		scene_loader.ChangeToScene(nextScene)
 

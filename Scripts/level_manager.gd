@@ -6,6 +6,8 @@ extends Node
 @onready var gui = $GUI
 @onready var bullet = $PausableScenes/Bullet
 
+@onready var audio_man = get_node("/root/AudioManager")
+
 
 
 @export var is_paused : bool = false
@@ -37,6 +39,11 @@ func _input(event):
 func PAUSE():
 	is_paused = !is_paused
 	get_tree().paused = is_paused
+	
+	if is_paused:
+		AudioServer.set_bus_effect_enabled(1, 0, true)
+	else:
+		AudioServer.set_bus_effect_enabled(1, 0, false)
 
 func _process(_delta):
 	gui.set("cur_ammo_gui", gun_man.cur_ammo)
