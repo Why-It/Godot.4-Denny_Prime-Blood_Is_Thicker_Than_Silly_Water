@@ -3,6 +3,7 @@ extends CanvasLayer
 var cur_ammo_gui : int = 69
 var cur_reserve_gui : int = 420
 
+@onready var gameplay_UI : Node = $GameplayUI
 @onready var cur_ammo_display : Node = $GameplayUI/Rows/BottomRow/Right/Ammo/CurrentAmmo
 @onready var cur_reserve_display : Node = $GameplayUI/Rows/BottomRow/Right/Ammo/ReserveAmmo
 
@@ -14,15 +15,20 @@ var cur_reserve_gui : int = 420
 @onready var lvl_tran : Node = $"../Transition"
 @onready var lvl_man : Node = $".."
 
-@onready var win_con : Node = $"../PausableScenes/WinCondition"
+@onready var win_con : Node 
 
 @export var win_text : String = "You Win! C:"
 @export var lose_text : String = "You Lose! :C"
 
 @onready var leave_UI : Node = $LeaveUI
-@onready var player : Node = $"../PausableScenes/Player"
+@onready var player : Node
 
 @onready var death_UI : Node = $DeathUI
+
+@onready var options_UI : Node = $OptionsUI
+@onready var masterslider : Node = $OptionsUI/Rows/MiddleRow/Middle/VBoxContainer/MasterSlider
+@onready var musicslider : Node = $OptionsUI/Rows/MiddleRow/Middle/VBoxContainer/MusicSlider
+@onready var sfxsldier : Node = $OptionsUI/Rows/MiddleRow/Middle/VBoxContainer/SFXSlider
 
 
 var pUI_on : bool = false
@@ -68,11 +74,22 @@ func _ready():
 	if lvl_tran == null:
 		print("lvl_tran is null")
 	
+	if get_tree().current_scene.name != "MainMenu":
+		gameplay_UI.set("visible", true)
+		win_con = $"../PausableScenes/WinCondition"
+		player = $"../PausableScenes/Player"
+	else:
+		gameplay_UI.set("visible", false)
+		
+	
 	print(get_tree().current_scene.name)
 	
 	level_over_UI.set("visible", false)
 	pause_menu_UI.set("visible", false)
 	UpdateAmmoDetails()
+
+func ToggleOptionsUI():
+	options_UI.set("visible", !options_UI.get("visible"))
 
 
 
@@ -108,3 +125,7 @@ func _on_next_level_pressed():
 		lvl_tran.PlayExit("res://Levels/3. We Spreadin'.tscn")
 	elif get_tree().current_scene.name == "3_ We Spreadin'":
 		lvl_tran.PlayExit("res://Scenes/credits.tscn")
+
+
+func _on_master_slider_changed():
+	AudioServer.set_bus_volume_db(0, masterslider.get("value"))

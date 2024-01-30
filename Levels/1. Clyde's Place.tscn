@@ -35,16 +35,6 @@ layer_3/tile_data = PackedInt32Array()
 [node name="PausableScenes" type="Node" parent="."]
 process_mode = 1
 
-[node name="Player" parent="PausableScenes" node_paths=PackedStringArray("level_leave_node") instance=ExtResource("3_sdwgq")]
-position = Vector2(-94.295, 550)
-level_leave_node = NodePath("../WinCondition/Area2D2/CollisionShape2D")
-
-[node name="Camera2D" parent="PausableScenes/Player" instance=ExtResource("4_pu3it")]
-zoom = Vector2(0.65, 0.65)
-
-[node name="gun_manager" parent="PausableScenes/Player" instance=ExtResource("5_fwq4x")]
-position = Vector2(0, 0)
-
 [node name="Bullet" parent="PausableScenes" instance=ExtResource("6_lwlew")]
 position = Vector2(2000, 2000)
 
@@ -128,6 +118,16 @@ position = Vector2(-312, -3054)
 
 [node name="Enemy22" parent="PausableScenes/WinCondition" instance=ExtResource("8_px5mn")]
 position = Vector2(-306, -3110)
+
+[node name="Player" parent="PausableScenes" node_paths=PackedStringArray("level_leave_node") instance=ExtResource("3_sdwgq")]
+position = Vector2(-94.295, 550)
+level_leave_node = NodePath("../WinCondition/Area2D2/CollisionShape2D")
+
+[node name="Camera2D" parent="PausableScenes/Player" instance=ExtResource("4_pu3it")]
+zoom = Vector2(0.65, 0.65)
+
+[node name="gun_manager" parent="PausableScenes/Player" instance=ExtResource("5_fwq4x")]
+position = Vector2(0, 0)
 
 [node name="GUI" parent="." instance=ExtResource("9_myb7e")]
 

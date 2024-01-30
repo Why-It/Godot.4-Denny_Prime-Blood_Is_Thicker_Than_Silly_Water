@@ -14,9 +14,9 @@ func _process(_delta):
 	pass
 
 func ChangeToScene(scene_name: String):
+	if get_tree().current_scene.name != "Splash Screen":
+		audio_man.StartSong()
+	print(get_tree().current_scene.name)
 	get_tree().change_scene_to_file(scene_name)
 	audio_man.cur_scene = scene_name
-	if cur_scene != "res://Scenes/splash_screen.tscn":
-		pass
-	audio_man.StartSong()
 	cur_scene = scene_name

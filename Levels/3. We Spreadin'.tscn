@@ -37,19 +37,6 @@ layer_4/tile_data = PackedInt32Array(-4653061, 327685, 0, -4653060, 393221, 0, -
 [node name="PausableScenes" type="Node" parent="."]
 process_mode = 1
 
-[node name="Player" parent="PausableScenes" node_paths=PackedStringArray("level_leave_node") instance=ExtResource("4_u2jmd")]
-position = Vector2(-200, 500)
-level_leave_node = NodePath("../WinCondition/Area2D2/CollisionShape2D")
-
-[node name="Camera2D" parent="PausableScenes/Player" instance=ExtResource("5_evkkf")]
-zoom = Vector2(0.65, 0.65)
-
-[node name="gun_manager" parent="PausableScenes/Player" instance=ExtResource("6_gt5nf")]
-position = Vector2(0, 0)
-
-[node name="Bullet" parent="PausableScenes" instance=ExtResource("7_lcvuj")]
-position = Vector2(2000, 2000)
-
 [node name="WinCondition" parent="PausableScenes" node_paths=PackedStringArray("enemy_array") instance=ExtResource("8_ai7pi")]
 enemy_array = [NodePath("Enemy"), NodePath("Enemy2"), NodePath("Enemy3"), NodePath("Enemy4"), NodePath("Enemy5"), NodePath("Enemy6"), NodePath("Enemy7"), NodePath("Enemy8"), NodePath("Enemy9"), NodePath("Enemy10"), NodePath("Enemy11"), NodePath("Enemy12"), NodePath("Enemy13"), NodePath("Enemy14"), NodePath("Enemy15"), NodePath("Enemy16"), NodePath("Enemy17"), NodePath("Enemy18"), NodePath("Enemy19"), NodePath("Enemy20"), NodePath("Enemy21"), NodePath("Enemy22"), NodePath("Enemy23"), NodePath("Enemy24"), NodePath("Enemy25"), NodePath("Enemy26"), NodePath("Enemy27"), NodePath("Enemy28"), NodePath("Enemy29"), NodePath("Enemy30"), NodePath("Enemy31"), NodePath("Enemy32"), NodePath("Enemy33"), NodePath("Enemy34"), NodePath("Enemy35"), NodePath("Enemy36"), NodePath("Enemy37"), NodePath("Enemy38"), NodePath("Enemy39"), NodePath("Enemy40"), NodePath("Enemy41"), NodePath("Enemy42"), NodePath("Enemy43"), NodePath("Enemy44"), NodePath("Enemy45"), NodePath("Enemy46"), NodePath("Enemy47"), NodePath("Enemy48"), NodePath("Enemy49"), NodePath("Enemy50"), NodePath("Enemy51"), NodePath("Enemy52"), NodePath("Enemy53"), NodePath("Enemy54"), NodePath("Enemy55"), NodePath("Enemy56"), NodePath("Enemy57"), NodePath("Enemy58")]
 
@@ -258,6 +245,19 @@ EnemyType = 1
 [node name="Enemy58" parent="PausableScenes/WinCondition" instance=ExtResource("3_v5rja")]
 position = Vector2(-46, -4331)
 EnemyType = 1
+
+[node name="Player" parent="PausableScenes" node_paths=PackedStringArray("level_leave_node") instance=ExtResource("4_u2jmd")]
+position = Vector2(-200, 500)
+level_leave_node = NodePath("../WinCondition/Area2D2/CollisionShape2D")
+
+[node name="Camera2D" parent="PausableScenes/Player" instance=ExtResource("5_evkkf")]
+zoom = Vector2(0.65, 0.65)
+
+[node name="gun_manager" parent="PausableScenes/Player" instance=ExtResource("6_gt5nf")]
+position = Vector2(0, 0)
+
+[node name="Bullet" parent="PausableScenes" instance=ExtResource("7_lcvuj")]
+position = Vector2(2000, 2000)
 
 [node name="GUI" parent="." instance=ExtResource("10_gxxmv")]
 

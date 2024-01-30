@@ -5,9 +5,11 @@ extends Node
 @onready var _music : Array[Node]
 
 var cur_scene : String
-
-
 var cur_song : Node
+
+var master_volume : float = 0
+var music_volume : float = 0
+var sfx_volume : float = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,6 +19,10 @@ func _ready():
 	
 	cur_song = _music[0]
 	cur_song.set("playing", true)
+	
+	AudioServer.set_bus_volume_db(0, master_volume)
+	AudioServer.set_bus_volume_db(1, music_volume)
+	AudioServer.set_bus_volume_db(2, sfx_volume)
 
 func StopSong():
 	cur_song.set("playing", false)
@@ -31,8 +37,6 @@ func StartSong():
 	
 	cur_song.set("playing", true)
 
-func _input(event):
-	pass
 
 @export var _alert_sfx : Array[Node]
 func PlayAlert():
