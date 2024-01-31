@@ -34,12 +34,16 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("Pause"):
 		PAUSE()
-		gui.TogglePauseUI()
+
 
 
 func PAUSE():
 	is_paused = !is_paused
 	get_tree().paused = is_paused
+	gui.TogglePauseUI()
+	
+	if gui.options_UI.get("visible"):
+		gui.ToggleOptionsUI()
 	
 	if is_paused:
 		AudioServer.set_bus_effect_enabled(1, 0, true)
@@ -48,7 +52,7 @@ func PAUSE():
 
 func _process(_delta):
 	gui.set("cur_ammo_gui", gun_man.cur_ammo)
-	gui.set("cur_reserve_gui", gun_man.cur_reserve)
+	#gui.set("cur_reserve_gui", gun_man.cur_reserve)
 	gui.UpdateAmmoDetails()
 
 func PlayerHadDied():

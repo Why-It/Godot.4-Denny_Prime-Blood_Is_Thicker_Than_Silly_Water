@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bjxuanrrabulo"]
+[gd_scene load_steps=26 format=3 uid="uid://bjxuanrrabulo"]
 
 [ext_resource type="AudioStream" uid="uid://5yxraig8cep0" path="res://Audio/Music/Cyber_Racer_Lunareh.wav" id="1_6auaw"]
 [ext_resource type="Script" path="res://Scripts/audio_manager.gd" id="1_he6tr"]
@@ -14,14 +14,26 @@
 [ext_resource type="AudioStream" uid="uid://daewjjdy1hr8q" path="res://Audio/SFX/swing_0.wav" id="11_kjp8j"]
 [ext_resource type="AudioStream" uid="uid://c7tw45kwed01i" path="res://Audio/SFX/swing_1.wav" id="12_mob1e"]
 [ext_resource type="AudioStream" uid="uid://cw5dtr6i1tt5v" path="res://Audio/SFX/swing_2.wav" id="13_ti8hs"]
+[ext_resource type="AudioStream" uid="uid://ow0l5mdksupi" path="res://Audio/Guns/16_close.wav" id="15_i7dqo"]
+[ext_resource type="AudioStream" uid="uid://t7y5buw0i3ro" path="res://Audio/Guns/16_load_chamber.wav" id="16_1ypdv"]
+[ext_resource type="AudioStream" uid="uid://bylmt7i5hi0h2" path="res://Audio/Guns/16_open_eject.wav" id="17_ol2eh"]
+[ext_resource type="AudioStream" uid="uid://58ohd8acs2te" path="res://Audio/Guns/AK_bolt.wav" id="18_50hll"]
+[ext_resource type="AudioStream" uid="uid://b8du2860p0iyn" path="res://Audio/Guns/double_load.wav" id="19_f28xu"]
+[ext_resource type="AudioStream" uid="uid://byhq6fi2kjru8" path="res://Audio/Guns/pump_cycle.wav" id="20_y485x"]
+[ext_resource type="AudioStream" uid="uid://c8t2p6qic0gxt" path="res://Audio/Guns/pump_shot_and_cycle.wav" id="21_qgcb4"]
+[ext_resource type="AudioStream" uid="uid://cbmxwa22dx6hk" path="res://Audio/Guns/Reload_Pump_0.wav" id="22_t7uu8"]
+[ext_resource type="AudioStream" uid="uid://b2lpv2lnjbxyn" path="res://Audio/Guns/Reload_Pump_1.wav" id="23_3c06l"]
+[ext_resource type="AudioStream" uid="uid://cwt5tg8vnx660" path="res://Audio/Guns/Reload_Pump_2.wav" id="24_graqs"]
+[ext_resource type="AudioStream" uid="uid://chj2f7fak0m4n" path="res://Audio/Guns/semi_shot_and_cycle.wav" id="25_im5in"]
 
-[node name="AudioManager" type="Node" node_paths=PackedStringArray("_alert_sfx", "_swing", "_death", "_hurt")]
+[node name="AudioManager" type="Node" node_paths=PackedStringArray("_alert_sfx", "_swing", "_death", "_hurt", "_pump_reload")]
 process_mode = 3
 script = ExtResource("1_he6tr")
 _alert_sfx = [NodePath("SFX/Alert_0"), NodePath("SFX/Alert_1"), NodePath("SFX/Alert_2"), NodePath("SFX/Alert_3"), NodePath("SFX/Alert_4")]
 _swing = [NodePath("SFX/Swing_0"), NodePath("SFX/Swing_1"), NodePath("SFX/Swing_2")]
 _death = [NodePath("SFX/Die_0")]
 _hurt = [NodePath("SFX/Hurt_0"), NodePath("SFX/Hurt_1")]
+_pump_reload = [NodePath("Guns/pump_reload_0"), NodePath("Guns/pump_reload_1"), NodePath("Guns/pump_reload_2")]
 
 [node name="Music" type="Node2D" parent="."]
 
@@ -77,4 +89,50 @@ bus = &"SFXBus"
 
 [node name="Swing_2" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("13_ti8hs")
+bus = &"SFXBus"
+
+[node name="Guns" type="Node2D" parent="."]
+
+[node name="16_close" type="AudioStreamPlayer" parent="Guns"]
+stream = ExtResource("15_i7dqo")
+bus = &"SFXBus"
+
+[node name="16_load_chamber" type="AudioStreamPlayer" parent="Guns"]
+stream = ExtResource("16_1ypdv")
+bus = &"SFXBus"
+
+[node name="16_open_eject" type="AudioStreamPlayer" parent="Guns"]
+stream = ExtResource("17_ol2eh")
+bus = &"SFXBus"
+
+[node name="ak_bolt" type="AudioStreamPlayer" parent="Guns"]
+stream = ExtResource("18_50hll")
+bus = &"SFXBus"
+
+[node name="double_load" type="AudioStreamPlayer" parent="Guns"]
+stream = ExtResource("19_f28xu")
+bus = &"SFXBus"
+
+[node name="pump_cycle" type="AudioStreamPlayer" parent="Guns"]
+stream = ExtResource("20_y485x")
+bus = &"SFXBus"
+
+[node name="pump_shot_and_cycle" type="AudioStreamPlayer" parent="Guns"]
+stream = ExtResource("21_qgcb4")
+bus = &"SFXBus"
+
+[node name="pump_reload_0" type="AudioStreamPlayer" parent="Guns"]
+stream = ExtResource("22_t7uu8")
+bus = &"SFXBus"
+
+[node name="pump_reload_1" type="AudioStreamPlayer" parent="Guns"]
+stream = ExtResource("23_3c06l")
+bus = &"SFXBus"
+
+[node name="pump_reload_2" type="AudioStreamPlayer" parent="Guns"]
+stream = ExtResource("24_graqs")
+bus = &"SFXBus"
+
+[node name="semi_shot_and_cycle" type="AudioStreamPlayer" parent="Guns"]
+stream = ExtResource("25_im5in")
 bus = &"SFXBus"

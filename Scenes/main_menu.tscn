@@ -59,6 +59,10 @@ popup/item_2/id = 2
 layout_mode = 2
 text = "Credits"
 
+[node name="Options" type="Button" parent="MainMenuUI/Center/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
 [node name="Quit" type="Button" parent="MainMenuUI/Center/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_0235s")
@@ -77,14 +81,16 @@ layout_mode = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_bottom = 0.023
-offset_left = 116.0
-offset_top = 35.0
-offset_right = 650.0
-offset_bottom = 89.3
+offset_left = 1.0
+offset_top = 63.0
+offset_right = 535.0
+offset_bottom = 117.3
 text = "BLOOD IS THICKER THAN SILLY WATER"
+horizontal_alignment = 1
 
 [node name="GUI" parent="." instance=ExtResource("4_l6ki3")]
 
 [connection signal="pressed" from="MainMenuUI/Center/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MainMenuUI/Center/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="MainMenuUI/Center/VBoxContainer/Options" to="GUI" method="_on_options_pressed"]
 [connection signal="pressed" from="MainMenuUI/Center/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
