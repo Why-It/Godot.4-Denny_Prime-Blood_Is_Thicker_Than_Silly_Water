@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cprr0hmjyiuh1"]
+[gd_scene load_steps=5 format=3 uid="uid://cprr0hmjyiuh1"]
 
 [ext_resource type="Theme" uid="uid://udap2b0yhsp7" path="res://Art/Styles/BUTTON.tres" id="1_0235s"]
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_f0yh6"]
 [ext_resource type="PackedScene" uid="uid://byled1opgohlw" path="res://Scenes/transition.tscn" id="2_ai0nt"]
+[ext_resource type="PackedScene" uid="uid://c5ctjtyxw6snc" path="res://Scenes/gui.tscn" id="4_l6ki3"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -15,7 +16,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_f0yh6")
 
-[node name="BoxContainer" type="BoxContainer" parent="."]
+[node name="MainMenuUI" type="BoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,24 +25,24 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Left" type="HBoxContainer" parent="BoxContainer"]
+[node name="Left" type="HBoxContainer" parent="MainMenuUI"]
 layout_mode = 2
 
-[node name="Center" type="HBoxContainer" parent="BoxContainer"]
+[node name="Center" type="HBoxContainer" parent="MainMenuUI"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BoxContainer/Center"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuUI/Center"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 15
 
-[node name="Play" type="Button" parent="BoxContainer/Center/VBoxContainer"]
+[node name="Play" type="Button" parent="MainMenuUI/Center/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_0235s")
 text = "PLAY"
 
-[node name="LevelSelect" type="MenuButton" parent="BoxContainer/Center/VBoxContainer"]
+[node name="LevelSelect" type="MenuButton" parent="MainMenuUI/Center/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_0235s")
 keep_pressed_outside = true
@@ -54,19 +55,23 @@ popup/item_1/id = 1
 popup/item_2/text = "3. We Spreadin'"
 popup/item_2/id = 2
 
-[node name="Credits" type="Button" parent="BoxContainer/Center/VBoxContainer"]
+[node name="Credits" type="Button" parent="MainMenuUI/Center/VBoxContainer"]
 layout_mode = 2
 text = "Credits"
 
-[node name="Quit" type="Button" parent="BoxContainer/Center/VBoxContainer"]
+[node name="Options" type="Button" parent="MainMenuUI/Center/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="Quit" type="Button" parent="MainMenuUI/Center/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_0235s")
 text = "QUIT"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="BoxContainer/Center"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MainMenuUI/Center"]
 layout_mode = 2
 
-[node name="Right" type="HBoxContainer" parent="BoxContainer"]
+[node name="Right" type="HBoxContainer" parent="MainMenuUI"]
 layout_mode = 2
 
 [node name="Transition" parent="." instance=ExtResource("2_ai0nt")]
@@ -76,24 +81,16 @@ layout_mode = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_bottom = 0.023
-offset_left = 116.0
-offset_top = 35.0
-offset_right = 650.0
-offset_bottom = 89.3
+offset_left = 1.0
+offset_top = 63.0
+offset_right = 535.0
+offset_bottom = 117.3
 text = "BLOOD IS THICKER THAN SILLY WATER"
+horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_bottom = 0.023
-offset_left = 147.0
-offset_top = 351.0
-offset_right = 681.0
-offset_bottom = 405.3
-text = "Sorry there isn't any audio. :(
+[node name="GUI" parent="." instance=ExtResource("4_l6ki3")]
 
-Didn't have enough time."
-
-[connection signal="pressed" from="BoxContainer/Center/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="BoxContainer/Center/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="BoxContainer/Center/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="MainMenuUI/Center/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MainMenuUI/Center/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="MainMenuUI/Center/VBoxContainer/Options" to="GUI" method="_on_options_pressed"]
+[connection signal="pressed" from="MainMenuUI/Center/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

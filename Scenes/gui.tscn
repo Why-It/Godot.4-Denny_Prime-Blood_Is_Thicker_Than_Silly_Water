@@ -79,6 +79,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="GameplayUI" type="MarginContainer" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -130,7 +131,8 @@ layout_mode = 2
 
 [node name="ReserveAmmo" type="Label" parent="GameplayUI/Rows/BottomRow/Right/Ammo"]
 layout_mode = 2
-text = "WW"
+theme_override_font_sizes/font_size = 40
+text = "∞"
 
 [node name="LevelOverUI" type="MarginContainer" parent="."]
 visible = false
@@ -223,7 +225,7 @@ theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 
 [node name="TextureRect" type="TextureRect" parent="PauseMenuUI"]
-modulate = Color(0, 0, 0, 0.0980392)
+modulate = Color(0, 0, 0, 0.290196)
 layout_mode = 2
 texture = ExtResource("2_wuxgq")
 
@@ -267,6 +269,10 @@ text = "Resume"
 layout_mode = 2
 text = "Restart Level"
 
+[node name="PauseOptions" type="Button" parent="PauseMenuUI/Rows/MiddleRow/Middle/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
 [node name="MainMenu" type="Button" parent="PauseMenuUI/Rows/MiddleRow/Middle/VBoxContainer"]
 layout_mode = 2
 text = "Main Menu"
@@ -293,9 +299,220 @@ layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
+[node name="DeathUI" type="MarginContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="TextureRect" type="TextureRect" parent="DeathUI"]
+modulate = Color(0, 0, 0, 0.0980392)
+layout_mode = 2
+texture = ExtResource("2_wuxgq")
+
+[node name="Rows" type="VBoxContainer" parent="DeathUI"]
+layout_mode = 2
+
+[node name="TopRow" type="HBoxContainer" parent="DeathUI/Rows"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MiddleRow" type="HBoxContainer" parent="DeathUI/Rows"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.97
+
+[node name="Left" type="HBoxContainer" parent="DeathUI/Rows/MiddleRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Middle" type="HBoxContainer" parent="DeathUI/Rows/MiddleRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.99
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DeathUI/Rows/MiddleRow/Middle"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Label" type="Label" parent="DeathUI/Rows/MiddleRow/Middle/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "YOU DIED"
+
+[node name="Restart" type="Button" parent="DeathUI/Rows/MiddleRow/Middle/VBoxContainer"]
+layout_mode = 2
+text = "Restart Level"
+
+[node name="MainMenu" type="Button" parent="DeathUI/Rows/MiddleRow/Middle/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="Right" type="HBoxContainer" parent="DeathUI/Rows/MiddleRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="BottomRow" type="HBoxContainer" parent="DeathUI/Rows"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Left" type="HBoxContainer" parent="DeathUI/Rows/BottomRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Middle" type="HBoxContainer" parent="DeathUI/Rows/BottomRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Right" type="HBoxContainer" parent="DeathUI/Rows/BottomRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="OptionsUI" type="MarginContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="TextureRect" type="TextureRect" parent="OptionsUI"]
+modulate = Color(0, 0, 0, 0.866667)
+layout_mode = 2
+texture = ExtResource("2_wuxgq")
+
+[node name="Rows" type="VBoxContainer" parent="OptionsUI"]
+layout_mode = 2
+
+[node name="TopRow" type="HBoxContainer" parent="OptionsUI/Rows"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MiddleRow" type="HBoxContainer" parent="OptionsUI/Rows"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.97
+
+[node name="Left" type="HBoxContainer" parent="OptionsUI/Rows/MiddleRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Middle" type="HBoxContainer" parent="OptionsUI/Rows/MiddleRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.99
+alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="OptionsUI/Rows/MiddleRow/Middle"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsUI/Rows/MiddleRow/Middle"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.15
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="OptionsLabel" type="Label" parent="OptionsUI/Rows/MiddleRow/Middle/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Options"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="OptionsUI/Rows/MiddleRow/Middle/VBoxContainer"]
+layout_mode = 2
+
+[node name="label0" type="Label" parent="OptionsUI/Rows/MiddleRow/Middle/VBoxContainer"]
+layout_mode = 2
+text = "Master Volume"
+horizontal_alignment = 1
+
+[node name="MasterSlider" type="HSlider" parent="OptionsUI/Rows/MiddleRow/Middle/VBoxContainer"]
+layout_mode = 2
+min_value = -80.0
+max_value = 10.0
+
+[node name="label1" type="Label" parent="OptionsUI/Rows/MiddleRow/Middle/VBoxContainer"]
+layout_mode = 2
+text = "Music Volume"
+horizontal_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="OptionsUI/Rows/MiddleRow/Middle/VBoxContainer"]
+layout_mode = 2
+min_value = -80.0
+max_value = 10.0
+
+[node name="label2" type="Label" parent="OptionsUI/Rows/MiddleRow/Middle/VBoxContainer"]
+layout_mode = 2
+text = "SFX Volume"
+horizontal_alignment = 1
+
+[node name="SFXSlider" type="HSlider" parent="OptionsUI/Rows/MiddleRow/Middle/VBoxContainer"]
+layout_mode = 2
+min_value = -80.0
+max_value = 10.0
+
+[node name="HSeparator2" type="HSeparator" parent="OptionsUI/Rows/MiddleRow/Middle/VBoxContainer"]
+layout_mode = 2
+
+[node name="Return" type="Button" parent="OptionsUI/Rows/MiddleRow/Middle/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+text = "Return"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="OptionsUI/Rows/MiddleRow/Middle"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Right" type="HBoxContainer" parent="OptionsUI/Rows/MiddleRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="BottomRow" type="HBoxContainer" parent="OptionsUI/Rows"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Left" type="HBoxContainer" parent="OptionsUI/Rows/BottomRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Middle" type="HBoxContainer" parent="OptionsUI/Rows/BottomRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Right" type="HBoxContainer" parent="OptionsUI/Rows/BottomRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
 [connection signal="pressed" from="LevelOverUI/Rows/MiddleRow/Middle/VBoxContainer/NextLevel" to="." method="_on_next_level_pressed"]
 [connection signal="pressed" from="LevelOverUI/Rows/MiddleRow/Middle/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="LevelOverUI/Rows/MiddleRow/Middle/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="PauseMenuUI/Rows/MiddleRow/Middle/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenuUI/Rows/MiddleRow/Middle/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="PauseMenuUI/Rows/MiddleRow/Middle/VBoxContainer/PauseOptions" to="." method="_on_pause_options_pressed"]
 [connection signal="pressed" from="PauseMenuUI/Rows/MiddleRow/Middle/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="DeathUI/Rows/MiddleRow/Middle/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="DeathUI/Rows/MiddleRow/Middle/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="value_changed" from="OptionsUI/Rows/MiddleRow/Middle/VBoxContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="OptionsUI/Rows/MiddleRow/Middle/VBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="drag_ended" from="OptionsUI/Rows/MiddleRow/Middle/VBoxContainer/SFXSlider" to="." method="_on_sfx_slider_drag_ended"]
+[connection signal="pressed" from="OptionsUI/Rows/MiddleRow/Middle/VBoxContainer/Return" to="." method="_on_return_pressed"]

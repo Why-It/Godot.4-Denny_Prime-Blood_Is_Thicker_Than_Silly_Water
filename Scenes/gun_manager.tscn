@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dvfar3tkcrvek"]
+[gd_scene load_steps=41 format=3 uid="uid://dvfar3tkcrvek"]
 
 [ext_resource type="Script" path="res://Scripts/gun_manager.gd" id="1_mv64m"]
 [ext_resource type="Resource" uid="uid://doh2lubfongh0" path="res://Scripts/weapon resources/Pump.tres" id="3_hc8v5"]
@@ -10,6 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://b0x4n0ka7ql4c" path="res://Art/sprites/Placeholder/Guns/Shotgun_Double_Shoot.png" id="8_l5bvd"]
 [ext_resource type="Texture2D" uid="uid://b7web5l2qoeyt" path="res://Art/sprites/Placeholder/Guns/Shotgun_SemiAuto_Shoot.png" id="9_hwm0b"]
 [ext_resource type="Texture2D" uid="uid://yjgqfurfivcd" path="res://Art/sprites/Placeholder/Guns/Shotgun_Double.png" id="9_wa5x3"]
+[ext_resource type="AudioStream" uid="uid://c8t2p6qic0gxt" path="res://Audio/Guns/pump_shot_and_cycle.wav" id="11_oucl6"]
+[ext_resource type="AudioStream" uid="uid://bylmt7i5hi0h2" path="res://Audio/Guns/16_open_eject.wav" id="12_2bblo"]
+[ext_resource type="AudioStream" uid="uid://chj2f7fak0m4n" path="res://Audio/Guns/semi_shot_and_cycle.wav" id="12_u0ri3"]
+[ext_resource type="AudioStream" uid="uid://b8du2860p0iyn" path="res://Audio/Guns/double_load.wav" id="13_0lbi7"]
+[ext_resource type="AudioStream" uid="uid://ow0l5mdksupi" path="res://Audio/Guns/16_close.wav" id="14_k06ht"]
 
 [sub_resource type="Animation" id="Animation_ywgxv"]
 length = 0.001
@@ -157,6 +162,90 @@ tracks/11/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Pump/fire:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Double/open:playing")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Double/load:playing")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Double/close:playing")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Double/load2:playing")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Semi/fire_and_cycle:playing")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Double/fire:playing")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l6w0w"]
 _data = {
@@ -238,6 +327,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_lwl38"]
 resource_name = "double_fire"
+length = 0.30001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -285,6 +375,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [2, 3]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Double/fire:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_3u5jv"]
@@ -336,6 +438,54 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Double/open:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Double/load:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Double/load2:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Double/close:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_e74p5"]
 resource_name = "double_reload"
@@ -351,6 +501,42 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 6, 7, 4, 5, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Double/open:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Double/load:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Double/close:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_8suec"]
@@ -451,6 +637,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(0.3, 0.3),
 "update": 0,
 "values": [Vector2(9, -13.43), Vector2(9, -16)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pump/fire:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_72nxm"]
@@ -602,6 +800,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [ExtResource("9_hwm0b"), ExtResource("8_6gjb6")]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Semi/fire_and_cycle:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_47ll0"]
 resource_name = "semi_idle"
@@ -711,6 +921,10 @@ position = Vector2(9, -16)
 texture = ExtResource("7_n2f4d")
 hframes = 6
 
+[node name="fire" type="AudioStreamPlayer" parent="Pump"]
+stream = ExtResource("11_oucl6")
+bus = &"SFXBus"
+
 [node name="Semi" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(3, -27)
@@ -718,12 +932,32 @@ texture = ExtResource("8_6gjb6")
 hframes = 2
 vframes = 2
 
+[node name="fire_and_cycle" type="AudioStreamPlayer" parent="Semi"]
+stream = ExtResource("12_u0ri3")
+
 [node name="Double" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(3, -30)
 texture = ExtResource("9_wa5x3")
 hframes = 3
 vframes = 3
+
+[node name="fire" type="AudioStreamPlayer" parent="Double"]
+stream = ExtResource("12_u0ri3")
+pitch_scale = 0.75
+
+[node name="open" type="AudioStreamPlayer" parent="Double"]
+stream = ExtResource("12_2bblo")
+
+[node name="load" type="AudioStreamPlayer" parent="Double"]
+stream = ExtResource("13_0lbi7")
+
+[node name="load2" type="AudioStreamPlayer" parent="Double"]
+stream = ExtResource("13_0lbi7")
+pitch_scale = 1.21
+
+[node name="close" type="AudioStreamPlayer" parent="Double"]
+stream = ExtResource("14_k06ht")
 
 [node name="Muzzle" type="Marker2D" parent="."]
 position = Vector2(9, -29)

@@ -1,8 +1,9 @@
 extends CanvasLayer
 
 var cur_ammo_gui : int = 69
-var cur_reserve_gui : int = 420
+var cur_reserve_gui : String = "∞"
 
+@onready var gameplay_UI : Node = $GameplayUI
 @onready var cur_ammo_display : Node = $GameplayUI/Rows/BottomRow/Right/Ammo/CurrentAmmo
 @onready var cur_reserve_display : Node = $GameplayUI/Rows/BottomRow/Right/Ammo/ReserveAmmo
 
@@ -14,13 +15,20 @@ var cur_reserve_gui : int = 420
 @onready var lvl_tran : Node = $"../Transition"
 @onready var lvl_man : Node = $".."
 
-@onready var win_con : Node = $"../PausableScenes/WinCondition"
+@onready var win_con : Node 
 
 @export var win_text : String = "You Win! C:"
 @export var lose_text : String = "You Lose! :C"
 
 @onready var leave_UI : Node = $LeaveUI
-@onready var player : Node = $"../PausableScenes/Player"
+@onready var player : Node
+
+@onready var death_UI : Node = $DeathUI
+
+@onready var options_UI : Node = $OptionsUI
+@onready var masterslider : Node = $OptionsUI/Rows/MiddleRow/Middle/VBoxContainer/MasterSlider
+@onready var musicslider : Node = $OptionsUI/Rows/MiddleRow/Middle/VBoxContainer/MusicSlider
+@onready var sfxsldier : Node = $OptionsUI/Rows/MiddleRow/Middle/VBoxContainer/SFXSlider
 
 
 var pUI_on : bool = false
@@ -66,7 +74,18 @@ func _ready():
 	if lvl_tran == null:
 		print("lvl_tran is null")
 	
-	print(get_tree().current_scene.name)
+	if get_tree().current_scene.name != "MainMenu":
+		gameplay_UI.set("visible", true)
+		win_con = $"../PausableScenes/WinCondition"
+		player = $"../PausableScenes/Player"
+	else:
+		gameplay_UI.set("visible", false)
+	
+	masterslider.set("value", audio_man.master_volume)
+	musicslider.set("value", audio_man.music_volume)
+	sfxsldier.set("value", audio_man.sfx_volume)
+	
+	#print(get_tree().current_scene.name)
 	
 	level_over_UI.set("visible", false)
 	pause_menu_UI.set("visible", false)
@@ -94,6 +113,10 @@ func _on_restart_pressed():
 func _on_resume_pressed():
 	lvl_man.PAUSE()
 
+func ToggleDeathUI():
+	death_UI.set("visible", !death_UI.get("visible"))
+	get_tree().paused = true
+
 
 func _on_next_level_pressed():
 	if get_tree().current_scene.name == "1_ Clyde's Place":
@@ -102,3 +125,35 @@ func _on_next_level_pressed():
 		lvl_tran.PlayExit("res://Levels/3. We Spreadin'.tscn")
 	elif get_tree().current_scene.name == "3_ We Spreadin'":
 		lvl_tran.PlayExit("res://Scenes/credits.tscn")
+
+func ToggleOptionsUI():
+	options_UI.set("visible", !options_UI.get("visible"))
+
+@onready var audio_man = get_node("/root/AudioManager")
+
+func _on_master_slider_value_changed(_value):
+	AudioServer.set_bus_volume_db(0, masterslider.get("value"))
+	audio_man.UpdateMasterVol(masterslider.get("value"))
+
+
+func _on_music_slider_value_changed(_value):
+	AudioServer.set_bus_volume_db(1, musicslider.get("value"))
+	audio_man.UpdateMusicVol(musicslider.get("value"))
+
+
+func _on_sfx_slider_drag_ended(_value_changed):
+	AudioServer.set_bus_volume_db(2, sfxsldier.get("value"))
+	audio_man.UpdateSfxVol(sfxsldier.get("value"))
+	audio_man.PlayAlert()
+
+
+func _on_return_pressed():
+	ToggleOptionsUI()
+
+
+func _on_options_pressed():
+	ToggleOptionsUI()
+
+
+func _on_pause_options_pressed():
+	ToggleOptionsUI()
