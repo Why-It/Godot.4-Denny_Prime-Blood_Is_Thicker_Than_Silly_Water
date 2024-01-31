@@ -143,6 +143,8 @@ func Reload():
 						cur_weapon.loaded_ammo += 2
 				else: #The other shotguns
 					anim_player.queue(cur_weapon.reload_anim)
+					if cur_weapon.weapon_name == "Pump":
+						audio_man.PlayPumpReload()
 					cur_weapon.loaded_ammo += 1
 				
 				anim_player.queue(cur_weapon.idle_anim)
@@ -158,6 +160,9 @@ func Shoot():
 		if anim_player.get_current_animation() == cur_weapon.idle_anim:
 			
 			anim_player.stop()
+			
+			if cur_weapon.weapon_name == "Pump":
+				pass
 			
 			var p0 : float = randf_range(-20,20) * cur_weapon.pellet_spread #spread
 			var p1 : float = randf_range(-15,-15) *  cur_weapon.pellet_spread 

@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 var cur_ammo_gui : int = 69
-var cur_reserve_gui : int = 420
+var cur_reserve_gui : String = "∞"
 
 @onready var gameplay_UI : Node = $GameplayUI
 @onready var cur_ammo_display : Node = $GameplayUI/Rows/BottomRow/Right/Ammo/CurrentAmmo
@@ -80,16 +80,16 @@ func _ready():
 		player = $"../PausableScenes/Player"
 	else:
 		gameplay_UI.set("visible", false)
-		
 	
-	print(get_tree().current_scene.name)
+	masterslider.set("value", audio_man.master_volume)
+	musicslider.set("value", audio_man.music_volume)
+	sfxsldier.set("value", audio_man.sfx_volume)
+	
+	#print(get_tree().current_scene.name)
 	
 	level_over_UI.set("visible", false)
 	pause_menu_UI.set("visible", false)
 	UpdateAmmoDetails()
-
-func ToggleOptionsUI():
-	options_UI.set("visible", !options_UI.get("visible"))
 
 
 
@@ -126,6 +126,34 @@ func _on_next_level_pressed():
 	elif get_tree().current_scene.name == "3_ We Spreadin'":
 		lvl_tran.PlayExit("res://Scenes/credits.tscn")
 
+func ToggleOptionsUI():
+	options_UI.set("visible", !options_UI.get("visible"))
 
-func _on_master_slider_changed():
+@onready var audio_man = get_node("/root/AudioManager")
+
+func _on_master_slider_value_changed(_value):
 	AudioServer.set_bus_volume_db(0, masterslider.get("value"))
+	audio_man.UpdateMasterVol(masterslider.get("value"))
+
+
+func _on_music_slider_value_changed(_value):
+	AudioServer.set_bus_volume_db(1, musicslider.get("value"))
+	audio_man.UpdateMusicVol(musicslider.get("value"))
+
+
+func _on_sfx_slider_drag_ended(_value_changed):
+	AudioServer.set_bus_volume_db(2, sfxsldier.get("value"))
+	audio_man.UpdateSfxVol(sfxsldier.get("value"))
+	audio_man.PlayAlert()
+
+
+func _on_return_pressed():
+	ToggleOptionsUI()
+
+
+func _on_options_pressed():
+	ToggleOptionsUI()
+
+
+func _on_pause_options_pressed():
+	ToggleOptionsUI()

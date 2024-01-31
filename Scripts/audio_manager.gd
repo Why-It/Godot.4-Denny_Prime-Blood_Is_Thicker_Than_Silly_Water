@@ -11,6 +11,17 @@ var master_volume : float = 0
 var music_volume : float = 0
 var sfx_volume : float = 0
 
+var config = ConfigFile.new()
+var err = config.load("user://audio.cfg")
+
+func _init():
+	if err != OK:
+		return
+	
+	master_volume = config.get_value("master", "volume")
+	music_volume = config.get_value("music", "volume")
+	sfx_volume = config.get_value("sfx", "volume")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for child in music_folder.get_children():
@@ -61,3 +72,29 @@ func PlayHurt():
 	var which_hurt = randf_range(0, _hurt.size() - 1)
 	
 	_hurt[which_hurt].set("playing", true)
+
+@export var _pump_reload : Array[Node]
+func PlayPumpReload():
+	var which_re = randf_range(0, _pump_reload.size() - 1)
+	
+	_pump_reload[which_re].set("playing", true)
+
+func UpdateMasterVol(value : float):
+	master_volume = value
+	SaveAudioSettings()
+
+func UpdateMusicVol(value : float):
+	music_volume = value
+	SaveAudioSettings()
+
+func UpdateSfxVol(value : float):
+	sfx_volume = value
+	SaveAudioSettings()
+
+
+func SaveAudioSettings():
+	config.set_value("master", "volume", master_volume)
+	config.set_value("music", "volume", music_volume)
+	config.set_value("sfx", "volume", sfx_volume)
+	
+	config.save("user://audio.cfg")

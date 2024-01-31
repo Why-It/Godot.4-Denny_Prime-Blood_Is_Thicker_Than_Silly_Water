@@ -131,7 +131,8 @@ layout_mode = 2
 
 [node name="ReserveAmmo" type="Label" parent="GameplayUI/Rows/BottomRow/Right/Ammo"]
 layout_mode = 2
-text = "WW"
+theme_override_font_sizes/font_size = 40
+text = "∞"
 
 [node name="LevelOverUI" type="MarginContainer" parent="."]
 visible = false
@@ -224,7 +225,7 @@ theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 
 [node name="TextureRect" type="TextureRect" parent="PauseMenuUI"]
-modulate = Color(0, 0, 0, 0.0980392)
+modulate = Color(0, 0, 0, 0.290196)
 layout_mode = 2
 texture = ExtResource("2_wuxgq")
 
@@ -267,6 +268,10 @@ text = "Resume"
 [node name="Restart" type="Button" parent="PauseMenuUI/Rows/MiddleRow/Middle/VBoxContainer"]
 layout_mode = 2
 text = "Restart Level"
+
+[node name="PauseOptions" type="Button" parent="PauseMenuUI/Rows/MiddleRow/Middle/VBoxContainer"]
+layout_mode = 2
+text = "Options"
 
 [node name="MainMenu" type="Button" parent="PauseMenuUI/Rows/MiddleRow/Middle/VBoxContainer"]
 layout_mode = 2
@@ -386,7 +391,7 @@ theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 
 [node name="TextureRect" type="TextureRect" parent="OptionsUI"]
-modulate = Color(0, 0, 0, 0.0980392)
+modulate = Color(0, 0, 0, 0.866667)
 layout_mode = 2
 texture = ExtResource("2_wuxgq")
 
@@ -440,7 +445,7 @@ horizontal_alignment = 1
 [node name="MasterSlider" type="HSlider" parent="OptionsUI/Rows/MiddleRow/Middle/VBoxContainer"]
 layout_mode = 2
 min_value = -80.0
-max_value = 6.0
+max_value = 10.0
 
 [node name="label1" type="Label" parent="OptionsUI/Rows/MiddleRow/Middle/VBoxContainer"]
 layout_mode = 2
@@ -449,6 +454,8 @@ horizontal_alignment = 1
 
 [node name="MusicSlider" type="HSlider" parent="OptionsUI/Rows/MiddleRow/Middle/VBoxContainer"]
 layout_mode = 2
+min_value = -80.0
+max_value = 10.0
 
 [node name="label2" type="Label" parent="OptionsUI/Rows/MiddleRow/Middle/VBoxContainer"]
 layout_mode = 2
@@ -457,6 +464,8 @@ horizontal_alignment = 1
 
 [node name="SFXSlider" type="HSlider" parent="OptionsUI/Rows/MiddleRow/Middle/VBoxContainer"]
 layout_mode = 2
+min_value = -80.0
+max_value = 10.0
 
 [node name="HSeparator2" type="HSeparator" parent="OptionsUI/Rows/MiddleRow/Middle/VBoxContainer"]
 layout_mode = 2
@@ -499,7 +508,11 @@ alignment = 1
 [connection signal="pressed" from="LevelOverUI/Rows/MiddleRow/Middle/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="PauseMenuUI/Rows/MiddleRow/Middle/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenuUI/Rows/MiddleRow/Middle/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="PauseMenuUI/Rows/MiddleRow/Middle/VBoxContainer/PauseOptions" to="." method="_on_pause_options_pressed"]
 [connection signal="pressed" from="PauseMenuUI/Rows/MiddleRow/Middle/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="DeathUI/Rows/MiddleRow/Middle/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="DeathUI/Rows/MiddleRow/Middle/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
-[connection signal="changed" from="OptionsUI/Rows/MiddleRow/Middle/VBoxContainer/MasterSlider" to="." method="_on_master_slider_changed"]
+[connection signal="value_changed" from="OptionsUI/Rows/MiddleRow/Middle/VBoxContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="OptionsUI/Rows/MiddleRow/Middle/VBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="drag_ended" from="OptionsUI/Rows/MiddleRow/Middle/VBoxContainer/SFXSlider" to="." method="_on_sfx_slider_drag_ended"]
+[connection signal="pressed" from="OptionsUI/Rows/MiddleRow/Middle/VBoxContainer/Return" to="." method="_on_return_pressed"]
