@@ -145,6 +145,8 @@ func Reload():
 					anim_player.queue(cur_weapon.reload_anim)
 					if cur_weapon.weapon_name == "Pump":
 						audio_man.PlayPumpReload()
+					elif cur_weapon.weapon_name == "Semi":
+						audio_man.PlayPumpReload()
 					cur_weapon.loaded_ammo += 1
 				
 				anim_player.queue(cur_weapon.idle_anim)

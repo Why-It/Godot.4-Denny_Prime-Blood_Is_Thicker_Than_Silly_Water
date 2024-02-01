@@ -26,6 +26,6 @@ func _on_animation_player_animation_finished(anim_name):
 		if get_tree().paused:
 			get_tree().paused = !get_tree().paused
 		
-		audio_man.StopSong()
+		#audio_man.StopSong()
 		scene_loader.ChangeToScene(nextScene)
 
