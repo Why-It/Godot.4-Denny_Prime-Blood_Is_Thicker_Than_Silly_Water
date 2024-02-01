@@ -20,6 +20,6 @@ reserve_ammo = 15
 max_ammo = 25
 spread_max = 8.1
 spread_min = 0.5
-spread_recover_speed = 2.0
+spread_recover_speed = 2.25
 pellet_spread = 0.5
 auto_fire = false
