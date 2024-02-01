@@ -50,16 +50,52 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 5.0
 alignment = 1
 
-[node name="Label" type="Label" parent="BoxContainer/VBoxContainer2/VBoxContainer/BoxContainer3"]
+[node name="VBoxContainer" type="VBoxContainer" parent="BoxContainer/VBoxContainer2/VBoxContainer/BoxContainer3"]
 layout_mode = 2
-text = "Game Designer:                     Wyatt Curtiss     
+alignment = 1
 
-Narrative Designer:                        Joseph Cartwright
+[node name="BoxContainer" type="BoxContainer" parent="BoxContainer/VBoxContainer2/VBoxContainer/BoxContainer3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
 
-Game Art:                             Josh Marsik
-                                                   Wyatt Curtiss
+[node name="Label" type="Label" parent="BoxContainer/VBoxContainer2/VBoxContainer/BoxContainer3/VBoxContainer/BoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Game Designer/Developer:                     Wyatt Curtiss     
 
-Made with Godot 4.2.1"
+Narrative Direction:                         Joseph Cartwright
+                                                                          Josh Marsik
+                                                                       Wyatt Curtiss
+
+Game Art:                                                         Josh Marsik
+                                                                        Wyatt Curtiss
+
+Made with Godot 4.2.1
+
+Music:
+Menu>          \"synthetic Forgiveness.Mp3\" - kaleidoplasm
+Level 1>                                                \"Level 1\" - Jesse Spillane
+Level 2>                       \"Caught In The Beat\" - Broke For Free
+Level 3>                                \"Covered In Oil\" - Broke For Free
+Credits>     \"Nothing Like Captain Crunch\" - Broke For Free"
+horizontal_alignment = 1
+
+[node name="BoxContainer3" type="BoxContainer" parent="BoxContainer/VBoxContainer2/VBoxContainer/BoxContainer3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BoxContainer2" type="BoxContainer" parent="BoxContainer/VBoxContainer2/VBoxContainer/BoxContainer3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="discalimer" type="Label" parent="BoxContainer/VBoxContainer2/VBoxContainer/BoxContainer3/VBoxContainer/BoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.611765, 0.611765, 0.611765, 1)
+theme_override_font_sizes/font_size = 10
+text = "All music was retrieved from freemusicarchive.org and were all under 
+Creative Commons Licensing for redistribution for any purpose (even commercially)."
 horizontal_alignment = 1
 
 [node name="BoxContainer" type="BoxContainer" parent="BoxContainer/VBoxContainer2/VBoxContainer"]
@@ -84,5 +120,5 @@ size_flags_horizontal = 3
 [node name="Transition" parent="." instance=ExtResource("3_g7l6r")]
 layout_mode = 1
 
-[connection signal="pressed" from="BoxContainer/VBoxContainer2/VBoxContainer/BoxContainer/ReturnToMain" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="BoxContainer/VBoxContainer2/VBoxContainer/BoxContainer/ReturnToMain" to="." method="_on_return_to_main_pressed"]
+[connection signal="pressed" from="BoxContainer/VBoxContainer2/VBoxContainer/BoxContainer/ReturnToMain" to="." method="_on_play_pressed"]

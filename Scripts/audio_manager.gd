@@ -28,6 +28,7 @@ func _ready():
 		_music.push_back(child)
 		#print(_music)
 	
+	#print(get_tree().current_scene.name)
 	cur_song = _music[0]
 	cur_song.set("playing", true)
 	
@@ -40,11 +41,21 @@ func StopSong():
 func StartSong():
 	#print(cur_scene)
 	
+	AudioServer.set_bus_effect_enabled(1,0,false)
+	
+	
 	if cur_scene == "res://Scenes/main_menu.tscn":
+		cur_song = _music[0]
+	elif cur_scene == "Splash Screen":
 		cur_song = _music[0]
 	elif cur_scene == "res://Levels/1. Clyde's Place.tscn":
 		cur_song = _music[1]
-	
+	elif cur_scene == "res://Levels/2. Massacre.tscn":
+		cur_song = _music[2]
+	elif cur_scene == "res://Levels/3. We Spreadin'.tscn":
+		cur_song = _music[3]
+	else:
+		cur_song = _music[4]
 	
 	cur_song.set("playing", true)
 
