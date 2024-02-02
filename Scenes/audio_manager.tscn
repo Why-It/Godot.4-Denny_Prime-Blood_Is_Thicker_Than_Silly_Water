@@ -1,14 +1,14 @@
 [gd_scene load_steps=29 format=3 uid="uid://bjxuanrrabulo"]
 
 [ext_resource type="Script" path="res://Scripts/audio_manager.gd" id="1_he6tr"]
-[ext_resource type="AudioStream" uid="uid://xvka3eurqmi1" path="res://Audio/Music/kaleidoplasm - synthetic forgiveness.Mp3.mp3" id="2_b1gkj"]
-[ext_resource type="AudioStream" uid="uid://cf1tbwitl22j6" path="res://Audio/Music/Jesse Spillane - Level 1.mp3" id="2_cq4fu"]
+[ext_resource type="AudioStream" uid="uid://d4jbmd1ot81g8" path="res://Audio/Music/kaleidoplasm - synthetic forgiveness.Mp3.mp3" id="2_5yayl"]
 [ext_resource type="AudioStream" uid="uid://vx321lmfr0tx" path="res://Audio/SFX/Alert_0.wav" id="3_1y1ug"]
-[ext_resource type="AudioStream" uid="uid://xb8d7o5sefsd" path="res://Audio/Music/Broke For Free - Caught In The Beat.mp3" id="3_qjddp"]
-[ext_resource type="AudioStream" uid="uid://de0al0uk13dg3" path="res://Audio/Music/Broke For Free - Covered In Oil.mp3" id="4_10jgu"]
+[ext_resource type="AudioStream" uid="uid://cry77bnyhr7wk" path="res://Audio/Music/Jesse Spillane - Level 1.mp3" id="3_n2ooj"]
+[ext_resource type="AudioStream" uid="uid://cs0j53go5ma77" path="res://Audio/Music/Broke For Free - Caught In The Beat.mp3" id="4_82dcs"]
 [ext_resource type="AudioStream" uid="uid://dkhc1rudkusxn" path="res://Audio/SFX/Alert_1.wav" id="4_pt2xc"]
 [ext_resource type="AudioStream" uid="uid://d2rrvcxam3f3a" path="res://Audio/SFX/Alert_2.wav" id="5_6vkua"]
-[ext_resource type="AudioStream" uid="uid://clrvjc7q3f5ss" path="res://Audio/Music/Broke For Free - Nothing Like Captain Crunch.mp3" id="5_tdeb0"]
+[ext_resource type="AudioStream" uid="uid://dlkkxv5ofl56t" path="res://Audio/Music/Broke For Free - Covered In Oil.mp3" id="5_atu4v"]
+[ext_resource type="AudioStream" uid="uid://doly6q2frmn6p" path="res://Audio/Music/Broke For Free - Nothing Like Captain Crunch.mp3" id="6_pqgtw"]
 [ext_resource type="AudioStream" uid="uid://brx1ukl6m54t2" path="res://Audio/SFX/Alert_3.wav" id="6_rhsl8"]
 [ext_resource type="AudioStream" uid="uid://ck4lult6jn01n" path="res://Audio/SFX/Alert_4.wav" id="7_1jy7t"]
 [ext_resource type="AudioStream" uid="uid://bag4aa2rq6q4v" path="res://Audio/SFX/die_0.wav" id="8_3020m"]
@@ -41,27 +41,27 @@ _pump_reload = [NodePath("Guns/pump_reload_0"), NodePath("Guns/pump_reload_1"), 
 [node name="Music" type="Node2D" parent="."]
 
 [node name="synthetic_forgivenesss__mp3" type="AudioStreamPlayer" parent="Music"]
-stream = ExtResource("2_b1gkj")
+stream = ExtResource("2_5yayl")
 volume_db = -5.0
 bus = &"MusicBus"
 
 [node name="level_1" type="AudioStreamPlayer" parent="Music"]
-stream = ExtResource("2_cq4fu")
+stream = ExtResource("3_n2ooj")
 volume_db = -5.0
 bus = &"MusicBus"
 
 [node name="caught_in_the_beat" type="AudioStreamPlayer" parent="Music"]
-stream = ExtResource("3_qjddp")
+stream = ExtResource("4_82dcs")
 volume_db = -5.0
 bus = &"MusicBus"
 
 [node name="covered_in_oil" type="AudioStreamPlayer" parent="Music"]
-stream = ExtResource("4_10jgu")
+stream = ExtResource("5_atu4v")
 volume_db = -5.0
 bus = &"MusicBus"
 
 [node name="nothing_like_captain_crunch" type="AudioStreamPlayer" parent="Music"]
-stream = ExtResource("5_tdeb0")
+stream = ExtResource("6_pqgtw")
 volume_db = -5.0
 bus = &"MusicBus"
 
