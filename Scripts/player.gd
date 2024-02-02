@@ -111,5 +111,5 @@ func TakeDamage(damage : int):
 
 func PlayerDeath():
 	audio_man.PlayDie()
-	gui.ToggleDeathUI()
 	is_player_dead = true
+	gui.ToggleDeathUI()

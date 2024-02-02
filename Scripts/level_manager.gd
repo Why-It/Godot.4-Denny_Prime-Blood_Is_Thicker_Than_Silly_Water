@@ -39,9 +39,9 @@ func _input(event):
 func PAUSE():
 	
 	if !player.is_player_dead:
+		gui.TogglePauseUI()
 		is_paused = !is_paused
 		get_tree().paused = is_paused
-		gui.TogglePauseUI()
 		
 		if gui.options_UI.get("visible"):
 			gui.ToggleOptionsUI()
@@ -60,4 +60,4 @@ func _process(_delta):
 
 func PlayerHadDied():
 	is_paused = true
-	
+	#print("It's me")

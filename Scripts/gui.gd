@@ -114,7 +114,7 @@ func _on_resume_pressed():
 	lvl_man.PAUSE()
 
 func ToggleDeathUI():
-	death_UI.set("visible", !death_UI.get("visible"))
+	death_UI.set("visible", true)
 	get_tree().paused = true
 
 
