@@ -11,7 +11,6 @@ extends Node
 
 
 @export var is_paused : bool = false
-var isPlayerDead : bool = false
 
 func _ready():
 	player.set("gun_manager", gun_man)
@@ -38,17 +37,21 @@ func _input(event):
 
 
 func PAUSE():
-	is_paused = !is_paused
-	get_tree().paused = is_paused
-	gui.TogglePauseUI()
 	
-	if gui.options_UI.get("visible"):
-		gui.ToggleOptionsUI()
+	if !player.is_player_dead:
+		is_paused = !is_paused
+		get_tree().paused = is_paused
+		gui.TogglePauseUI()
+		
+		if gui.options_UI.get("visible"):
+			gui.ToggleOptionsUI()
+		
+		if is_paused:
+			AudioServer.set_bus_effect_enabled(1, 0, true)
+		else:
+			AudioServer.set_bus_effect_enabled(1, 0, false)
+		
 	
-	if is_paused:
-		AudioServer.set_bus_effect_enabled(1, 0, true)
-	else:
-		AudioServer.set_bus_effect_enabled(1, 0, false)
 
 func _process(_delta):
 	gui.set("cur_ammo_gui", gun_man.cur_ammo)

@@ -1,14 +1,12 @@
-[gd_scene load_steps=41 format=3 uid="uid://dvfar3tkcrvek"]
+[gd_scene load_steps=39 format=3 uid="uid://dvfar3tkcrvek"]
 
 [ext_resource type="Script" path="res://Scripts/gun_manager.gd" id="1_mv64m"]
 [ext_resource type="Resource" uid="uid://doh2lubfongh0" path="res://Scripts/weapon resources/Pump.tres" id="3_hc8v5"]
 [ext_resource type="Resource" uid="uid://ql2tdfp65gja" path="res://Scripts/weapon resources/Semi.tres" id="4_vm5nc"]
 [ext_resource type="Resource" uid="uid://braxnwkf7dvyj" path="res://Scripts/weapon resources/Double.tres" id="5_c0a4o"]
 [ext_resource type="Texture2D" uid="uid://bcw44pe1wlvuy" path="res://Art/imgs/spread.png" id="6_cycjy"]
-[ext_resource type="Texture2D" uid="uid://dgxdghrkcqfva" path="res://Art/sprites/Placeholder/Guns/Shotgun_SemiAuto.png" id="8_6gjb6"]
-[ext_resource type="Texture2D" uid="uid://b0x4n0ka7ql4c" path="res://Art/sprites/Placeholder/Guns/Shotgun_Double_Shoot.png" id="8_l5bvd"]
-[ext_resource type="Texture2D" uid="uid://b7web5l2qoeyt" path="res://Art/sprites/Placeholder/Guns/Shotgun_SemiAuto_Shoot.png" id="9_hwm0b"]
-[ext_resource type="Texture2D" uid="uid://yjgqfurfivcd" path="res://Art/sprites/Placeholder/Guns/Shotgun_Double.png" id="9_wa5x3"]
+[ext_resource type="Texture2D" uid="uid://ci738aj0wvisu" path="res://Art/sprites/Placeholder/Newer PLaceholder/double_spritesheet.png" id="10_oyryu"]
+[ext_resource type="Texture2D" uid="uid://8kitcy5hxa1d" path="res://Art/sprites/Placeholder/Newer PLaceholder/semi_spritehseet.png" id="10_r25t0"]
 [ext_resource type="Texture2D" uid="uid://buxj3n3mw2jtw" path="res://Art/sprites/Placeholder/Newer PLaceholder/pump_spritesheet.png" id="10_swro1"]
 [ext_resource type="AudioStream" uid="uid://c8t2p6qic0gxt" path="res://Audio/Guns/pump_shot_and_cycle.wav" id="11_oucl6"]
 [ext_resource type="AudioStream" uid="uid://bylmt7i5hi0h2" path="res://Audio/Guns/16_open_eject.wav" id="12_2bblo"]
@@ -69,91 +67,91 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Semi:texture")
+tracks/4/path = NodePath("Double:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("8_6gjb6")]
+"values": [false]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Double:visible")
+tracks/5/path = NodePath("Double:frame")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [0]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Double:frame")
+tracks/6/path = NodePath("Pump/fire:playing")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [false]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Double:texture")
+tracks/7/path = NodePath("Double/open:playing")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("9_wa5x3")]
+"values": [false]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Double:hframes")
+tracks/8/path = NodePath("Double/load:playing")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [3]
+"values": [false]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Double:vframes")
+tracks/9/path = NodePath("Double/close:playing")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [3]
+"values": [false]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Semi:rotation")
+tracks/10/path = NodePath("Double/load2:playing")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"update": 1,
+"values": [false]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Pump/fire:playing")
+tracks/11/path = NodePath("Semi/fire_and_cycle:playing")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -165,70 +163,10 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("Double/open:playing")
+tracks/12/path = NodePath("Double/fire:playing")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("Double/load:playing")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("Double/close:playing")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("Double/load2:playing")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/16/type = "value"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("Semi/fire_and_cycle:playing")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/17/type = "value"
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("Double/fire:playing")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -270,8 +208,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_6luvy"]
 resource_name = "double_cycle"
-length = 0.0166683
-step = 0.0166667
+length = 0.10001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -315,7 +252,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_lwl38"]
 resource_name = "double_fire"
-length = 0.30001
+length = 0.10001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -323,54 +260,18 @@ tracks/0/path = NodePath("Double:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [1, 2, 3, 0]
+"values": [13, 14]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Double:texture")
+tracks/1/path = NodePath("Double/fire:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("8_l5bvd"), ExtResource("9_wa5x3")]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Double:hframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [2, 3]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Double:vframes")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [2, 3]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Double/fire:playing")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -379,9 +280,8 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_3u5jv"]
 resource_name = "double_idle"
-length = 0.0166683
+length = 0.10001
 loop_mode = 1
-step = 0.0166667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -397,7 +297,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_76igi"]
 resource_name = "double_ooa"
-length = 0.20001
+length = 0.10001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -405,15 +305,15 @@ tracks/0/path = NodePath("Double:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 1, 0]
+"values": [0, 14]
 }
 
 [sub_resource type="Animation" id="Animation_4jyt2"]
 resource_name = "double_reload_full"
-length = 0.90001
+length = 1.20001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -421,10 +321,10 @@ tracks/0/path = NodePath("Double:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.6, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 0]
+"values": [26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -433,7 +333,7 @@ tracks/1/path = NodePath("Double/open:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(-0.1),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -445,7 +345,7 @@ tracks/2/path = NodePath("Double/load:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.4),
+"times": PackedFloat32Array(0.3),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -469,7 +369,7 @@ tracks/4/path = NodePath("Double/close:playing")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.8),
+"times": PackedFloat32Array(1.1),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -477,7 +377,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_e74p5"]
 resource_name = "double_reload"
-length = 0.70001
+length = 0.80001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -485,10 +385,10 @@ tracks/0/path = NodePath("Double:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 6, 7, 4, 5, 0]
+"values": [39, 40, 41, 42, 43, 44, 45, 46, 47]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -497,7 +397,7 @@ tracks/1/path = NodePath("Double/open:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(-0.1),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -509,7 +409,7 @@ tracks/2/path = NodePath("Double/load:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.4),
+"times": PackedFloat32Array(0.3),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -521,7 +421,7 @@ tracks/3/path = NodePath("Double/close:playing")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.7),
+"times": PackedFloat32Array(0.6),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -707,7 +607,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_atspl"]
 resource_name = "semi_cycle"
-length = 0.10001
+length = 0.20001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -715,10 +615,10 @@ tracks/0/path = NodePath("Semi:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [2, 0]
+"values": [6, 7, 8]
 }
 
 [sub_resource type="Animation" id="Animation_hsco4"]
@@ -751,7 +651,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_5bk24"]
 resource_name = "semi_fire"
-length = 0.30001
+length = 0.10001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -759,30 +659,18 @@ tracks/0/path = NodePath("Semi:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [1, 2, 3, 1]
+"values": [0, 1]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Semi:texture")
+tracks/1/path = NodePath("Semi/fire_and_cycle:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("9_hwm0b"), ExtResource("8_6gjb6")]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Semi/fire_and_cycle:playing")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -791,9 +679,8 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_47ll0"]
 resource_name = "semi_idle"
-length = 0.0166683
+length = 0.10001
 loop_mode = 1
-step = 0.0166667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -809,18 +696,18 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_qr8dg"]
 resource_name = "semi_ooa"
-length = 0.20001
+length = 0.10001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Semi:rotation")
+tracks/0/path = NodePath("Semi:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [-0.349066, 0.0872665, 0.0]
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
 }
 
 [sub_resource type="Animation" id="Animation_fqaic"]
@@ -836,7 +723,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 1, 0]
+"values": [12, 13, 14, 15, 16]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hjblw"]
@@ -881,9 +768,9 @@ libraries = {
 
 [node name="SpreadShower" type="TextureProgressBar" parent="."]
 offset_left = -216.0
-offset_top = -259.0
+offset_top = -251.0
 offset_right = 384.0
-offset_bottom = 341.0
+offset_bottom = 349.0
 scale = Vector2(0.75, 0.75)
 max_value = 1000.0
 fill_mode = 8
@@ -905,7 +792,7 @@ bus = &"SFXBus"
 [node name="Semi" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(9, -17)
-texture = ExtResource("8_6gjb6")
+texture = ExtResource("10_r25t0")
 hframes = 6
 vframes = 4
 
@@ -915,9 +802,9 @@ stream = ExtResource("12_u0ri3")
 [node name="Double" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(9, -17)
-texture = ExtResource("9_wa5x3")
-hframes = 3
-vframes = 3
+texture = ExtResource("10_oyryu")
+hframes = 13
+vframes = 4
 
 [node name="fire" type="AudioStreamPlayer" parent="Double"]
 stream = ExtResource("12_u0ri3")

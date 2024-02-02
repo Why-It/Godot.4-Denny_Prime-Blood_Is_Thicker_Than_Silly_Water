@@ -31,6 +31,8 @@ extends CharacterBody2D
 
 @onready var audio_man = get_node("/root/AudioManager")
 
+var is_player_dead : bool = false
+
 func _ready():
 	player_health = player_max_health
 	isArrow_on = false
@@ -110,3 +112,4 @@ func TakeDamage(damage : int):
 func PlayerDeath():
 	audio_man.PlayDie()
 	gui.ToggleDeathUI()
+	is_player_dead = true
