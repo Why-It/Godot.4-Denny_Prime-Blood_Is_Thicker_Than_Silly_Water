@@ -161,6 +161,8 @@ func Shoot():
 	if cur_weapon.loaded_ammo > 0:
 		if anim_player.get_current_animation() == cur_weapon.idle_anim:
 			
+			print(spread_shower.get("value"))
+			
 			anim_player.stop()
 			
 			if cur_weapon.weapon_name == "Pump":

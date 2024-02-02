@@ -18,6 +18,9 @@ extends CharacterBody2D
 #Rotating the player character's limbs
 @export var player_legs : Node2D = null
 @export var player : Node2D = null
+#rotating gun collidider
+@onready var player_collider : Node = $PlayerCollider
+@onready var gun_collider : Node = $GunCollider
 #Rotating the indicator arrow towards the level exit
 @onready var arrow : Node = $Sprite2D
 @export var level_leave_node = Node
@@ -80,6 +83,8 @@ func rotatePlayer():
 	player.rotation_degrees += 90
 	gun_manager.look_at(get_global_mouse_position())
 	gun_manager.rotation_degrees += 90
+	player_collider.look_at(get_global_mouse_position())
+	player_collider.rotation_degrees += 42.5
 
 var isArrow_on : bool = false
 func rotateArrow():

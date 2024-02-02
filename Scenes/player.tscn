@@ -3,11 +3,8 @@
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_1hsk7"]
 [ext_resource type="AnimationLibrary" uid="uid://dun2jwvevqlhk" path="res://Art/animations/i_fucked_up.res" id="2_yer6h"]
 [ext_resource type="Texture2D" uid="uid://byboqsjhhsbd0" path="res://Art/sprites/Placeholder/pointer.png" id="4_1ocvp"]
+[ext_resource type="Texture2D" uid="uid://b4r6j3lrikcd0" path="res://Art/sprites/Placeholder/Newer PLaceholder/Clyde_Spritesheet.png" id="4_4so35"]
 [ext_resource type="Texture2D" uid="uid://lk5kxw7250at" path="res://Art/sprites/Josh/Player/walk_2.png" id="8_wxtsl"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ns8m5"]
-radius = 12.5
-height = 33.0
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4r24e"]
 animation = &"legs_idle"
@@ -73,7 +70,7 @@ states/body_motion/position = Vector2(378, 100)
 transitions = ["Start", "body_motion", SubResource("AnimationNodeStateMachineTransition_aul8s")]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_quwkg"]
-radius = 14.0
+radius = 17.965
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("player_legs", "player") groups=["Player"]]
 collision_layer = 2
@@ -82,10 +79,9 @@ script = ExtResource("1_1hsk7")
 player_legs = NodePath("PlayerBody/Legs")
 player = NodePath("PlayerBody")
 
-[node name="PlayerCollider" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
-rotation = -1.5708
-shape = SubResource("CapsuleShape2D_ns8m5")
+[node name="PlayerCollider" type="CollisionPolygon2D" parent="."]
+rotation = -0.853466
+polygon = PackedVector2Array(5.53162, 12.4258, 1.01024, 16.3701, -5.57945, 19.4646, -8.96251, 17.1077, -8.38539, 8.64207, -7.05469, -0.480941, -6.66994, -6.1247, -4.87425, -11.6723, -0.449057, -14.2056, 3.0302, -13.2596, 5.56351, -8.83444, 8.85038, -5.06663, 13.0832, -4.77806, 16.0975, -7.40756, 19.1117, -10.0371, 22.3986, -6.26925, 19.3843, -3.63974, 15.6165, -0.352869, 11.6563, 5.75588, 9.29944, 9.13895)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -113,23 +109,25 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AggroRange"]
+position = Vector2(-0.95, 4.735)
 shape = SubResource("CircleShape2D_quwkg")
 
 [node name="PlayerBody" type="Node2D" parent="."]
 
 [node name="Legs" type="Sprite2D" parent="PlayerBody"]
 texture = ExtResource("8_wxtsl")
+offset = Vector2(0, 5.43)
+flip_h = true
 flip_v = true
 hframes = 27
 frame = 5
 
 [node name="Torso" type="Sprite2D" parent="PlayerBody"]
 position = Vector2(0, 5)
-texture = ExtResource("8_wxtsl")
-offset = Vector2(0, -7)
-flip_v = true
-hframes = 27
-frame = 9
+texture = ExtResource("4_4so35")
+hframes = 9
+vframes = 9
+frame = 46
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false

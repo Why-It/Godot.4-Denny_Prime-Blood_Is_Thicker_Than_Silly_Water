@@ -18,7 +18,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
 
 
-func _on_body_entered(_body):
+func _on_body_entered(body):
 	get_node("bullet_collisionshape").set_deferred("disabled", true)
 #	if body.is_in_group("Enemies"):
 #		#print("hit")
@@ -26,7 +26,9 @@ func _on_body_entered(_body):
 #	elif body.is_in_group("Player"):
 #		body.PlayerTakeDamage(1)
 #	#queue_free()
+	
 	self.hide()
+	#self.hide()
 	
 	
 
@@ -35,8 +37,21 @@ func _on_area_entered(area):
 	get_node("bullet_collisionshape").set_deferred("disabled", true)
 	if area:
 		if !was_fired_from_enemy:
-			gun_man.Increase_Spread_Value()
-			area.owner.TakeDamage(1)
+			print(area.owner.name)
+			#if area.owner.name == Player and spread is a certain amount "PlayerTakeDamage"
+			if area.owner.is_in_group("Player"):
+				#print(gun_man.spread_shower.get("value"))
+				if gun_man.spread_shower.get("value") >= 400:
+					area.owner.TakeDamage(1)
+				self.hide()
+			elif area.owner.is_in_group("Enemies"):
+				gun_man.Increase_Spread_Value()
+				area.owner.TakeDamage(1)
+				self.hide()
+				
+			#print("I was fired from the player")
 		else:
 			area.owner.TakeDamage(1)
-	self.hide()
+			print("I was fired from the enemy")
+			self.hide()
+		self.hide()
