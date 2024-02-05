@@ -20,7 +20,6 @@ extends CharacterBody2D
 @export var player : Node2D = null
 #rotating gun collidider
 @onready var player_collider : Node = $PlayerCollider
-@onready var gun_collider : Node = $GunCollider
 #Rotating the indicator arrow towards the level exit
 @onready var arrow : Node = $Sprite2D
 @export var level_leave_node = Node

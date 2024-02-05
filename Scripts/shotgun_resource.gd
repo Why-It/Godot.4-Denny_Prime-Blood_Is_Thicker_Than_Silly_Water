@@ -23,6 +23,7 @@ class_name shotgun_resource
 @export var spread_max : float
 @export var spread_min : float
 @export var spread_recover_speed: float
+@export var spread_increase : float
 @export var pellet_spread : float
 
 @export var auto_fire : bool

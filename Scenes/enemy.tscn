@@ -12,8 +12,8 @@ radius = 25.0
 radius = 345.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_55qws"]
-radius = 18.0
-height = 36.0
+radius = 10.0
+height = 26.0
 
 [sub_resource type="Animation" id="Animation_6r8ve"]
 resource_name = "Attention!"
@@ -323,7 +323,6 @@ shape = SubResource("CircleShape2D_86bhi")
 debug_color = Color(0, 0.603922, 0.682353, 0.419608)
 
 [node name="EnemyCollider" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_55qws")
 

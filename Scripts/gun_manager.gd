@@ -1,6 +1,8 @@
 extends Node2D
 
 @export var anim_player : AnimationPlayer
+@onready var particle_marker : Node = $particle
+@onready var particle_emmiter = preload("res://Scenes/shot_particles.tscn")
 
 #Shotgun Shooty Stuff
 @onready var bullet = preload("res://Scenes/bullet.tscn")
@@ -118,7 +120,7 @@ func Change_Weapon(weapon_name : String):
 
 func Increase_Spread_Value():
 	if cur_weapon.pellet_spread < cur_weapon.spread_max:
-		cur_weapon.pellet_spread += 0.5
+		cur_weapon.pellet_spread += cur_weapon.spread_increase
 
 func Spread_Shower_Update():
 	spread_shower.set("value", cur_weapon.pellet_spread * 100.5)
@@ -161,13 +163,12 @@ func Shoot():
 	if cur_weapon.loaded_ammo > 0:
 		if anim_player.get_current_animation() == cur_weapon.idle_anim:
 			
-			print(spread_shower.get("value"))
+			#print(spread_shower.get("value"))
 			
+			#halting the animation of whatever the player is doing in order to 
 			anim_player.stop()
 			
-			if cur_weapon.weapon_name == "Pump":
-				pass
-			
+			#determining the angle of each shot from the blast
 			var p0 : float = randf_range(-20,20) * cur_weapon.pellet_spread #spread
 			var p1 : float = randf_range(-15,-15) *  cur_weapon.pellet_spread 
 			var p2 : float = randf_range(-5,5) *  cur_weapon.pellet_spread 
@@ -180,18 +181,27 @@ func Shoot():
 				var b = bullet.instantiate()
 				b.direction = aim_dir.rotated(radians)
 				b.global_position = $Muzzle.global_position #setting pellet position at muzzle of shotgun
-				#get_tree().get_root().add_child(b)
 				owner.add_child(b)
 				b.set("gun_man", self)
 			
+			#Instatiating a particle effect to the shot
+			var pe = particle_emmiter.instantiate()
+			pe.global_position = particle_marker.global_position
+			pe.look_at(get_global_mouse_position())
+			pe.rotation_degrees += 90
+			pe.set("one_shot", true)
+			pe.set("emitting", true)
+			owner.add_child(pe)
+			
 			anim_player.queue(cur_weapon.fire_anim)
 			cur_weapon.loaded_ammo -= 1
-			#print("Current wepaon's loaded ammo = " + str(cur_weapon.loaded_ammo))
+			
+			#Making the rat of fire for whatever is classified as "automatic" faster by skipping the cycle aniamtion. (this is will rtypically be included in the "fire" aniamtion)
 			if cur_weapon.auto_fire != true:
 				anim_player.queue(cur_weapon.cycle_anim)
 			anim_player.queue(cur_weapon.idle_anim)
 	else:
-		print("Out of ammo! Reload!")
+		#print("Out of ammo! Reload!")
 		anim_player.stop()
 		anim_player.queue(cur_weapon.ooa_anim)
 		anim_player.queue(cur_weapon.idle_anim)

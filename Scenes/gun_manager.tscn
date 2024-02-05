@@ -827,4 +827,8 @@ stream = ExtResource("14_k06ht")
 position = Vector2(9, -26)
 rotation = -1.5708
 
+[node name="particle" type="Marker2D" parent="."]
+position = Vector2(9, -44)
+rotation = -1.5708
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

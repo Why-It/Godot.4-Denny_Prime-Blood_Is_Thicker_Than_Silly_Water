@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var enemy_sprite = $EnemySprite
 @onready var bullet = preload("res://Scenes/bullet.tscn")
 @onready var muzzle = $EnemySprite/Gun/Marker2D
+@onready var gun_man = $"../../Player/gun_manager"
 
 @onready var target = $Target
 @onready var aim_timer = $AimTimer
@@ -25,6 +26,9 @@ var is_dead : bool = false
 @export var enemySpeed : float = 185
 
 @onready var audio_man = get_node("/root/AudioManager")
+
+@onready var collider = $MeleeRange/CollisionShape2D
+@onready var melee_range_area = $MeleeRange
 
 
 
@@ -247,6 +251,10 @@ func Death():
 		audio_man.PlayDie()
 		anim_player.play("enemy_death")
 		has_death_played = true
+		
+		melee_range_area.set_deferred("monitorable", false)
+		gun_man.Increase_Spread_Value()
+		#collider.set("disabled", true)
 		
 		win_condition.UpdateEnemyDeathCount()
 		
