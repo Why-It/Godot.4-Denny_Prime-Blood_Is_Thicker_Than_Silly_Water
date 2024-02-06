@@ -12,7 +12,6 @@ radius = 25.0
 radius = 345.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_55qws"]
-radius = 10.0
 height = 26.0
 
 [sub_resource type="Animation" id="Animation_6r8ve"]
