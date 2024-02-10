@@ -225,7 +225,7 @@ theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 
 [node name="TextureRect" type="TextureRect" parent="PauseMenuUI"]
-modulate = Color(0, 0, 0, 0.290196)
+modulate = Color(0, 0, 0, 0.270588)
 layout_mode = 2
 texture = ExtResource("2_wuxgq")
 
@@ -248,7 +248,7 @@ size_flags_horizontal = 3
 [node name="Middle" type="HBoxContainer" parent="PauseMenuUI/Rows/MiddleRow"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 3.99
+size_flags_stretch_ratio = 4.0
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PauseMenuUI/Rows/MiddleRow/Middle"]
@@ -260,6 +260,7 @@ alignment = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "PAUSED"
+horizontal_alignment = 1
 
 [node name="Resume" type="Button" parent="PauseMenuUI/Rows/MiddleRow/Middle/VBoxContainer"]
 layout_mode = 2
@@ -285,6 +286,8 @@ alignment = 1
 [node name="BottomRow" type="HBoxContainer" parent="PauseMenuUI/Rows"]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+alignment = 1
 
 [node name="Left" type="HBoxContainer" parent="PauseMenuUI/Rows/BottomRow"]
 layout_mode = 2
@@ -293,6 +296,36 @@ size_flags_horizontal = 3
 [node name="Middle" type="HBoxContainer" parent="PauseMenuUI/Rows/BottomRow"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PauseMenuUI/Rows/BottomRow/Middle"]
+self_modulate = Color(0, 0, 0, 0.698039)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_wuxgq")
+expand_mode = 2
+
+[node name="Label2" type="Label" parent="PauseMenuUI/Rows/BottomRow/Middle/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -131.0
+offset_top = -51.0
+offset_right = 131.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 13
+text = "W A S D to move
+Q, E and Mouse Wheel to switch
+R to reload
+Left click to shoot
+F2 to toggle fullscreen"
+horizontal_alignment = 1
 
 [node name="Right" type="HBoxContainer" parent="PauseMenuUI/Rows/BottomRow"]
 layout_mode = 2
@@ -470,6 +503,13 @@ max_value = 10.0
 [node name="HSeparator2" type="HSeparator" parent="OptionsUI/Rows/MiddleRow/Middle/VBoxContainer"]
 layout_mode = 2
 
+[node name="Fullscreen" type="CheckButton" parent="OptionsUI/Rows/MiddleRow/Middle/VBoxContainer"]
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="HSeparator3" type="HSeparator" parent="OptionsUI/Rows/MiddleRow/Middle/VBoxContainer"]
+layout_mode = 2
+
 [node name="Return" type="Button" parent="OptionsUI/Rows/MiddleRow/Middle/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -515,4 +555,5 @@ alignment = 1
 [connection signal="value_changed" from="OptionsUI/Rows/MiddleRow/Middle/VBoxContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
 [connection signal="value_changed" from="OptionsUI/Rows/MiddleRow/Middle/VBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="drag_ended" from="OptionsUI/Rows/MiddleRow/Middle/VBoxContainer/SFXSlider" to="." method="_on_sfx_slider_drag_ended"]
+[connection signal="pressed" from="OptionsUI/Rows/MiddleRow/Middle/VBoxContainer/Fullscreen" to="." method="_on_fullscreen_pressed"]
 [connection signal="pressed" from="OptionsUI/Rows/MiddleRow/Middle/VBoxContainer/Return" to="." method="_on_return_pressed"]

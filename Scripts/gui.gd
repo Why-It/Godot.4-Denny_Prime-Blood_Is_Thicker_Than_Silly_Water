@@ -157,3 +157,13 @@ func _on_options_pressed():
 
 func _on_pause_options_pressed():
 	ToggleOptionsUI()
+
+
+func _on_fullscreen_pressed():
+	var isFullScreen : int
+	isFullScreen = DisplayServer.window_get_mode()
+	
+	if isFullScreen != 3:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)

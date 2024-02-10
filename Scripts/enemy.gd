@@ -30,6 +30,7 @@ var is_dead : bool = false
 @onready var collider = $MeleeRange/CollisionShape2D
 @onready var melee_range_area = $MeleeRange
 
+@onready var anim_tree = $EnemyAnimTree
 
 
 func _physics_process(_delta):
@@ -41,6 +42,13 @@ func _physics_process(_delta):
 		if !has_death_played:
 			UpdateStateMachine()
 		RotateEnemy()
+		AnimateEnemyMove()
+
+func AnimateEnemyMove():
+	if velocity != Vector2.ZERO:
+		anim_tree.set("parameters/BlendSpace1D/blend_position", 1)
+	else:
+		anim_tree.set("parameters/BlendSpace1D/blend_position", 0)
 
 func RecalcPath():
 	#print("recalculating path")
@@ -246,6 +254,7 @@ var has_death_played : bool = false
 func Death():
 	
 	if !has_death_played:
+		anim_tree.set("parameters/BlendSpace1D/blend_position", 0)
 		cur_state = "Death"
 		anim_player.stop()
 		audio_man.PlayDie()
