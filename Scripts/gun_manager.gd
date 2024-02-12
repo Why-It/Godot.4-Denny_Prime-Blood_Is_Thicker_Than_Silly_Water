@@ -28,6 +28,8 @@ var weapon_list = {} #Dictionary of all weapons available to use
 
 @onready var audio_man = get_node("/root/AudioManager")
 
+@onready var playernode : Node = $".."
+
 func _ready():
 	Initilize(starting_arsenal) #Enter the state machine
 	for weapon in _weapon_resources:
@@ -36,29 +38,30 @@ func _ready():
 
 	
 func _input(event):
-	if event.is_action_released("Weapon_Next"):
-		if weapon_indicator == weapon_stack.size()-1: # Roll over to the begginning of the array
-			weapon_indicator = weapon_stack.size()-weapon_stack.size()
-			exit(weapon_stack[weapon_indicator])
-		else:
-			weapon_indicator = min(weapon_indicator+1, weapon_stack.size()-1)
-			exit(weapon_stack[weapon_indicator])
-	
-	if event.is_action_released("Weapon_Prev"):
-		if weapon_indicator == weapon_stack.size()-weapon_stack.size(): # Roll over to the end of the array
-			weapon_indicator = weapon_stack.size()-1
-			exit(weapon_stack[weapon_indicator])
-		else:
-			weapon_indicator = max(weapon_indicator-1, 0)
-			exit(weapon_stack[weapon_indicator])
-	
-	if event.is_action_pressed("Shoot"):
-		if continuous_reload == true:
-			continuous_reload = false
-		Shoot()
-	
-	if event.is_action_pressed("Reload"):
-		Reload()
+	if !playernode.is_player_dead:
+		if event.is_action_released("Weapon_Next"):
+			if weapon_indicator == weapon_stack.size()-1: # Roll over to the begginning of the array
+				weapon_indicator = weapon_stack.size()-weapon_stack.size()
+				exit(weapon_stack[weapon_indicator])
+			else:
+				weapon_indicator = min(weapon_indicator+1, weapon_stack.size()-1)
+				exit(weapon_stack[weapon_indicator])
+		
+		if event.is_action_released("Weapon_Prev"):
+			if weapon_indicator == weapon_stack.size()-weapon_stack.size(): # Roll over to the end of the array
+				weapon_indicator = weapon_stack.size()-1
+				exit(weapon_stack[weapon_indicator])
+			else:
+				weapon_indicator = max(weapon_indicator-1, 0)
+				exit(weapon_stack[weapon_indicator])
+		
+		if event.is_action_pressed("Shoot"):
+			if continuous_reload == true:
+				continuous_reload = false
+			Shoot()
+		
+		if event.is_action_pressed("Reload"):
+			Reload()
 
 func Initilize(_starting_arsenal : Array):
 	
@@ -90,6 +93,9 @@ func _physics_process(_delta):
 	
 	UpdateAmmo()
 	Spread_Shower_Update()
+	
+	if playernode.is_player_dead:
+		self.set("visible", false)
 
 func UpdateAmmo():
 	cur_ammo = cur_weapon.loaded_ammo

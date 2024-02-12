@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_1hsk7"]
 [ext_resource type="AnimationLibrary" uid="uid://dun2jwvevqlhk" path="res://Art/animations/i_fucked_up.res" id="2_yer6h"]
 [ext_resource type="Texture2D" uid="uid://byboqsjhhsbd0" path="res://Art/sprites/Placeholder/pointer.png" id="4_1ocvp"]
-[ext_resource type="Texture2D" uid="uid://b4r6j3lrikcd0" path="res://Art/sprites/Placeholder/Newer PLaceholder/Clyde_Spritesheet.png" id="4_4so35"]
+[ext_resource type="Texture2D" uid="uid://d0ilmxljljjkp" path="res://Art/sprites/WorkInProgress/Clyde_Spritesheet.png" id="4_rjk26"]
 [ext_resource type="Texture2D" uid="uid://lk5kxw7250at" path="res://Art/sprites/Josh/Player/walk_2.png" id="8_wxtsl"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4r24e"]
@@ -73,6 +73,7 @@ transitions = ["Start", "body_motion", SubResource("AnimationNodeStateMachineTra
 radius = 17.965
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("player_legs", "player") groups=["Player"]]
+process_mode = 3
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_1hsk7")
@@ -124,10 +125,20 @@ frame = 5
 
 [node name="Torso" type="Sprite2D" parent="PlayerBody"]
 position = Vector2(0, 5)
-texture = ExtResource("4_4so35")
+texture = ExtResource("4_rjk26")
 hframes = 9
 vframes = 9
 frame = 46
+
+[node name="Node2D" type="Node2D" parent="PlayerBody"]
+visible = false
+position = Vector2(0, 23.595)
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerBody/Node2D"]
+texture = ExtResource("4_rjk26")
+hframes = 9
+vframes = 5
+frame = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false

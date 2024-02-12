@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @onready var gun_manager : Node = $gun_manager
 
+@onready var playerself : Node = $"."
+
 @export var character_speed : float = 200
 @export var player_health : int = 1
 
@@ -30,11 +32,15 @@ extends CharacterBody2D
 
 @onready var audio_man = get_node("/root/AudioManager")
 
+@onready var anim_player = $AnimationPlayer
+
 var is_player_dead : bool = false
 
 func _ready():
 	player_health = player_max_health
 	isArrow_on = false
+	playerself.set("process_mode", 1)
+	print(playerself.process_mode)
 
 func _physics_process(_delta):
 	var inputDirection = Vector2(
@@ -45,11 +51,12 @@ func _physics_process(_delta):
 	inputDirection = inputDirection.normalized()
 	velocity = inputDirection * character_speed
 	
-	update_animation_parameters(inputDirection)
-	rotateLegs(inputDirection)
-	rotatePlayer()
-	move_and_slide()
-	pick_new_state()
+	if !is_player_dead:
+		update_animation_parameters(inputDirection)
+		rotateLegs(inputDirection)
+		rotatePlayer()
+		move_and_slide()
+		pick_new_state()
 	
 	if isArrow_on:
 		rotateArrow()
@@ -109,6 +116,10 @@ func TakeDamage(damage : int):
 		audio_man.PlayHurt()
 
 func PlayerDeath():
+	anim_player.play("player_death")
+	playerself.set("process_mode", 3)
+	print(playerself.process_mode)
+	print(self.get("process_mode"))
 	audio_man.PlayDie()
 	is_player_dead = true
 	gui.ToggleDeathUI()
