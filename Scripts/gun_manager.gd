@@ -107,8 +107,6 @@ func enter(): #Call when entering the next weapon
 	
 	cur_ammo = cur_weapon.loaded_ammo
 	cur_reserve = cur_weapon.reserve_ammo
-	#print(cur_weapon.reserve_ammo)
-	#print("current animation: " + str(anim_player.get_current_animation()))
 
 
 func exit(_next_weapon : String): #Call before changing weapons
@@ -118,9 +116,7 @@ func exit(_next_weapon : String): #Call before changing weapons
 			next_weapon = _next_weapon
 	
 func Change_Weapon(weapon_name : String):
-	#print(weapon_list[weapon_name])
 	cur_weapon = weapon_list[weapon_name]
-	#print(weapon_list[weapon_name])
 	next_weapon = ""
 	enter()
 

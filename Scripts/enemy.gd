@@ -38,11 +38,15 @@ func _physics_process(_delta):
 		
 		if in_detection_range == true:
 			SightCheck()
-		move_and_slide()
+		
+		if cur_state != "PatrolWaitForChange":
+			if cur_state != "Attention":
+				move_and_slide()
+		AnimateEnemyMove()
+		
 		if !has_death_played:
 			UpdateStateMachine()
 		RotateEnemy()
-		AnimateEnemyMove()
 
 func AnimateEnemyMove():
 	if velocity != Vector2.ZERO:
@@ -56,7 +60,8 @@ func RecalcPath():
 		nav_agent.target_position = target_node.global_position
 		#print("recalc is target")
 	else:
-		nav_agent.target_position = home_pos
+		pass
+	#	nav_agent.target_position = home_pos
 		#print("reclac is home")
 
 func SightCheck():
@@ -89,14 +94,20 @@ func TakeDamage(dmg : int):
 
 #MELEE RANGE
 var in_melee_range : bool = false
+var reached_point : bool = false
 
 func _on_melee_range_body_entered(body):
 	if body.is_in_group("Player"):
 		in_melee_range = true
+	elif body.is_in_group("PatrolPoint"):
+		print("I'm here")
+		reached_point = true
 
 func _on_melee_range_body_exited(body):
 	if body.is_in_group("Player"):
 		in_melee_range = false
+	elif body.is_in_group("PatrolPoint"):
+		reached_point = false
 
 
 #DETETCTION RANGE
@@ -120,7 +131,7 @@ func _on_area_2d_body_exited(body): #Player leaving detection range
 
 #State Machine YAY!
 
-@export var patrol_points : Array
+@export var patrol_points : Array[Node2D]
 
 var cur_state : String
 
@@ -131,11 +142,16 @@ func _ready():
 	
 	home_pos = self.global_position
 	
-	nav_agent.path_desired_distance = 4
-	nav_agent.target_desired_distance = 4
+	nav_agent.path_desired_distance = 2
+	nav_agent.target_desired_distance = 2
+	
 	
 	#Enenmy starts in one of two beginning states. Once player gets their attention, it's a fight to the death.
 	if patrol_points.size() > 0:
+		cur_point = patrol_points[0]
+		cur_point_array_pos = 0
+		nav_agent.target_position = cur_point.global_position
+		target_node = cur_point
 		Patrol()
 	else:
 		Idle()
@@ -143,6 +159,22 @@ func _ready():
 var axis = null
 
 func UpdateStateMachine():
+	
+	if cur_state == "Patrol":
+		if nav_agent.is_navigation_finished():
+			if !continuous_patrol:
+				PatrolWaitForChange()
+			else:
+				PatrolPointChange()
+		else:
+			axis = to_local(nav_agent.get_next_path_position()).normalized()
+			velocity = axis * (enemySpeed * patrol_speed_factor)
+		
+	
+		
+		#if reached_point:
+		#	print("Changing Patrol point")
+		#	PatrolPointChange()
 	
 	if detect_switch:
 		init_target_to_player()
@@ -167,26 +199,41 @@ func UpdateStateMachine():
 		
 		if in_melee_range:
 			AttackMelee()
-	
-	
-
-	
-	#if cur_state == "Aim":
-	#	if LoS:
-	#		pass
-	#	else:
-	#		GetBetterPosition()
-	
-	#if is_dead:
-	#	Death()
-
-#Might need later idk
 
 func Idle():
 	cur_state = "Idle"
 
+var cur_point : Node2D
+var cur_point_array_pos : int
+@export var patrol_speed_factor : float = .45
+@export var continuous_patrol : bool = false
+@onready var patrol_timer : Node = $Nav/PatrolTimer
 func Patrol():
 	cur_state = "Patrol"
+
+
+func PatrolPointChange():
+	
+	cur_state = "PatrolPointChange"
+	
+	reached_point = false
+	
+	if cur_point_array_pos == patrol_points.size()-1:
+		cur_point_array_pos = 0
+		cur_point = patrol_points[cur_point_array_pos]
+	else:
+		cur_point_array_pos += 1
+		cur_point = patrol_points[cur_point_array_pos]
+	
+	nav_agent.target_position = cur_point.global_position
+	target_node = cur_point
+	Patrol()
+
+func PatrolWaitForChange():
+	cur_state = "PatrolWaitForChange"
+	target_node = null
+	velocity = Vector2.ZERO
+	patrol_timer.start()
 
 
 var has_att_played : bool = false
@@ -195,6 +242,7 @@ func Attention(): # Enemy stops for half a second then either chases or aims at 
 	
 	if !has_att_played:
 		cur_state = "Attention"
+		velocity = Vector2.ZERO
 		#target.set("global_position", player.global_position)
 		anim_player.queue("Attention!")
 		audio_man.PlayAlert()
@@ -319,3 +367,9 @@ func StopMovement():
 		return
 	axis = to_local(nav_agent.get_next_path_position()).normalized()
 	velocity = Vector2(0,0)
+
+
+func _on_patrol_timer_timeout():
+	
+	if cur_state == "PatrolWaitForChange":
+		PatrolPointChange()

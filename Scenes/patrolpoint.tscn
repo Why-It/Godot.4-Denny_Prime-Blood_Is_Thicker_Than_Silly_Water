@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://v4lb453mo8di"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eetg3"]
+radius = 6.32456
+
+[node name="00" type="Node2D"]
+position = Vector2(-510, 443)
+
+[node name="Area2D" type="Area2D" parent="." groups=["PatrolPoint"]]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_eetg3")

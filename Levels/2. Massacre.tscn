@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://4akej3pm78ps"]
+[gd_scene load_steps=13 format=3 uid="uid://4akej3pm78ps"]
 
 [ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_c0mxp"]
 [ext_resource type="TileSet" uid="uid://ture4cp0uocl" path="res://Art/sprites/Josh/tiles/v1.tres" id="2_rf2re"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cali6q4pooh6b" path="res://Scenes/player.tscn" id="3_x67pf"]
 [ext_resource type="PackedScene" uid="uid://ccwl5bv648kxg" path="res://Scenes/camera_2d.tscn" id="4_c01aj"]
 [ext_resource type="PackedScene" uid="uid://dvfar3tkcrvek" path="res://Scenes/gun_manager.tscn" id="5_sigbd"]
+[ext_resource type="PackedScene" uid="uid://v4lb453mo8di" path="res://Scenes/patrolpoint.tscn" id="6_43xkh"]
 [ext_resource type="PackedScene" uid="uid://bp5g1f6khondn" path="res://Scenes/bullet.tscn" id="6_cgdlu"]
 [ext_resource type="PackedScene" uid="uid://d285v72v0g232" path="res://Scenes/win_condition.tscn" id="7_auegh"]
 [ext_resource type="PackedScene" uid="uid://c5ctjtyxw6snc" path="res://Scenes/gui.tscn" id="9_uy0wf"]
@@ -50,139 +51,524 @@ collision_mask = 2
 position = Vector2(6, -25)
 shape = SubResource("RectangleShape2D_j744w")
 
-[node name="Enemy0" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
+[node name="Enemy0" parent="PausableScenes/WinCondition" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_fjhnx")]
 position = Vector2(-415, -73)
+patrol_points = [NodePath("../PP_Enemy0/00"), NodePath("../PP_Enemy0/01")]
 
-[node name="Enemy1" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
+[node name="PP_Enemy0" type="Node2D" parent="PausableScenes/WinCondition"]
+position = Vector2(-412, -67)
+
+[node name="00" parent="PausableScenes/WinCondition/PP_Enemy0" instance=ExtResource("6_43xkh")]
+position = Vector2(-86, -10)
+
+[node name="01" parent="PausableScenes/WinCondition/PP_Enemy0" instance=ExtResource("6_43xkh")]
+position = Vector2(409, -1)
+
+[node name="Enemy1" parent="PausableScenes/WinCondition" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_fjhnx")]
 position = Vector2(-399, -230)
+patrol_points = [NodePath("../PP_Enemy1/00"), NodePath("../PP_Enemy1/01"), NodePath("../PP_Enemy1/02")]
+
+[node name="PP_Enemy1" type="Node2D" parent="PausableScenes/WinCondition"]
+position = Vector2(-396, -226)
+
+[node name="00" parent="PausableScenes/WinCondition/PP_Enemy1" instance=ExtResource("6_43xkh")]
+position = Vector2(-126, 16)
+
+[node name="01" parent="PausableScenes/WinCondition/PP_Enemy1" instance=ExtResource("6_43xkh")]
+position = Vector2(202, 11)
+
+[node name="02" parent="PausableScenes/WinCondition/PP_Enemy1" instance=ExtResource("6_43xkh")]
+position = Vector2(409, -22)
 
 [node name="Enemy2" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
-position = Vector2(-255, -396)
+position = Vector2(-354, -402)
 
-[node name="Enemy3" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
+[node name="Enemy3" parent="PausableScenes/WinCondition" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_fjhnx")]
 position = Vector2(-535, -559)
 EnemyType = 1
+patrol_points = [NodePath("../PP_Enemy3/00"), NodePath("../PP_Enemy3/01")]
+
+[node name="PP_Enemy3" type="Node2D" parent="PausableScenes/WinCondition"]
+position = Vector2(-534, -549)
+
+[node name="00" parent="PausableScenes/WinCondition/PP_Enemy3" instance=ExtResource("6_43xkh")]
+position = Vector2(-36, 38)
+
+[node name="01" parent="PausableScenes/WinCondition/PP_Enemy3" instance=ExtResource("6_43xkh")]
+position = Vector2(176, -28)
 
 [node name="Enemy4" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
 position = Vector2(37, -947)
 EnemyType = 1
 
-[node name="Enemy5" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
+[node name="Enemy5" parent="PausableScenes/WinCondition" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_fjhnx")]
 position = Vector2(9, -775)
+patrol_points = [NodePath("../PP_Enemy5/00"), NodePath("../PP_Enemy5/01"), NodePath("../PP_Enemy5/02")]
+continuous_patrol = true
 
-[node name="Enemy6" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
+[node name="PP_Enemy5" type="Node2D" parent="PausableScenes/WinCondition"]
+position = Vector2(28, -777)
+
+[node name="00" parent="PausableScenes/WinCondition/PP_Enemy5" instance=ExtResource("6_43xkh")]
+position = Vector2(-57, -28)
+
+[node name="01" parent="PausableScenes/WinCondition/PP_Enemy5" instance=ExtResource("6_43xkh")]
+position = Vector2(-16, 94)
+
+[node name="02" parent="PausableScenes/WinCondition/PP_Enemy5" instance=ExtResource("6_43xkh")]
+position = Vector2(39, -28)
+
+[node name="Enemy6" parent="PausableScenes/WinCondition" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_fjhnx")]
 position = Vector2(-546, -902)
+patrol_points = [NodePath("../PP_Enemy6/00"), NodePath("../PP_Enemy6/01")]
 
-[node name="Enemy7" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
+[node name="PP_Enemy6" type="Node2D" parent="PausableScenes/WinCondition"]
+position = Vector2(-418, -874)
+
+[node name="00" parent="PausableScenes/WinCondition/PP_Enemy6" instance=ExtResource("6_43xkh")]
+position = Vector2(-142, 68)
+
+[node name="01" parent="PausableScenes/WinCondition/PP_Enemy6" instance=ExtResource("6_43xkh")]
+position = Vector2(-146, -51)
+
+[node name="Enemy7" parent="PausableScenes/WinCondition" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_fjhnx")]
 position = Vector2(-425, -879)
+patrol_points = [NodePath("../PP_Enemy7/00"), NodePath("../PP_Enemy7/01")]
+
+[node name="PP_Enemy7" type="Node2D" parent="PausableScenes/WinCondition"]
+position = Vector2(-421, -874)
+
+[node name="00" parent="PausableScenes/WinCondition/PP_Enemy7" instance=ExtResource("6_43xkh")]
+position = Vector2(-56, 66)
+
+[node name="01" parent="PausableScenes/WinCondition/PP_Enemy7" instance=ExtResource("6_43xkh")]
+position = Vector2(129.2, 69)
 
 [node name="Enemy8" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
 position = Vector2(-457, -1061)
 EnemyType = 1
 
-[node name="Enemy9" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
+[node name="Enemy9" parent="PausableScenes/WinCondition" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_fjhnx")]
 position = Vector2(-332, -1531)
 EnemyType = 1
+patrol_points = [NodePath("../PP_Enemy9/00"), NodePath("../PP_Enemy9/01")]
 
-[node name="Enemy10" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
+[node name="PP_Enemy9" type="Node2D" parent="PausableScenes/WinCondition"]
+position = Vector2(-333, -1533)
+
+[node name="00" parent="PausableScenes/WinCondition/PP_Enemy9" instance=ExtResource("6_43xkh")]
+position = Vector2(22, 3)
+
+[node name="01" parent="PausableScenes/WinCondition/PP_Enemy9" instance=ExtResource("6_43xkh")]
+position = Vector2(47, 138)
+
+[node name="Enemy10" parent="PausableScenes/WinCondition" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_fjhnx")]
 position = Vector2(-131, -1463)
+patrol_points = [NodePath("../PP_Enemy10/00"), NodePath("../PP_Enemy10/01")]
 
-[node name="Enemy11" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
+[node name="PP_Enemy10" type="Node2D" parent="PausableScenes/WinCondition"]
+position = Vector2(-125, -1461)
+
+[node name="00" parent="PausableScenes/WinCondition/PP_Enemy10" instance=ExtResource("6_43xkh")]
+position = Vector2(33, -105)
+
+[node name="01" parent="PausableScenes/WinCondition/PP_Enemy10" instance=ExtResource("6_43xkh")]
+position = Vector2(22, 17)
+
+[node name="Enemy11" parent="PausableScenes/WinCondition" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_fjhnx")]
 position = Vector2(-184, -1541)
+patrol_points = [NodePath("../PP_Enemy11/00"), NodePath("../PP_Enemy11/01")]
 
-[node name="Enemy12" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
+[node name="PP_Enemy11" type="Node2D" parent="PausableScenes/WinCondition"]
+position = Vector2(-184, -1539)
+
+[node name="00" parent="PausableScenes/WinCondition/PP_Enemy11" instance=ExtResource("6_43xkh")]
+position = Vector2(-22, 93)
+
+[node name="01" parent="PausableScenes/WinCondition/PP_Enemy11" instance=ExtResource("6_43xkh")]
+position = Vector2(-26, -27)
+
+[node name="Enemy12" parent="PausableScenes/WinCondition" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_fjhnx")]
 position = Vector2(119, -1452)
+patrol_points = [NodePath("../PP_Enemy12/00"), NodePath("../PP_Enemy12/01")]
 
-[node name="Enemy13" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
+[node name="PP_Enemy12" type="Node2D" parent="PausableScenes/WinCondition"]
+position = Vector2(121, -1447)
+
+[node name="00" parent="PausableScenes/WinCondition/PP_Enemy12" instance=ExtResource("6_43xkh")]
+position = Vector2(-69, 5)
+
+[node name="01" parent="PausableScenes/WinCondition/PP_Enemy12" instance=ExtResource("6_43xkh")]
+position = Vector2(111, -100)
+
+[node name="Enemy13" parent="PausableScenes/WinCondition" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_fjhnx")]
 position = Vector2(125, -1552)
+patrol_points = [NodePath("../PP_Enemy13/00"), NodePath("../PP_Enemy13/01")]
 
-[node name="Enemy14" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
+[node name="PP_Enemy13" type="Node2D" parent="PausableScenes/WinCondition"]
+position = Vector2(122, -1550)
+
+[node name="00" parent="PausableScenes/WinCondition/PP_Enemy13" instance=ExtResource("6_43xkh")]
+position = Vector2(-22, -9)
+
+[node name="01" parent="PausableScenes/WinCondition/PP_Enemy13" instance=ExtResource("6_43xkh")]
+position = Vector2(-9, -128)
+
+[node name="Enemy14" parent="PausableScenes/WinCondition" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_fjhnx")]
 position = Vector2(309, -1499)
 EnemyType = 1
+patrol_points = [NodePath("../PP_Enemy14/00"), NodePath("../PP_Enemy14/01")]
 
-[node name="Enemy15" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
+[node name="PP_Enemy14" type="Node2D" parent="PausableScenes/WinCondition"]
+position = Vector2(306, -1496)
+
+[node name="00" parent="PausableScenes/WinCondition/PP_Enemy14" instance=ExtResource("6_43xkh")]
+position = Vector2(-71, -1)
+
+[node name="01" parent="PausableScenes/WinCondition/PP_Enemy14" instance=ExtResource("6_43xkh")]
+position = Vector2(36, 1)
+
+[node name="Enemy15" parent="PausableScenes/WinCondition" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_fjhnx")]
 position = Vector2(-617, -2124)
 EnemyType = 1
+patrol_points = [NodePath("../PP_Enemy15/00"), NodePath("../PP_Enemy15/01")]
 
-[node name="Enemy16" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
+[node name="PP_Enemy15" type="Node2D" parent="PausableScenes/WinCondition"]
+position = Vector2(-618, -2124)
+
+[node name="00" parent="PausableScenes/WinCondition/PP_Enemy15" instance=ExtResource("6_43xkh")]
+position = Vector2(7, 129)
+
+[node name="01" parent="PausableScenes/WinCondition/PP_Enemy15" instance=ExtResource("6_43xkh")]
+position = Vector2(-23, 21)
+
+[node name="Enemy16" parent="PausableScenes/WinCondition" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_fjhnx")]
 position = Vector2(-757, -1918)
 EnemyType = 1
+patrol_points = [NodePath("../PP_Enemy16/00"), NodePath("../PP_Enemy16/01"), NodePath("../PP_Enemy16/02")]
+continuous_patrol = true
 
-[node name="Enemy17" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
+[node name="PP_Enemy16" type="Node2D" parent="PausableScenes/WinCondition"]
+position = Vector2(-752, -1919)
+
+[node name="00" parent="PausableScenes/WinCondition/PP_Enemy16" instance=ExtResource("6_43xkh")]
+position = Vector2(58, 174)
+
+[node name="01" parent="PausableScenes/WinCondition/PP_Enemy16" instance=ExtResource("6_43xkh")]
+position = Vector2(-102, 66)
+
+[node name="02" parent="PausableScenes/WinCondition/PP_Enemy16" instance=ExtResource("6_43xkh")]
+position = Vector2(99, 11)
+
+[node name="Enemy17" parent="PausableScenes/WinCondition" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_fjhnx")]
 position = Vector2(-13, -2035)
 EnemyType = 1
+patrol_points = [NodePath("../PP_Enemy17/00"), NodePath("../PP_Enemy17/01")]
 
-[node name="Enemy18" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
+[node name="PP_Enemy17" type="Node2D" parent="PausableScenes/WinCondition"]
+position = Vector2(-17, -2039)
+
+[node name="00" parent="PausableScenes/WinCondition/PP_Enemy17" instance=ExtResource("6_43xkh")]
+position = Vector2(-12, -235)
+
+[node name="01" parent="PausableScenes/WinCondition/PP_Enemy17" instance=ExtResource("6_43xkh")]
+position = Vector2(-14, -85)
+
+[node name="Enemy18" parent="PausableScenes/WinCondition" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_fjhnx")]
 position = Vector2(-225, -2120)
 EnemyType = 1
+patrol_points = [NodePath("../PP_Enemy18/00"), NodePath("../PP_Enemy18/01")]
 
-[node name="Enemy19" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
+[node name="PP_Enemy18" type="Node2D" parent="PausableScenes/WinCondition"]
+position = Vector2(-218, -2127)
+
+[node name="00" parent="PausableScenes/WinCondition/PP_Enemy18" instance=ExtResource("6_43xkh")]
+position = Vector2(4, 89)
+
+[node name="01" parent="PausableScenes/WinCondition/PP_Enemy18" instance=ExtResource("6_43xkh")]
+position = Vector2(26, -3)
+
+[node name="Enemy19" parent="PausableScenes/WinCondition" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_fjhnx")]
 position = Vector2(-411, -2035)
 EnemyType = 1
+patrol_points = [NodePath("../PP_Enemy19/00"), NodePath("../PP_Enemy19/01")]
 
-[node name="Enemy20" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
+[node name="PP_Enemy19" type="Node2D" parent="PausableScenes/WinCondition"]
+position = Vector2(-413, -2038)
+
+[node name="00" parent="PausableScenes/WinCondition/PP_Enemy19" instance=ExtResource("6_43xkh")]
+position = Vector2(5, 8)
+
+[node name="01" parent="PausableScenes/WinCondition/PP_Enemy19" instance=ExtResource("6_43xkh")]
+position = Vector2(9, -96)
+
+[node name="Enemy20" parent="PausableScenes/WinCondition" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_fjhnx")]
 position = Vector2(-494, -2092)
+patrol_points = [NodePath("../PP_Enemy20/00"), NodePath("../PP_Enemy20/01")]
 
-[node name="Enemy21" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
+[node name="PP_Enemy20" type="Node2D" parent="PausableScenes/WinCondition"]
+position = Vector2(-499, -2092)
+
+[node name="00" parent="PausableScenes/WinCondition/PP_Enemy20" instance=ExtResource("6_43xkh")]
+position = Vector2(-5, 76)
+
+[node name="01" parent="PausableScenes/WinCondition/PP_Enemy20" instance=ExtResource("6_43xkh")]
+position = Vector2(-52, -38)
+
+[node name="Enemy21" parent="PausableScenes/WinCondition" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_fjhnx")]
 position = Vector2(-157, -2045)
+patrol_points = [NodePath("../PP_Enemy21/00"), NodePath("../PP_Enemy21/01")]
 
-[node name="Enemy22" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
+[node name="PP_Enemy21" type="Node2D" parent="PausableScenes/WinCondition"]
+position = Vector2(-155, -2043)
+
+[node name="00" parent="PausableScenes/WinCondition/PP_Enemy21" instance=ExtResource("6_43xkh")]
+position = Vector2(12, -31)
+
+[node name="01" parent="PausableScenes/WinCondition/PP_Enemy21" instance=ExtResource("6_43xkh")]
+position = Vector2(168, -19)
+
+[node name="Enemy22" parent="PausableScenes/WinCondition" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_fjhnx")]
 position = Vector2(-426, -1914)
+patrol_points = [NodePath("../PP_Enemy22/00"), NodePath("../PP_Enemy22/01"), NodePath("../PP_Enemy22/02"), NodePath("../PP_Enemy22/03")]
+continuous_patrol = true
 
-[node name="Enemy23" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
+[node name="PP_Enemy22" type="Node2D" parent="PausableScenes/WinCondition"]
+position = Vector2(-425, -1915)
+
+[node name="00" parent="PausableScenes/WinCondition/PP_Enemy22" instance=ExtResource("6_43xkh")]
+position = Vector2(-59, -15)
+
+[node name="01" parent="PausableScenes/WinCondition/PP_Enemy22" instance=ExtResource("6_43xkh")]
+position = Vector2(320, -11)
+
+[node name="02" parent="PausableScenes/WinCondition/PP_Enemy22" instance=ExtResource("6_43xkh")]
+position = Vector2(212, 160)
+
+[node name="03" parent="PausableScenes/WinCondition/PP_Enemy22" instance=ExtResource("6_43xkh")]
+position = Vector2(-117, 163)
+
+[node name="Enemy23" parent="PausableScenes/WinCondition" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_fjhnx")]
 position = Vector2(-417, -2762)
+patrol_points = [NodePath("../PP_Enemy23/00"), NodePath("../PP_Enemy23/01")]
+
+[node name="PP_Enemy23" type="Node2D" parent="PausableScenes/WinCondition"]
+position = Vector2(-409, -2760)
+
+[node name="00" parent="PausableScenes/WinCondition/PP_Enemy23" instance=ExtResource("6_43xkh")]
+position = Vector2(-7, -55)
+
+[node name="01" parent="PausableScenes/WinCondition/PP_Enemy23" instance=ExtResource("6_43xkh")]
+position = Vector2(-6, 291)
 
 [node name="Enemy24" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
 position = Vector2(-539, -3258)
 
-[node name="Enemy25" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
+[node name="Enemy25" parent="PausableScenes/WinCondition" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_fjhnx")]
 position = Vector2(-565, -3525)
+patrol_points = [NodePath("../PP_Enemy25/00"), NodePath("../PP_Enemy25/01")]
 
-[node name="Enemy27" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
+[node name="PP_Enemy25" type="Node2D" parent="PausableScenes/WinCondition"]
+position = Vector2(-558, -3528)
+
+[node name="00" parent="PausableScenes/WinCondition/PP_Enemy25" instance=ExtResource("6_43xkh")]
+position = Vector2(10, -114)
+
+[node name="01" parent="PausableScenes/WinCondition/PP_Enemy25" instance=ExtResource("6_43xkh")]
+position = Vector2(12, 70)
+
+[node name="Enemy27" parent="PausableScenes/WinCondition" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_fjhnx")]
 position = Vector2(-778, -3670)
 EnemyType = 1
+patrol_points = [NodePath("../PP_Enemy27/00"), NodePath("../PP_Enemy27/01"), NodePath("../PP_Enemy27/02")]
 
-[node name="Enemy28" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
+[node name="PP_Enemy27" type="Node2D" parent="PausableScenes/WinCondition"]
+position = Vector2(-779, -3671)
+
+[node name="00" parent="PausableScenes/WinCondition/PP_Enemy27" instance=ExtResource("6_43xkh")]
+position = Vector2(77, -4)
+
+[node name="01" parent="PausableScenes/WinCondition/PP_Enemy27" instance=ExtResource("6_43xkh")]
+position = Vector2(9, 54)
+
+[node name="02" parent="PausableScenes/WinCondition/PP_Enemy27" instance=ExtResource("6_43xkh")]
+position = Vector2(-2, -4)
+
+[node name="Enemy28" parent="PausableScenes/WinCondition" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_fjhnx")]
 position = Vector2(-735, -3889)
 EnemyType = 1
+patrol_points = [NodePath("../PP_Enemy28/00"), NodePath("../PP_Enemy28/01")]
 
-[node name="Enemy29" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
+[node name="PP_Enemy28" type="Node2D" parent="PausableScenes/WinCondition"]
+position = Vector2(-734, -3889)
+
+[node name="00" parent="PausableScenes/WinCondition/PP_Enemy28" instance=ExtResource("6_43xkh")]
+position = Vector2(-1, -44)
+
+[node name="01" parent="PausableScenes/WinCondition/PP_Enemy28" instance=ExtResource("6_43xkh")]
+position = Vector2(-2, 39)
+
+[node name="Enemy29" parent="PausableScenes/WinCondition" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_fjhnx")]
 position = Vector2(-742, -3812)
+patrol_points = [NodePath("../PP_Enemy29/00"), NodePath("../PP_Enemy29/01")]
 
-[node name="Enemy30" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
-position = Vector2(-505, -3742)
+[node name="PP_Enemy29" type="Node2D" parent="PausableScenes/WinCondition"]
+position = Vector2(-744, -3809)
 
-[node name="Enemy26" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
+[node name="00" parent="PausableScenes/WinCondition/PP_Enemy29" instance=ExtResource("6_43xkh")]
+position = Vector2(7, -21)
+
+[node name="01" parent="PausableScenes/WinCondition/PP_Enemy29" instance=ExtResource("6_43xkh")]
+position = Vector2(8, 88)
+
+[node name="Enemy26" parent="PausableScenes/WinCondition" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_fjhnx")]
 position = Vector2(-643, -3450)
+patrol_points = [NodePath("../PP_Enemy26/00"), NodePath("../PP_Enemy26/01")]
 
-[node name="Enemy31" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
+[node name="PP_Enemy26" type="Node2D" parent="PausableScenes/WinCondition"]
+position = Vector2(-646, -3449)
+
+[node name="00" parent="PausableScenes/WinCondition/PP_Enemy26" instance=ExtResource("6_43xkh")]
+position = Vector2(25, 9)
+
+[node name="01" parent="PausableScenes/WinCondition/PP_Enemy26" instance=ExtResource("6_43xkh")]
+position = Vector2(-113, -49)
+
+[node name="Enemy31" parent="PausableScenes/WinCondition" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_fjhnx")]
 position = Vector2(-698, -3303)
 EnemyType = 1
+patrol_points = [NodePath("../PP_Enemy31/00"), NodePath("../PP_Enemy31/01")]
 
-[node name="Enemy32" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
+[node name="PP_Enemy31" type="Node2D" parent="PausableScenes/WinCondition"]
+position = Vector2(-699, -3306)
+
+[node name="00" parent="PausableScenes/WinCondition/PP_Enemy31" instance=ExtResource("6_43xkh")]
+position = Vector2(-67, -67)
+
+[node name="01" parent="PausableScenes/WinCondition/PP_Enemy31" instance=ExtResource("6_43xkh")]
+position = Vector2(-37, 138)
+
+[node name="Enemy30" parent="PausableScenes/WinCondition" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_fjhnx")]
+position = Vector2(-505, -3742)
+patrol_points = [NodePath("../PP_Enemy30/00"), NodePath("../PP_Enemy30/01"), NodePath("../PP_Enemy30/02")]
+
+[node name="PP_Enemy30" type="Node2D" parent="PausableScenes/WinCondition"]
+position = Vector2(-506, -3742)
+
+[node name="00" parent="PausableScenes/WinCondition/PP_Enemy30" instance=ExtResource("6_43xkh")]
+position = Vector2(-17, -23)
+
+[node name="01" parent="PausableScenes/WinCondition/PP_Enemy30" instance=ExtResource("6_43xkh")]
+position = Vector2(91, -134)
+
+[node name="02" parent="PausableScenes/WinCondition/PP_Enemy30" instance=ExtResource("6_43xkh")]
+position = Vector2(-34, -130)
+
+[node name="Enemy32" parent="PausableScenes/WinCondition" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_fjhnx")]
 position = Vector2(235, -3445)
 EnemyType = 1
+patrol_points = [NodePath("../PP_Enemy32/00"), NodePath("../PP_Enemy32/01"), NodePath("../PP_Enemy32/02")]
 
-[node name="Enemy33" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
+[node name="PP_Enemy32" type="Node2D" parent="PausableScenes/WinCondition"]
+position = Vector2(229, -3450)
+
+[node name="00" parent="PausableScenes/WinCondition/PP_Enemy32" instance=ExtResource("6_43xkh")]
+position = Vector2(-85, 14)
+
+[node name="01" parent="PausableScenes/WinCondition/PP_Enemy32" instance=ExtResource("6_43xkh")]
+position = Vector2(-226, -35)
+
+[node name="02" parent="PausableScenes/WinCondition/PP_Enemy32" instance=ExtResource("6_43xkh")]
+position = Vector2(23, -35)
+
+[node name="Enemy33" parent="PausableScenes/WinCondition" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_fjhnx")]
 position = Vector2(130, -3589)
+patrol_points = [NodePath("../PP_Enemy33/00"), NodePath("../PP_Enemy33/01")]
 
-[node name="Enemy34" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
+[node name="PP_Enemy33" type="Node2D" parent="PausableScenes/WinCondition"]
+position = Vector2(130, -3590)
+
+[node name="00" parent="PausableScenes/WinCondition/PP_Enemy33" instance=ExtResource("6_43xkh")]
+position = Vector2(-24, -14)
+
+[node name="01" parent="PausableScenes/WinCondition/PP_Enemy33" instance=ExtResource("6_43xkh")]
+position = Vector2(65, 54)
+
+[node name="Enemy34" parent="PausableScenes/WinCondition" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_fjhnx")]
 position = Vector2(394, -3441)
 EnemyType = 1
+patrol_points = [NodePath("../PP_Enemy34/00"), NodePath("../PP_Enemy34/01")]
 
-[node name="Enemy35" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
+[node name="PP_Enemy34" type="Node2D" parent="PausableScenes/WinCondition"]
+position = Vector2(396, -3438)
+
+[node name="00" parent="PausableScenes/WinCondition/PP_Enemy34" instance=ExtResource("6_43xkh")]
+position = Vector2(-11, 1)
+
+[node name="01" parent="PausableScenes/WinCondition/PP_Enemy34" instance=ExtResource("6_43xkh")]
+position = Vector2(-29, -134)
+
+[node name="Enemy35" parent="PausableScenes/WinCondition" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_fjhnx")]
 position = Vector2(129, -3833)
+patrol_points = [NodePath("../PP_Enemy35/00"), NodePath("../PP_Enemy35/01")]
+continuous_patrol = true
 
-[node name="Enemy36" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
+[node name="PP_Enemy35" type="Node2D" parent="PausableScenes/WinCondition"]
+position = Vector2(133, -3833)
+
+[node name="00" parent="PausableScenes/WinCondition/PP_Enemy35" instance=ExtResource("6_43xkh")]
+position = Vector2(-3, 137)
+
+[node name="01" parent="PausableScenes/WinCondition/PP_Enemy35" instance=ExtResource("6_43xkh")]
+position = Vector2(-4, -23)
+
+[node name="Enemy36" parent="PausableScenes/WinCondition" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_fjhnx")]
 position = Vector2(386, -3711)
 EnemyType = 1
+patrol_points = [NodePath("../PP_Enemy36/00"), NodePath("../PP_Enemy36/01"), NodePath("../PP_Enemy36/02")]
 
-[node name="Enemy37" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
+[node name="PP_Enemy36" type="Node2D" parent="PausableScenes/WinCondition"]
+position = Vector2(385, -3711)
+
+[node name="00" parent="PausableScenes/WinCondition/PP_Enemy36" instance=ExtResource("6_43xkh")]
+position = Vector2(-70, 40)
+
+[node name="01" parent="PausableScenes/WinCondition/PP_Enemy36" instance=ExtResource("6_43xkh")]
+position = Vector2(-78, -207)
+
+[node name="02" parent="PausableScenes/WinCondition/PP_Enemy36" instance=ExtResource("6_43xkh")]
+position = Vector2(2, -101)
+
+[node name="Enemy37" parent="PausableScenes/WinCondition" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_fjhnx")]
 position = Vector2(378, -4087)
 EnemyType = 1
+patrol_points = [NodePath("../PP_Enemy37/00"), NodePath("../PP_Enemy37/01"), NodePath("../PP_Enemy37/02")]
+continuous_patrol = true
 
-[node name="Enemy38" parent="PausableScenes/WinCondition" instance=ExtResource("3_fjhnx")]
+[node name="PP_Enemy37" type="Node2D" parent="PausableScenes/WinCondition"]
+position = Vector2(382, -4089)
+
+[node name="00" parent="PausableScenes/WinCondition/PP_Enemy37" instance=ExtResource("6_43xkh")]
+position = Vector2(-69, 92)
+
+[node name="01" parent="PausableScenes/WinCondition/PP_Enemy37" instance=ExtResource("6_43xkh")]
+position = Vector2(-112, -30)
+
+[node name="02" parent="PausableScenes/WinCondition/PP_Enemy37" instance=ExtResource("6_43xkh")]
+position = Vector2(17, -24)
+
+[node name="Enemy38" parent="PausableScenes/WinCondition" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_fjhnx")]
 position = Vector2(126, -3974)
+patrol_points = [NodePath("../PP_Enemy38/00"), NodePath("../PP_Enemy38/01")]
+
+[node name="PP_Enemy38" type="Node2D" parent="PausableScenes/WinCondition"]
+position = Vector2(126, -3974)
+
+[node name="00" parent="PausableScenes/WinCondition/PP_Enemy38" instance=ExtResource("6_43xkh")]
+position = Vector2(11, -25)
+
+[node name="01" parent="PausableScenes/WinCondition/PP_Enemy38" instance=ExtResource("6_43xkh")]
+position = Vector2(-132, -91)
 
 [node name="Player" parent="PausableScenes" node_paths=PackedStringArray("level_leave_node") instance=ExtResource("3_x67pf")]
 position = Vector2(-190, 550)

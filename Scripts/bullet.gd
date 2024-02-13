@@ -46,7 +46,7 @@ func _on_area_entered(area):
 				self.hide()
 			elif area.owner.is_in_group("Enemies"):
 				#gun_man.Increase_Spread_Value()
-				print(area.get("monitorable"))
+				#print(area.get("monitorable"))
 				area.owner.TakeDamage(1)
 				self.hide()
 				
