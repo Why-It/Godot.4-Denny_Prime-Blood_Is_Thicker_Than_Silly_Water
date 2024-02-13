@@ -1,41 +1,60 @@
-[gd_scene load_steps=29 format=3 uid="uid://bjxuanrrabulo"]
+[gd_scene load_steps=48 format=3 uid="uid://bjxuanrrabulo"]
 
 [ext_resource type="Script" path="res://Scripts/audio_manager.gd" id="1_he6tr"]
 [ext_resource type="AudioStream" uid="uid://d4jbmd1ot81g8" path="res://Audio/Music/kaleidoplasm - synthetic forgiveness.Mp3.mp3" id="2_5yayl"]
-[ext_resource type="AudioStream" uid="uid://vx321lmfr0tx" path="res://Audio/SFX/Alert_0.wav" id="3_1y1ug"]
 [ext_resource type="AudioStream" uid="uid://cry77bnyhr7wk" path="res://Audio/Music/Jesse Spillane - Level 1.mp3" id="3_n2ooj"]
 [ext_resource type="AudioStream" uid="uid://cs0j53go5ma77" path="res://Audio/Music/Broke For Free - Caught In The Beat.mp3" id="4_82dcs"]
-[ext_resource type="AudioStream" uid="uid://dkhc1rudkusxn" path="res://Audio/SFX/Alert_1.wav" id="4_pt2xc"]
-[ext_resource type="AudioStream" uid="uid://d2rrvcxam3f3a" path="res://Audio/SFX/Alert_2.wav" id="5_6vkua"]
 [ext_resource type="AudioStream" uid="uid://dlkkxv5ofl56t" path="res://Audio/Music/Broke For Free - Covered In Oil.mp3" id="5_atu4v"]
 [ext_resource type="AudioStream" uid="uid://doly6q2frmn6p" path="res://Audio/Music/Broke For Free - Nothing Like Captain Crunch.mp3" id="6_pqgtw"]
-[ext_resource type="AudioStream" uid="uid://brx1ukl6m54t2" path="res://Audio/SFX/Alert_3.wav" id="6_rhsl8"]
-[ext_resource type="AudioStream" uid="uid://ck4lult6jn01n" path="res://Audio/SFX/Alert_4.wav" id="7_1jy7t"]
-[ext_resource type="AudioStream" uid="uid://bag4aa2rq6q4v" path="res://Audio/SFX/die_0.wav" id="8_3020m"]
-[ext_resource type="AudioStream" uid="uid://cnn7ld01ryl6p" path="res://Audio/SFX/hurt_0.wav" id="9_o8x3o"]
-[ext_resource type="AudioStream" uid="uid://dmd1o3nd8pdig" path="res://Audio/SFX/hurt_1.wav" id="10_xhxf1"]
-[ext_resource type="AudioStream" uid="uid://daewjjdy1hr8q" path="res://Audio/SFX/swing_0.wav" id="11_kjp8j"]
-[ext_resource type="AudioStream" uid="uid://c7tw45kwed01i" path="res://Audio/SFX/swing_1.wav" id="12_mob1e"]
-[ext_resource type="AudioStream" uid="uid://cw5dtr6i1tt5v" path="res://Audio/SFX/swing_2.wav" id="13_ti8hs"]
+[ext_resource type="AudioStream" uid="uid://y0nbao0t8vxv" path="res://Audio/SFX/Alert_00.mp3" id="7_iqym4"]
+[ext_resource type="AudioStream" uid="uid://brg7quf3sf48h" path="res://Audio/SFX/Alert_01.mp3" id="8_dv6gr"]
+[ext_resource type="AudioStream" uid="uid://dndehg4sq24j" path="res://Audio/SFX/Alert_02.mp3" id="9_tu8kd"]
+[ext_resource type="AudioStream" uid="uid://bqjvtd2pw0oln" path="res://Audio/SFX/Alert_03.mp3" id="10_j4jgw"]
+[ext_resource type="AudioStream" uid="uid://dckeiga3jrty2" path="res://Audio/SFX/Alert_04.mp3" id="11_0ds3r"]
+[ext_resource type="AudioStream" uid="uid://ccaueib6td8m0" path="res://Audio/SFX/Alert_05.mp3" id="12_ha4s4"]
+[ext_resource type="AudioStream" uid="uid://dcsaanbnu54vu" path="res://Audio/SFX/Alert_06.mp3" id="13_1tne5"]
+[ext_resource type="AudioStream" uid="uid://bks2dci43347p" path="res://Audio/SFX/Alert_07.mp3" id="14_o3lo0"]
+[ext_resource type="AudioStream" uid="uid://drdah5lfwr4mu" path="res://Audio/SFX/Alert_08.mp3" id="15_6hec3"]
 [ext_resource type="AudioStream" uid="uid://ow0l5mdksupi" path="res://Audio/Guns/16_close.wav" id="15_i7dqo"]
 [ext_resource type="AudioStream" uid="uid://t7y5buw0i3ro" path="res://Audio/Guns/16_load_chamber.wav" id="16_1ypdv"]
+[ext_resource type="AudioStream" uid="uid://o5dhhdonars4" path="res://Audio/SFX/Alert_09.mp3" id="16_b6fkg"]
 [ext_resource type="AudioStream" uid="uid://bylmt7i5hi0h2" path="res://Audio/Guns/16_open_eject.wav" id="17_ol2eh"]
+[ext_resource type="AudioStream" uid="uid://cmrka4h7wehst" path="res://Audio/SFX/Alert_10.mp3" id="17_pxp87"]
 [ext_resource type="AudioStream" uid="uid://58ohd8acs2te" path="res://Audio/Guns/AK_bolt.wav" id="18_50hll"]
+[ext_resource type="AudioStream" uid="uid://cj6cwmt6een21" path="res://Audio/SFX/Alert_11.mp3" id="18_r218b"]
+[ext_resource type="AudioStream" uid="uid://b8aedlugqo1g8" path="res://Audio/SFX/Alert_12.mp3" id="19_6x832"]
 [ext_resource type="AudioStream" uid="uid://b8du2860p0iyn" path="res://Audio/Guns/double_load.wav" id="19_f28xu"]
+[ext_resource type="AudioStream" uid="uid://bnqkksds81yi0" path="res://Audio/SFX/die_00.mp3" id="20_drov0"]
 [ext_resource type="AudioStream" uid="uid://byhq6fi2kjru8" path="res://Audio/Guns/pump_cycle.wav" id="20_y485x"]
+[ext_resource type="AudioStream" uid="uid://csxu5i6sent5i" path="res://Audio/SFX/die_01.mp3" id="21_0e3a1"]
 [ext_resource type="AudioStream" uid="uid://c8t2p6qic0gxt" path="res://Audio/Guns/pump_shot_and_cycle.wav" id="21_qgcb4"]
+[ext_resource type="AudioStream" uid="uid://bey214aubx073" path="res://Audio/SFX/die_02.mp3" id="22_jim5d"]
 [ext_resource type="AudioStream" uid="uid://cbmxwa22dx6hk" path="res://Audio/Guns/Reload_Pump_0.wav" id="22_t7uu8"]
 [ext_resource type="AudioStream" uid="uid://b2lpv2lnjbxyn" path="res://Audio/Guns/Reload_Pump_1.wav" id="23_3c06l"]
+[ext_resource type="AudioStream" uid="uid://d0r2u2t7scrk2" path="res://Audio/SFX/die_03.mp3" id="23_qn1jl"]
 [ext_resource type="AudioStream" uid="uid://cwt5tg8vnx660" path="res://Audio/Guns/Reload_Pump_2.wav" id="24_graqs"]
+[ext_resource type="AudioStream" uid="uid://dpqn8xjdk2013" path="res://Audio/SFX/die_04.mp3" id="24_ofib7"]
+[ext_resource type="AudioStream" uid="uid://ctvulmnwwsq88" path="res://Audio/SFX/die_05.mp3" id="25_5m84w"]
 [ext_resource type="AudioStream" uid="uid://chj2f7fak0m4n" path="res://Audio/Guns/semi_shot_and_cycle.wav" id="25_im5in"]
+[ext_resource type="AudioStream" uid="uid://dojds1pgn2w8l" path="res://Audio/SFX/die_06.mp3" id="26_xqbtn"]
+[ext_resource type="AudioStream" uid="uid://b8woyi1dououf" path="res://Audio/SFX/die_07.mp3" id="27_4x1xv"]
+[ext_resource type="AudioStream" uid="uid://bsu7n7ufw78am" path="res://Audio/SFX/die_08.mp3" id="28_vvxcy"]
+[ext_resource type="AudioStream" uid="uid://ucpy351asb7a" path="res://Audio/SFX/die_09.mp3" id="29_hvu6q"]
+[ext_resource type="AudioStream" uid="uid://cbmcb1hugb7tq" path="res://Audio/SFX/die_10.mp3" id="30_astq4"]
+[ext_resource type="AudioStream" uid="uid://dfbir8mxmpnxv" path="res://Audio/SFX/die_11.mp3" id="31_ji2lc"]
+[ext_resource type="AudioStream" uid="uid://ddsex3rr68jv3" path="res://Audio/SFX/hurt_0.mp3" id="32_bmqxg"]
+[ext_resource type="AudioStream" uid="uid://bjgoxh8dynq6" path="res://Audio/SFX/swing_0.mp3" id="33_uxv8r"]
+[ext_resource type="AudioStream" uid="uid://kh7qwqp2fon2" path="res://Audio/SFX/swing_1.mp3" id="34_6acpi"]
+[ext_resource type="AudioStream" uid="uid://bskehprvdll5y" path="res://Audio/SFX/swing_2.mp3" id="35_20eqb"]
+[ext_resource type="AudioStream" uid="uid://buc071r1m71m0" path="res://Audio/SFX/swing_3.mp3" id="36_kuibx"]
 
 [node name="AudioManager" type="Node" node_paths=PackedStringArray("_alert_sfx", "_swing", "_death", "_hurt", "_pump_reload")]
 process_mode = 3
 script = ExtResource("1_he6tr")
-_alert_sfx = [NodePath("SFX/Alert_0"), NodePath("SFX/Alert_1"), NodePath("SFX/Alert_2"), NodePath("SFX/Alert_3"), NodePath("SFX/Alert_4")]
-_swing = [NodePath("SFX/Swing_0"), NodePath("SFX/Swing_1"), NodePath("SFX/Swing_2")]
-_death = [NodePath("SFX/Die_0")]
-_hurt = [NodePath("SFX/Hurt_0"), NodePath("SFX/Hurt_1")]
+_alert_sfx = [NodePath("SFX/Alert_00"), NodePath("SFX/Alert_01"), NodePath("SFX/Alert_02"), NodePath("SFX/Alert_03"), NodePath("SFX/Alert_04"), NodePath("SFX/Alert_05"), NodePath("SFX/Alert_06"), NodePath("SFX/Alert_07"), NodePath("SFX/Alert_08"), NodePath("SFX/Alert_09"), NodePath("SFX/Alert_10"), NodePath("SFX/Alert_11"), NodePath("SFX/Alert_12")]
+_swing = [NodePath("SFX/Swing_00"), NodePath("SFX/Swing_01"), NodePath("SFX/Swing_02"), NodePath("SFX/Swing_03")]
+_death = [NodePath("SFX/Die_00"), NodePath("SFX/Die_01"), NodePath("SFX/Die_02"), NodePath("SFX/Die_03"), NodePath("SFX/Die_04"), NodePath("SFX/Die_05"), NodePath("SFX/Die_06"), NodePath("SFX/Die_07"), NodePath("SFX/Die_08"), NodePath("SFX/Die_09"), NodePath("SFX/Die_10"), NodePath("SFX/Die_11")]
+_hurt = [NodePath("SFX/Hurt_00")]
 _pump_reload = [NodePath("Guns/pump_reload_0"), NodePath("Guns/pump_reload_1"), NodePath("Guns/pump_reload_2")]
 
 [node name="Music" type="Node2D" parent="."]
@@ -67,92 +86,209 @@ bus = &"MusicBus"
 
 [node name="SFX" type="Node2D" parent="."]
 
-[node name="Alert_0" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("3_1y1ug")
+[node name="Alert_00" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("7_iqym4")
+volume_db = -4.685
 bus = &"SFXBus"
 
-[node name="Alert_1" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("4_pt2xc")
+[node name="Alert_01" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("8_dv6gr")
+volume_db = -4.685
 bus = &"SFXBus"
 
-[node name="Alert_2" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("5_6vkua")
+[node name="Alert_02" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("9_tu8kd")
+volume_db = -4.685
 bus = &"SFXBus"
 
-[node name="Alert_3" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("6_rhsl8")
+[node name="Alert_03" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("10_j4jgw")
+volume_db = -4.685
 bus = &"SFXBus"
 
-[node name="Alert_4" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("7_1jy7t")
+[node name="Alert_04" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("11_0ds3r")
+volume_db = -4.685
 bus = &"SFXBus"
 
-[node name="Die_0" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("8_3020m")
+[node name="Alert_05" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("12_ha4s4")
+volume_db = -4.685
 bus = &"SFXBus"
 
-[node name="Hurt_0" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("9_o8x3o")
+[node name="Alert_06" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("13_1tne5")
+volume_db = -4.685
 bus = &"SFXBus"
 
-[node name="Hurt_1" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("10_xhxf1")
+[node name="Alert_07" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("14_o3lo0")
+volume_db = -4.685
 bus = &"SFXBus"
 
-[node name="Swing_0" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("11_kjp8j")
+[node name="Alert_08" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("15_6hec3")
+volume_db = -4.685
 bus = &"SFXBus"
 
-[node name="Swing_1" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("12_mob1e")
+[node name="Alert_09" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("16_b6fkg")
+volume_db = -4.685
 bus = &"SFXBus"
 
-[node name="Swing_2" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("13_ti8hs")
+[node name="Alert_10" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("17_pxp87")
+volume_db = -4.685
+bus = &"SFXBus"
+
+[node name="Alert_11" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("18_r218b")
+volume_db = -4.685
+bus = &"SFXBus"
+
+[node name="Alert_12" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("19_6x832")
+volume_db = -4.685
+bus = &"SFXBus"
+
+[node name="Die_00" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("20_drov0")
+volume_db = -4.685
+bus = &"SFXBus"
+
+[node name="Die_01" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("21_0e3a1")
+volume_db = -4.685
+bus = &"SFXBus"
+
+[node name="Die_02" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("22_jim5d")
+volume_db = -4.685
+bus = &"SFXBus"
+
+[node name="Die_03" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("23_qn1jl")
+volume_db = -4.685
+bus = &"SFXBus"
+
+[node name="Die_04" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("24_ofib7")
+volume_db = -4.685
+bus = &"SFXBus"
+
+[node name="Die_05" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("25_5m84w")
+volume_db = -4.685
+bus = &"SFXBus"
+
+[node name="Die_06" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("26_xqbtn")
+volume_db = -4.685
+bus = &"SFXBus"
+
+[node name="Die_07" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("27_4x1xv")
+volume_db = -4.685
+bus = &"SFXBus"
+
+[node name="Die_08" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("28_vvxcy")
+volume_db = -4.685
+bus = &"SFXBus"
+
+[node name="Die_09" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("29_hvu6q")
+volume_db = -4.685
+bus = &"SFXBus"
+
+[node name="Die_10" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("30_astq4")
+volume_db = -4.685
+bus = &"SFXBus"
+
+[node name="Die_11" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("31_ji2lc")
+volume_db = -4.685
+bus = &"SFXBus"
+
+[node name="Hurt_00" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("32_bmqxg")
+volume_db = -4.685
+bus = &"SFXBus"
+
+[node name="Swing_00" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("33_uxv8r")
+volume_db = -4.685
+bus = &"SFXBus"
+
+[node name="Swing_01" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("34_6acpi")
+volume_db = -4.685
+bus = &"SFXBus"
+
+[node name="Swing_02" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("35_20eqb")
+volume_db = -4.685
+bus = &"SFXBus"
+
+[node name="Swing_03" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("36_kuibx")
+volume_db = -4.685
 bus = &"SFXBus"
 
 [node name="Guns" type="Node2D" parent="."]
 
 [node name="16_close" type="AudioStreamPlayer" parent="Guns"]
 stream = ExtResource("15_i7dqo")
+volume_db = 1.874
 bus = &"SFXBus"
 
 [node name="16_load_chamber" type="AudioStreamPlayer" parent="Guns"]
 stream = ExtResource("16_1ypdv")
+volume_db = 1.874
 bus = &"SFXBus"
 
 [node name="16_open_eject" type="AudioStreamPlayer" parent="Guns"]
 stream = ExtResource("17_ol2eh")
+volume_db = 1.874
 bus = &"SFXBus"
 
 [node name="ak_bolt" type="AudioStreamPlayer" parent="Guns"]
 stream = ExtResource("18_50hll")
+volume_db = 1.874
 bus = &"SFXBus"
 
 [node name="double_load" type="AudioStreamPlayer" parent="Guns"]
 stream = ExtResource("19_f28xu")
+volume_db = 1.874
 bus = &"SFXBus"
 
 [node name="pump_cycle" type="AudioStreamPlayer" parent="Guns"]
 stream = ExtResource("20_y485x")
+volume_db = 1.874
 bus = &"SFXBus"
 
 [node name="pump_shot_and_cycle" type="AudioStreamPlayer" parent="Guns"]
 stream = ExtResource("21_qgcb4")
+volume_db = 1.874
 bus = &"SFXBus"
 
 [node name="pump_reload_0" type="AudioStreamPlayer" parent="Guns"]
 stream = ExtResource("22_t7uu8")
+volume_db = 1.874
 bus = &"SFXBus"
 
 [node name="pump_reload_1" type="AudioStreamPlayer" parent="Guns"]
 stream = ExtResource("23_3c06l")
+volume_db = 1.874
 bus = &"SFXBus"
 
 [node name="pump_reload_2" type="AudioStreamPlayer" parent="Guns"]
 stream = ExtResource("24_graqs")
+volume_db = 1.874
 bus = &"SFXBus"
 
 [node name="semi_shot_and_cycle" type="AudioStreamPlayer" parent="Guns"]
 stream = ExtResource("25_im5in")
+volume_db = 1.874
 bus = &"SFXBus"

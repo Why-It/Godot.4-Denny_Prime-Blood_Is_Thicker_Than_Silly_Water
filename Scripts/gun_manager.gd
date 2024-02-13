@@ -138,7 +138,6 @@ func Reload():
 		if cur_weapon.reserve_ammo > 0:
 			if cur_weapon.loaded_ammo < cur_weapon.max_loaded_ammo:
 				
-				print("RELOADING!!!!")
 				anim_player.stop()
 				
 				#Double Barrel Unique reload sequence

@@ -40,7 +40,6 @@ func _ready():
 	player_health = player_max_health
 	isArrow_on = false
 	playerself.set("process_mode", 1)
-	print(playerself.process_mode)
 
 func _physics_process(_delta):
 	var inputDirection = Vector2(
@@ -118,8 +117,6 @@ func TakeDamage(damage : int):
 func PlayerDeath():
 	anim_player.play("player_death")
 	playerself.set("process_mode", 3)
-	print(playerself.process_mode)
-	print(self.get("process_mode"))
-	audio_man.PlayDie()
+	audio_man.PlayHurt()
 	is_player_dead = true
 	gui.ToggleDeathUI()

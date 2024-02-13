@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://dh4t8qqxb0ui3"]
+[gd_scene load_steps=23 format=3 uid="uid://dh4t8qqxb0ui3"]
 
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_mece3"]
 [ext_resource type="Texture2D" uid="uid://c07v7fdq4gmrw" path="res://Art/sprites/Placeholder/enemy/enemy.png" id="2_l5h7f"]
 [ext_resource type="Texture2D" uid="uid://deyukmegg7trn" path="res://Art/sprites/Placeholder/Attention.png" id="3_qwr0m"]
 [ext_resource type="Texture2D" uid="uid://cy53b6syfs1fm" path="res://Art/sprites/Placeholder/Guns/handgun-Sheet.png" id="4_ujlrs"]
+[ext_resource type="AudioStream" uid="uid://copiyin6e1c7m" path="res://Audio/Guns/pistol.mp3" id="5_xf2lc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h337y"]
 radius = 25.0
@@ -127,6 +128,18 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [54]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("pistol:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_vjuln"]
@@ -340,6 +353,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [46]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("pistol:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_a160r"]
 resource_name = "enemy_walking"
@@ -508,6 +533,10 @@ navigation_layers = 15
 [node name="RecalculateTimer" type="Timer" parent="Nav"]
 wait_time = 0.1
 autostart = true
+
+[node name="pistol" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_xf2lc")
+bus = &"SFXBus"
 
 [connection signal="body_entered" from="MeleeRange" to="." method="_on_melee_range_body_entered"]
 [connection signal="body_exited" from="MeleeRange" to="." method="_on_melee_range_body_exited"]

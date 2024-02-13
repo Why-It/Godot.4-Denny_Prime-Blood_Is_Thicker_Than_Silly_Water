@@ -221,7 +221,7 @@ func Aim(): # If the enemy has a LoS, aim for a couple frames then shoot. If the
 	StopMovement()
 	
 	
-	anim_player.play("enemy_aim")
+	anim_player.queue("enemy_aim")
 	aim_timer.start(time_for_aiming)
 	#print(target_node)
 
@@ -235,9 +235,9 @@ var aim_dir = Vector2.RIGHT
 
 func AttackShoot():
 	if !has_death_played:
+		anim_player.queue("enemy_shoot_handgun")
 		
 		cur_state = "AttackShoot"
-		#print("Bang")
 		
 		aim_dir = global_position.direction_to(player.global_position)
 		
