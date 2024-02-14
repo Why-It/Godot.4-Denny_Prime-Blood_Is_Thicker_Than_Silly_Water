@@ -142,8 +142,8 @@ func _ready():
 	
 	home_pos = self.global_position
 	
-	nav_agent.path_desired_distance = 2
-	nav_agent.target_desired_distance = 2
+	nav_agent.path_desired_distance = 20
+	nav_agent.target_desired_distance = 10
 	
 	
 	#Enenmy starts in one of two beginning states. Once player gets their attention, it's a fight to the death.
