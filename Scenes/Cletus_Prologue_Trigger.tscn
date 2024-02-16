@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://xjrc0r6dekvi"]
+
+[ext_resource type="Script" path="res://Scripts/Cletus_Prologue_Trigger_Sequence.gd" id="1_br8ar"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sgche"]
+
+[node name="Trigger" type="Area2D"]
+script = ExtResource("1_br8ar")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_sgche")

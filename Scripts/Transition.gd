@@ -9,7 +9,21 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	anim_player.play("tran_enter")
+	if get_tree().current_scene.name == "0_ Prologue":
+		woke = false
+		anim_player.play("tran_idle")
+	else:
+		anim_player.play("tran_enter")
+
+var woke : bool = false
+func _input(event):
+	if Input.is_action_pressed("Accept"):
+		
+		if get_tree().current_scene.name == "0_ Prologue":
+			if !woke:
+				anim_player.stop()
+				anim_player.queue("tran_enter")
+				woke = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):

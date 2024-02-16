@@ -74,12 +74,16 @@ func _ready():
 	if lvl_tran == null:
 		print("lvl_tran is null")
 	
-	if get_tree().current_scene.name != "MainMenu":
+	if get_tree().current_scene.name == "MainMenu":
+		print(get_tree().current_scene.name)
+		gameplay_UI.set("visible", false)
+	elif get_tree().current_scene.name == "0_ Prologue":
+		gameplay_UI.set("visible", false)
+	elif get_tree().current_scene.name != "MainMenu":
 		gameplay_UI.set("visible", true)
 		win_con = $"../PausableScenes/WinCondition"
 		player = $"../PausableScenes/Player"
-	else:
-		gameplay_UI.set("visible", false)
+		UpdateAmmoDetails()
 	
 	masterslider.set("value", audio_man.master_volume)
 	musicslider.set("value", audio_man.music_volume)
