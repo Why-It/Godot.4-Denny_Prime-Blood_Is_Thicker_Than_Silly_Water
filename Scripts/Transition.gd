@@ -5,6 +5,8 @@ extends Control
 @onready var audio_man = get_node("/root/AudioManager")
 @onready var anim_player = $AnimationPlayer
 
+@onready var text_container = $Label
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -12,8 +14,10 @@ func _ready():
 	if get_tree().current_scene.name == "0_ Prologue":
 		woke = false
 		anim_player.play("tran_idle")
+		text_container.set("visible", true)
 	else:
 		anim_player.play("tran_enter")
+		text_container.set("visible", false)
 
 var woke : bool = false
 func _input(event):

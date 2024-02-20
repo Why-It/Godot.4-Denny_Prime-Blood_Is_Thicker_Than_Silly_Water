@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_11"
+type="Resource"
+uid="uid://becb3m05wrfco"
+path="res://.godot/imported/cletus_prologue.dialogue-838c5d89a758966d334036e2278b3f11.tres"
+
+[deps]
+
+source_file="res://Dialogue/cletus_prologue.dialogue"
+dest_files=["res://.godot/imported/cletus_prologue.dialogue-838c5d89a758966d334036e2278b3f11.tres"]
+
+[params]
+
+defaults=true

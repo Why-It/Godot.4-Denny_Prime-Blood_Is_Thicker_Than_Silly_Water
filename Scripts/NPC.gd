@@ -23,15 +23,6 @@ func StopMoving():
 func LookAtTarget(target : Node):
 	owner.look_at(target)
 
-func StartSatingStuff():
-	pass
-
-func ChangeWords():
-	pass
-
-func StopSayingStuff():
-	pass
-
 func Die():
 	pass
 

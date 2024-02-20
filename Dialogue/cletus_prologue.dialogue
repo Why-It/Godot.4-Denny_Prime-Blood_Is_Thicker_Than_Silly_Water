@@ -1,0 +1,18 @@
+~ Start
+
+Cleetus: "Wake up, bud."
+
+=> END
+
+~ Look_Around
+
+Cleetus: "Alright, buddy. Look around."
+
+=> END
+
+~ Follow_Me
+
+Cleetus: "'Kay Clyde, let's go for some practice."
+Cleetus: "Follow me..."
+
+=> END
