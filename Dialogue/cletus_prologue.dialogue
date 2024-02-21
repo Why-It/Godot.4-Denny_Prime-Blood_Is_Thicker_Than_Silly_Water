@@ -16,3 +16,27 @@ Cleetus: "'Kay Clyde, let's go for some practice."
 Cleetus: "Follow me..."
 
 => END
+
+~ Pick_Up_Gun
+
+Cleetus: "'Pick up the guns, Clyde."
+
+=> END
+
+~ Switch_Guns
+
+Cleetus: "Inspect 'em, make sure there's not too much gunk."
+
+=> END
+
+~ Reload
+
+Cleetus: "Alright, now load 'em up."
+
+=> END
+
+~ Shoot
+
+Cleetus: "Now aim at them there targets and get blasting!"
+
+=> END

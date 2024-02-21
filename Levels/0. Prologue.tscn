@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://ddkopgeywus06"]
+[gd_scene load_steps=71 format=3 uid="uid://ddkopgeywus06"]
 
 [ext_resource type="TileSet" uid="uid://ture4cp0uocl" path="res://Art/sprites/Josh/tiles/v1.tres" id="1_66nwb"]
 [ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_a7mb0"]
@@ -28,6 +28,8 @@
 [ext_resource type="PackedScene" uid="uid://cu5uqq41062yd" path="res://Scenes/cletus.tscn" id="24_17f54"]
 [ext_resource type="PackedScene" uid="uid://xjrc0r6dekvi" path="res://Scenes/Cletus_Prologue_Trigger.tscn" id="26_65vll"]
 [ext_resource type="PackedScene" uid="uid://v4lb453mo8di" path="res://Scenes/patrolpoint.tscn" id="26_mdrql"]
+[ext_resource type="Script" path="res://Scripts/prologue_dialogue_starter.gd" id="29_h1mni"]
+[ext_resource type="PackedScene" uid="uid://c0v21kga7nx4u" path="res://Scenes/aim_tut.tscn" id="30_qqtfh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_50xpc"]
 size = Vector2(347, 61.5)
@@ -843,6 +845,7 @@ script = ExtResource("1_a7mb0")
 [node name="Tilemap" type="TileMap" parent="."]
 process_mode = 3
 modulate = Color(0.631373, 0.631373, 0.631373, 1)
+show_behind_parent = true
 tile_set = ExtResource("1_66nwb")
 rendering_quadrant_size = 64
 format = 2
@@ -1030,34 +1033,51 @@ rotation = -1.5708
 position = Vector2(9, -44)
 rotation = -1.5708
 
-[node name="Cletus" parent="PausableScenes" groups=["Cletus"] instance=ExtResource("24_17f54")]
+[node name="Cletus" parent="PausableScenes" instance=ExtResource("24_17f54")]
 position = Vector2(-286, 488)
-rotation = 1.5708
 
 [node name="CletusNavPoints" type="Node" parent="PausableScenes"]
 
 [node name="00" parent="PausableScenes/CletusNavPoints" instance=ExtResource("26_mdrql")]
-position = Vector2(-201, 553)
+position = Vector2(-163, 542)
 
 [node name="01" parent="PausableScenes/CletusNavPoints" instance=ExtResource("26_mdrql")]
-position = Vector2(-158, 402)
+position = Vector2(-161, 416)
+pp_id = 1
 
 [node name="02" parent="PausableScenes/CletusNavPoints" instance=ExtResource("26_mdrql")]
 position = Vector2(-344, 432)
+pp_id = 2
 
 [node name="03" parent="PausableScenes/CletusNavPoints" instance=ExtResource("26_mdrql")]
 position = Vector2(-330, 714)
+pp_id = 3
 
 [node name="04" parent="PausableScenes/CletusNavPoints" instance=ExtResource("26_mdrql")]
 position = Vector2(-67, 848)
+pp_id = 4
 
 [node name="05" parent="PausableScenes/CletusNavPoints" instance=ExtResource("26_mdrql")]
 position = Vector2(-61, 2054)
+pp_id = 5
 
 [node name="CletusTriggers" type="Node" parent="PausableScenes"]
 
-[node name="Wake" parent="PausableScenes/CletusTriggers" instance=ExtResource("26_65vll")]
-position = Vector2(-285, 527)
+[node name="Trigger" parent="PausableScenes/CletusTriggers" node_paths=PackedStringArray("aimtut") instance=ExtResource("26_65vll")]
+position = Vector2(-179, 542)
+aimtut = NodePath("../../../AimTut")
+
+[node name="Trigger2" parent="PausableScenes/CletusTriggers" instance=ExtResource("26_65vll")]
+position = Vector2(-163, 417)
+dialogue_id = 1
+
+[node name="Trigger3" parent="PausableScenes/CletusTriggers" instance=ExtResource("26_65vll")]
+position = Vector2(-67, 853)
+dialogue_id = 2
+
+[node name="Trigger4" parent="PausableScenes/CletusTriggers" instance=ExtResource("26_65vll")]
+position = Vector2(-60, 2054)
+dialogue_id = 3
 
 [node name="GUI" parent="." instance=ExtResource("7_p6g0t")]
 process_mode = 3
@@ -1067,5 +1087,18 @@ process_mode = 3
 offset_right = -1045.0
 offset_bottom = -900.0
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+autostart = true
+script = ExtResource("29_h1mni")
+
+[node name="AimTut" parent="." node_paths=PackedStringArray("cleetus") instance=ExtResource("30_qqtfh")]
+cleetus = NodePath("../PausableScenes/Cletus")
+
+[node name="WalkTut" type="Node2D" parent="."]
+position = Vector2(-38, 550)
+
 [connection signal="area_entered" from="PausableScenes/WinCondition/Area2D2" to="PausableScenes/WinCondition" method="_on_area_2d_2_area_entered"]
 [connection signal="animation_finished" from="PausableScenes/Player/gun_manager/AnimationPlayer" to="PausableScenes/Player/gun_manager" method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="Timer" to="Timer" method="_on_timeout"]

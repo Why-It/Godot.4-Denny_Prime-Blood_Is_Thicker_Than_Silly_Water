@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cu5uqq41062yd"]
+[gd_scene load_steps=14 format=3 uid="uid://cu5uqq41062yd"]
 
 [ext_resource type="Script" path="res://Scripts/NPC.gd" id="1_hki62"]
 [ext_resource type="Texture2D" uid="uid://d0ilmxljljjkp" path="res://Art/sprites/WorkInProgress/Clyde_Spritesheet.png" id="1_hvb3j"]
@@ -107,7 +107,9 @@ states/walk/position = Vector2(334, 100)
 transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_101er")]
 graph_offset = Vector2(-75, -29)
 
-[node name="Cletus" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_4cw5p"]
+
+[node name="Cletus" type="CharacterBody2D" groups=["Cleetus"]]
 collision_layer = 0
 collision_mask = 0
 motion_mode = 1
@@ -141,3 +143,16 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_5ehqa")
 anim_player = NodePath("../AnimationPlayer")
 parameters/walk/blend_position = 0.183934
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+navigation_layers = 15
+
+[node name="RecalcTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_4cw5p")
+
+[connection signal="timeout" from="RecalcTimer" to="." method="_on_recalc_timer_timeout"]

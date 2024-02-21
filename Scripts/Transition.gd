@@ -39,6 +39,8 @@ func PlayExit(toNextScene : String):
 	anim_player.play("tran_exit")
 	nextScene = toNextScene
 
+var cleetus = null
+
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "tran_exit":
 		if get_tree().paused:
@@ -46,4 +48,9 @@ func _on_animation_player_animation_finished(anim_name):
 		
 		#audio_man.StopSong()
 		scene_loader.ChangeToScene(nextScene)
+	
+	if anim_name == "tran_enter":
+		if get_tree().current_scene.name == "0_ Prologue":
+			cleetus = $"../PausableScenes/Cletus"
+			cleetus.WalkToNode($"../PausableScenes/CletusNavPoints/00")
 
