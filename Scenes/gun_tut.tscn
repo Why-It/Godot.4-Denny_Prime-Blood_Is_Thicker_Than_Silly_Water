@@ -1,0 +1,97 @@
+[gd_scene load_steps=7 format=3 uid="uid://hm8p5byaawxv"]
+
+[ext_resource type="Script" path="res://Scripts/gun_tut.gd" id="1_i37w6"]
+[ext_resource type="Texture2D" uid="uid://phmtdtqvqi5v" path="res://Art/sprites/Josh/Gun/single_shotgun.png" id="1_n8e5l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ncgd0"]
+size = Vector2(6, 55)
+
+[sub_resource type="Animation" id="Animation_n1hfs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("gun_pickup:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jnqra"]
+resource_name = "pickup_idle"
+length = 3.00001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("gun_pickup:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.5, 2.1, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -6.63), Vector2(0, 0), Vector2(0, 6), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vpgir"]
+_data = {
+"RESET": SubResource("Animation_n1hfs"),
+"pickup_idle": SubResource("Animation_jnqra")
+}
+
+[node name="GunTut" type="Node2D"]
+script = ExtResource("1_i37w6")
+
+[node name="gun_pickup" type="Area2D" parent="."]
+collision_layer = 15
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="gun_pickup"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_ncgd0")
+
+[node name="Sprite2D" type="Sprite2D" parent="gun_pickup"]
+rotation = -3.14159
+texture = ExtResource("1_n8e5l")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vpgir")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="swicth" type="Label" parent="."]
+visible = false
+offset_left = -205.0
+offset_top = 231.0
+offset_right = 278.0
+offset_bottom = 254.0
+text = "use the SCROLL WHEEL or Q and E to swicth between shotguns"
+
+[node name="reload" type="Label" parent="."]
+visible = false
+offset_left = -109.0
+offset_top = 231.0
+offset_right = 267.0
+offset_bottom = 254.0
+text = "use R to reload each shotgun"
+
+[node name="shoot" type="Label" parent="."]
+visible = false
+offset_left = -181.0
+offset_top = 231.0
+offset_right = 258.0
+offset_bottom = 254.0
+text = "LEFT CLICK to shoot the slected shotgun when it's loaded"
+
+[connection signal="area_shape_entered" from="gun_pickup" to="." method="_on_gun_pickup_area_shape_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -6,13 +6,13 @@ Cleetus: "Wake up, bud."
 
 ~ Look_Around
 
-Cleetus: "Alright, buddy. Look around."
+Cleetus: "Alright, Clyde. Look around."
 
 => END
 
 ~ Follow_Me
 
-Cleetus: "'Kay Clyde, let's go for some practice."
+Cleetus: "'Kay pardner, let's go for some practice."
 Cleetus: "Follow me..."
 
 => END
@@ -38,5 +38,11 @@ Cleetus: "Alright, now load 'em up."
 ~ Shoot
 
 Cleetus: "Now aim at them there targets and get blasting!"
+
+=> END
+
+~ Catchphrase
+
+Cleetus: [[Raise hell, praise Dale! | Cowabunga! | Dayum! | Suck me dry, that was amazing! | Shieeet | Yorp]]
 
 => END

@@ -20,7 +20,7 @@ func _ready():
 		text_container.set("visible", false)
 
 var woke : bool = false
-func _input(event):
+func _input(_event):
 	if Input.is_action_pressed("Accept"):
 		
 		if get_tree().current_scene.name == "0_ Prologue":

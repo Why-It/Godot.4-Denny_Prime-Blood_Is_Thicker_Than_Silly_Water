@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const walk_speed = 135
+const walk_speed = 175
 
 var cur_state : String
 
@@ -43,8 +43,6 @@ func _physics_process(_delta):
 func Idle():
 	cur_state = "Idle()"
 	StopMoving()
-	
-	print("idling")
 
 func WalkToNode(node : Node):
 	cur_state = "WalkToNode()"

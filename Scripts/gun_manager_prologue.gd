@@ -33,7 +33,7 @@ var weapon_list = {} #Dictionary of all weapons available to use
 func _ready():
 	Initilize(starting_arsenal) #Enter the state machine
 	for weapon in _weapon_resources:
-		weapon.loaded_ammo = weapon.max_loaded_ammo
+		weapon.loaded_ammo = 0
 		weapon.pellet_spread = weapon.spread_min
 
 	
@@ -79,6 +79,11 @@ func Initilize(_starting_arsenal : Array):
 	cur_weapon = weapon_list[weapon_stack[0]]
 	#enter()
 	spread_shower.set("visible", false)
+
+func Activate():
+	enter()
+	spread_shower.set("visible", true)
+	
 
 #reference this and "enter()" in a trigger volume or some other shit for the tutorial when it's time to teach guns
 func ShowSpreadShower(): 
