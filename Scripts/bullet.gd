@@ -49,7 +49,8 @@ func _on_area_entered(area):
 				#print(area.get("monitorable"))
 				area.owner.TakeDamage(1)
 				self.hide()
-				
+			elif area.owner.is_in_group("Target"):
+				area.owner.Break()
 			#print("I was fired from the player")
 		else:
 			area.owner.TakeDamage(1)

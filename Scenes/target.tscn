@@ -1,0 +1,396 @@
+[gd_scene load_steps=20 format=3 uid="uid://c718nvsky18s7"]
+
+[ext_resource type="Script" path="res://Scripts/target.gd" id="1_pg1f8"]
+[ext_resource type="Texture2D" uid="uid://c64jyi1nc5nxp" path="res://Art/sprites/WorkInProgress/target_spreitesheet.png" id="2_3xcjm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ilefb"]
+size = Vector2(10, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dicww"]
+size = Vector2(38, 22)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tyor8"]
+radius = 21.587
+
+[sub_resource type="Animation" id="Animation_ysgpy"]
+resource_name = "bott_idle"
+length = 0.10001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bottle/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_1hjmq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bottle/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Box/Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Clays/Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cans/Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Jugs/Sprite2D:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Dummy/Sprite2D:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+
+[sub_resource type="Animation" id="Animation_7ac8y"]
+resource_name = "bott_break"
+length = 0.20001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bottle/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_af0xm"]
+resource_name = "box_idle"
+length = 0.10001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Box/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_hjvcn"]
+resource_name = "box_break"
+length = 0.20001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Box/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_awgw4"]
+resource_name = "clay_idle"
+length = 0.10001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Clays/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+
+[sub_resource type="Animation" id="Animation_6fywa"]
+resource_name = "clay_break"
+length = 0.20001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Clays/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_ecq50"]
+resource_name = "can_idle"
+length = 0.10001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cans/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
+
+[sub_resource type="Animation" id="Animation_rilib"]
+resource_name = "can_break"
+length = 0.20001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cans/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_hk4nn"]
+resource_name = "jug_idle"
+length = 0.10001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Jugs/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+
+[sub_resource type="Animation" id="Animation_m6ohk"]
+resource_name = "jug_break"
+length = 0.20001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Jugs/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [12, 13, 14]
+}
+
+[sub_resource type="Animation" id="Animation_a1wg7"]
+resource_name = "dum_idle"
+length = 0.10001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dummy/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+
+[sub_resource type="Animation" id="Animation_iyu65"]
+resource_name = "dum_break"
+length = 0.20001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dummy/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [15, 16, 17]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ihlgq"]
+_data = {
+"RESET": SubResource("Animation_1hjmq"),
+"bott_break": SubResource("Animation_7ac8y"),
+"bott_idle": SubResource("Animation_ysgpy"),
+"box_break": SubResource("Animation_hjvcn"),
+"box_idle": SubResource("Animation_af0xm"),
+"can_break": SubResource("Animation_rilib"),
+"can_idle": SubResource("Animation_ecq50"),
+"clay_break": SubResource("Animation_6fywa"),
+"clay_idle": SubResource("Animation_awgw4"),
+"dum_break": SubResource("Animation_iyu65"),
+"dum_idle": SubResource("Animation_a1wg7"),
+"jug_break": SubResource("Animation_m6ohk"),
+"jug_idle": SubResource("Animation_hk4nn")
+}
+
+[node name="Target" type="Node2D" node_paths=PackedStringArray("targets_array") groups=["Target"]]
+script = ExtResource("1_pg1f8")
+id = "Bottle"
+targets_array = [NodePath("Bottle"), NodePath("Box"), NodePath("Clays"), NodePath("Cans"), NodePath("Jugs"), NodePath("Dummy")]
+
+[node name="Bottle" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottle"]
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_ilefb")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bottle"]
+position = Vector2(-1, -14)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_3xcjm")
+hframes = 3
+vframes = 6
+
+[node name="Box" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Box"]
+position = Vector2(-1, -2)
+shape = SubResource("RectangleShape2D_dicww")
+
+[node name="Sprite2D" type="Sprite2D" parent="Box"]
+position = Vector2(-2, -23)
+scale = Vector2(2, 2)
+texture = ExtResource("2_3xcjm")
+hframes = 3
+vframes = 6
+frame = 3
+
+[node name="Clays" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Clays"]
+scale = Vector2(2.5, 2.5)
+polygon = PackedVector2Array(17, -5, -18, 0, -17, 5, 17, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Clays"]
+position = Vector2(2, -44)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_3xcjm")
+hframes = 3
+vframes = 6
+frame = 6
+
+[node name="Cans" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cans"]
+shape = SubResource("CircleShape2D_tyor8")
+
+[node name="Sprite2D" type="Sprite2D" parent="Cans"]
+position = Vector2(0, -4)
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("2_3xcjm")
+hframes = 3
+vframes = 6
+frame = 9
+
+[node name="Jugs" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Jugs"]
+shape = SubResource("CircleShape2D_tyor8")
+
+[node name="Sprite2D" type="Sprite2D" parent="Jugs"]
+position = Vector2(-6, -23)
+scale = Vector2(2.045, 2.045)
+texture = ExtResource("2_3xcjm")
+hframes = 3
+vframes = 6
+frame = 12
+
+[node name="Dummy" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dummy"]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_tyor8")
+
+[node name="Sprite2D" type="Sprite2D" parent="Dummy"]
+position = Vector2(-2, -16)
+scale = Vector2(3, 3)
+texture = ExtResource("2_3xcjm")
+hframes = 3
+vframes = 6
+frame = 15
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ihlgq")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

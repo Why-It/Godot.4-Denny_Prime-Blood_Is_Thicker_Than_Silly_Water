@@ -41,6 +41,14 @@ Cleetus: "Now aim at them there targets and get blasting!"
 
 => END
 
+~ Tutorial_End
+
+Cleetus: "Alright, Clyde. Now remember, I'll always be with you."
+Clyde: "..."
+Clyde: "I know."
+
+=> END
+
 ~ Catchphrase
 
 Cleetus: [[Raise hell, praise Dale! | Cowabunga! | Dayum! | Suck me dry, that was amazing! | Shieeet | Yorp]]

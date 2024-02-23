@@ -986,6 +986,9 @@ position = Vector2(-105, 2126)
 player = NodePath("../PausableScenes/Player")
 gun_man = NodePath("../PausableScenes/Player/gun_manager")
 gui = NodePath("../GUI")
+pump_res = ExtResource("12_4wfb2")
+semi_res = ExtResource("13_sy42e")
+doub_res = ExtResource("14_xjikj")
 
 [connection signal="area_entered" from="PausableScenes/WinCondition/Area2D2" to="PausableScenes/WinCondition" method="_on_area_2d_2_area_entered"]
 [connection signal="animation_finished" from="PausableScenes/Player/gun_manager/AnimationPlayer" to="PausableScenes/Player/gun_manager" method="_on_animation_player_animation_finished"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://hm8p5byaawxv"]
+[gd_scene load_steps=8 format=3 uid="uid://hm8p5byaawxv"]
 
 [ext_resource type="Script" path="res://Scripts/gun_tut.gd" id="1_i37w6"]
 [ext_resource type="Texture2D" uid="uid://phmtdtqvqi5v" path="res://Art/sprites/Josh/Gun/single_shotgun.png" id="1_n8e5l"]
+[ext_resource type="PackedScene" uid="uid://c718nvsky18s7" path="res://Scenes/target.tscn" id="3_6k2d4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ncgd0"]
 size = Vector2(6, 55)
@@ -44,8 +45,9 @@ _data = {
 "pickup_idle": SubResource("Animation_jnqra")
 }
 
-[node name="GunTut" type="Node2D"]
+[node name="GunTut" type="Node2D" node_paths=PackedStringArray("targets")]
 script = ExtResource("1_i37w6")
+targets = [NodePath("Targets/Bottle"), NodePath("Targets/Box"), NodePath("Targets/Clays"), NodePath("Targets/Cans"), NodePath("Targets/Dummy"), NodePath("Targets/Jugs")]
 
 [node name="gun_pickup" type="Area2D" parent="."]
 collision_layer = 15
@@ -92,6 +94,31 @@ offset_top = 231.0
 offset_right = 258.0
 offset_bottom = 254.0
 text = "LEFT CLICK to shoot the slected shotgun when it's loaded"
+
+[node name="Targets" type="Node2D" parent="."]
+
+[node name="Bottle" parent="Targets" instance=ExtResource("3_6k2d4")]
+position = Vector2(-228, 291)
+
+[node name="Box" parent="Targets" instance=ExtResource("3_6k2d4")]
+position = Vector2(230, 311)
+id = "Box"
+
+[node name="Clays" parent="Targets" instance=ExtResource("3_6k2d4")]
+position = Vector2(327, 307)
+id = "Clays"
+
+[node name="Cans" parent="Targets" instance=ExtResource("3_6k2d4")]
+position = Vector2(99, 320)
+id = "Cans"
+
+[node name="Dummy" parent="Targets" instance=ExtResource("3_6k2d4")]
+position = Vector2(-6, 325)
+id = "Dummy"
+
+[node name="Jugs" parent="Targets" instance=ExtResource("3_6k2d4")]
+position = Vector2(-122, 312)
+id = "Jugs"
 
 [connection signal="area_shape_entered" from="gun_pickup" to="." method="_on_gun_pickup_area_shape_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
