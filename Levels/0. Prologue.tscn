@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://ddkopgeywus06"]
+[gd_scene load_steps=58 format=3 uid="uid://ddkopgeywus06"]
 
 [ext_resource type="TileSet" uid="uid://ture4cp0uocl" path="res://Art/sprites/Josh/tiles/v1.tres" id="1_66nwb"]
 [ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_a7mb0"]
@@ -21,12 +21,14 @@
 [ext_resource type="AudioStream" uid="uid://bylmt7i5hi0h2" path="res://Audio/Guns/16_open_eject.wav" id="18_2fl76"]
 [ext_resource type="AudioStream" uid="uid://b8du2860p0iyn" path="res://Audio/Guns/double_load.wav" id="19_is55u"]
 [ext_resource type="AudioStream" uid="uid://ow0l5mdksupi" path="res://Audio/Guns/16_close.wav" id="20_71j4i"]
+[ext_resource type="PackedScene" uid="uid://0dc826pqsf6w" path="res://Scenes/prologue_enemy.tscn" id="21_t8pn1"]
 [ext_resource type="PackedScene" uid="uid://cu5uqq41062yd" path="res://Scenes/cletus.tscn" id="24_17f54"]
 [ext_resource type="PackedScene" uid="uid://xjrc0r6dekvi" path="res://Scenes/Cletus_Prologue_Trigger.tscn" id="26_65vll"]
 [ext_resource type="PackedScene" uid="uid://v4lb453mo8di" path="res://Scenes/patrolpoint.tscn" id="26_mdrql"]
 [ext_resource type="PackedScene" uid="uid://hm8p5byaawxv" path="res://Scenes/gun_tut.tscn" id="29_ftxir"]
 [ext_resource type="Script" path="res://Scripts/prologue_dialogue_starter.gd" id="29_h1mni"]
 [ext_resource type="PackedScene" uid="uid://c0v21kga7nx4u" path="res://Scenes/aim_tut.tscn" id="30_qqtfh"]
+[ext_resource type="PackedScene" uid="uid://bkhs7fmxm7jh3" path="res://Scenes/tut_ending.tscn" id="31_lq6bs"]
 [ext_resource type="PackedScene" uid="uid://cf8sc6x5krxb7" path="res://Scenes/walk_tut.tscn" id="31_ujd11"]
 [ext_resource type="PackedScene" uid="uid://dkvlc03qo7cx" path="res://Scenes/catchup.tscn" id="32_kkhtg"]
 
@@ -798,10 +800,10 @@ process_mode = 1
 position = Vector2(2000, 2000)
 
 [node name="WinCondition" parent="PausableScenes" node_paths=PackedStringArray("enemy_array") instance=ExtResource("3_yf1i2")]
-enemy_array = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+enemy_array = [NodePath("../PrologueEnemy")]
 
 [node name="Area2D2" type="Area2D" parent="PausableScenes/WinCondition"]
-position = Vector2(68, -1800)
+position = Vector2(156, 1416)
 collision_layer = 8
 collision_mask = 2
 
@@ -895,6 +897,10 @@ rotation = -1.5708
 [node name="Cletus" parent="PausableScenes" instance=ExtResource("24_17f54")]
 position = Vector2(-286, 488)
 
+[node name="PrologueEnemy" parent="PausableScenes" node_paths=PackedStringArray("pro_gun_man") instance=ExtResource("21_t8pn1")]
+position = Vector2(-58, 1409)
+pro_gun_man = NodePath("../Player/gun_manager")
+
 [node name="CletusNavPoints" type="Node" parent="PausableScenes"]
 
 [node name="00" parent="PausableScenes/CletusNavPoints" instance=ExtResource("26_mdrql")]
@@ -917,7 +923,7 @@ position = Vector2(-58, 890)
 pp_id = 4
 
 [node name="05" parent="PausableScenes/CletusNavPoints" instance=ExtResource("26_mdrql")]
-position = Vector2(-61, 2054)
+position = Vector2(-67, 2021)
 pp_id = 7
 
 [node name="CletusTriggers" type="Node" parent="PausableScenes"]
@@ -944,16 +950,27 @@ position = Vector2(-58, 889)
 dialogue_id = 4
 
 [node name="Trigger5" parent="PausableScenes/CletusTriggers" instance=ExtResource("26_65vll")]
-position = Vector2(-60, 2054)
+position = Vector2(-66, 2021)
 dialogue_id = 5
+
+[node name="Trigger6" parent="PausableScenes/CletusTriggers" instance=ExtResource("26_65vll")]
+position = Vector2(-67, 2131.13)
+dialogue_id = 6
+
+[node name="PlayerNavPoint" type="Node" parent="PausableScenes"]
+
+[node name="00" parent="PausableScenes/PlayerNavPoint" instance=ExtResource("26_mdrql")]
+position = Vector2(-67, 2131)
+
+[node name="enemytrigs" type="Node" parent="PausableScenes"]
+
+[node name="Trigger7" parent="PausableScenes/enemytrigs" node_paths=PackedStringArray("tutend") instance=ExtResource("26_65vll")]
+position = Vector2(-66, 2021)
+dialogue_id = 7
+tutend = NodePath("../../../TutEnding")
 
 [node name="GUI" parent="." instance=ExtResource("7_p6g0t")]
 process_mode = 3
-
-[node name="Transition" parent="." instance=ExtResource("8_2l0al")]
-process_mode = 3
-offset_right = -1045.0
-offset_bottom = -900.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.25
@@ -981,7 +998,7 @@ position = Vector2(-14, 1903)
 cleetus = NodePath("../../PausableScenes/Cletus")
 catchup_id = 2
 
-[node name="GunTut" parent="." node_paths=PackedStringArray("player", "gun_man", "gui") instance=ExtResource("29_ftxir")]
+[node name="GunTut" parent="." node_paths=PackedStringArray("player", "gun_man", "gui", "end_tut") instance=ExtResource("29_ftxir")]
 position = Vector2(-105, 2126)
 player = NodePath("../PausableScenes/Player")
 gun_man = NodePath("../PausableScenes/Player/gun_manager")
@@ -989,6 +1006,19 @@ gui = NodePath("../GUI")
 pump_res = ExtResource("12_4wfb2")
 semi_res = ExtResource("13_sy42e")
 doub_res = ExtResource("14_xjikj")
+end_tut = NodePath("../TutEnding")
+
+[node name="TutEnding" parent="." node_paths=PackedStringArray("prologue_enemy", "player", "cleetus", "trans_man") instance=ExtResource("31_lq6bs")]
+position = Vector2(-64, 1798)
+prologue_enemy = NodePath("../PausableScenes/PrologueEnemy")
+player = NodePath("../PausableScenes/Player")
+cleetus = NodePath("../PausableScenes/Cletus")
+trans_man = NodePath("../Transition")
+
+[node name="Transition" parent="." instance=ExtResource("8_2l0al")]
+process_mode = 3
+offset_right = -1045.0
+offset_bottom = -900.0
 
 [connection signal="area_entered" from="PausableScenes/WinCondition/Area2D2" to="PausableScenes/WinCondition" method="_on_area_2d_2_area_entered"]
 [connection signal="animation_finished" from="PausableScenes/Player/gun_manager/AnimationPlayer" to="PausableScenes/Player/gun_manager" method="_on_animation_player_animation_finished"]

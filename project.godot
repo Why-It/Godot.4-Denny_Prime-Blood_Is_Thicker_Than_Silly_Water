@@ -24,10 +24,12 @@ config/icon="res://icon.svg"
 SceneLoader="*res://Scenes/scene_loader.tscn"
 AudioManager="*res://Scenes/audio_manager.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+Globals="*res://Scenes/globals.tscn"
 
 [dialogue_manager]
 
 general/wrap_lines=true
+general/states=["Globals"]
 
 [display]
 

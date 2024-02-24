@@ -51,6 +51,8 @@ func _on_area_entered(area):
 				self.hide()
 			elif area.owner.is_in_group("Target"):
 				area.owner.Break()
+			elif area.owner.is_in_group("ProEn"):
+				area.owner.Die()
 			#print("I was fired from the player")
 		else:
 			area.owner.TakeDamage(1)

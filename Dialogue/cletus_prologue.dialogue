@@ -1,3 +1,5 @@
+
+
 ~ Start
 
 Cleetus: "Wake up, bud."
@@ -46,6 +48,26 @@ Cleetus: "Now aim at them there targets and get blasting!"
 Cleetus: "Alright, Clyde. Now remember, I'll always be with you."
 Clyde: "..."
 Clyde: "I know."
+
+do emit("enemy_start", true)
+
+=> END
+
+~ Spread_Text
+
+Cleetus: "Remember, with my spirit buckshot, every soul we take makes our pellet spread wider."
+do emit("pro_can_shoot_enemy", true)
+
+=> END
+
+~ EndTut
+
+Cleetus: "Avenge me, pardner."
+Cleetus: "Spread my ashes at the tallest point of Tammy Lynn's Trailer Palace and my soul will be free."
+Clyde: "Anything for you, Cleetus."
+Cleetus: "Now let's go kick some ass!"
+
+do emit("end_tut", true)
 
 => END
 

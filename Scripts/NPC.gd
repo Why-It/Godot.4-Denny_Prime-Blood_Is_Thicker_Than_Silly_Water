@@ -44,6 +44,7 @@ func Idle():
 	cur_state = "Idle()"
 	StopMoving()
 
+
 func WalkToNode(node : Node):
 	cur_state = "WalkToNode()"
 	
@@ -61,7 +62,7 @@ func LookAtTarget(target : Node):
 	owner.look_at(target)
 
 func Die():
-	pass
+	queue_free()
 
 func RecalcPath():
 	#print("recalculating path")

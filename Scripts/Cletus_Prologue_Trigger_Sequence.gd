@@ -4,8 +4,9 @@ extends Area2D
 
 @export var aimtut : Node
 @export var walktut : Node
+@export var tutend : Node
 
-func _on_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+func _on_area_shape_entered(_area_rid, area, _area_shape_index, _local_shape_index):
 	if area.owner.is_in_group("Cleetus"):
 		if dialogue_id == 0:
 			DialogueManager.show_example_dialogue_balloon(load("res://Dialogue/cletus_prologue.dialogue"), "Look_Around")
@@ -21,3 +22,12 @@ func _on_area_shape_entered(area_rid, area, area_shape_index, local_shape_index)
 			area.owner.Idle()
 		elif dialogue_id == 5:
 			area.owner.Idle()
+		elif dialogue_id == 6:
+			area.owner.Die()
+		elif dialogue_id == 7:
+			pass
+	
+	if area.owner.is_in_group("ProEn"):
+		if dialogue_id == 7:
+			area.owner.StandingTarget()
+			DialogueManager.show_example_dialogue_balloon(load("res://Dialogue/cletus_prologue.dialogue"), "Spread_Text")

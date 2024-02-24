@@ -17,6 +17,8 @@ extends Node2D
 @export var semi_res : Resource
 @export var doub_res : Resource
 
+@export var end_tut : Node
+
 func _ready():
 	anim_player.queue("pickup_idle")
 	
@@ -43,7 +45,7 @@ func ActivateStage3():
 	shoot_lab.set("visible", true)
 
 func ActivateStage4():
-	pass
+	end_tut.Start()
 
 var has_switch_started : bool = false
 var switch_points : int = 0
@@ -56,7 +58,7 @@ func _input(event):
 	
 	if !has_switch_started:
 		if player.tut_switch == true:
-			if event.is_action_pressed("Switch Next Weapon") or event.is_action_pressed("Switch Previous Weapon"):
+			if event.is_action_pressed("Weapon_Next") or event.is_action_pressed("Weapon_Prev"):
 				switch_points += 1
 				
 				if switch_points >= 3:

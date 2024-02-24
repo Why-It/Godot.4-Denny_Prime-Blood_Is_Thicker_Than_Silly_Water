@@ -54,8 +54,10 @@ func StartSong():
 		cur_song = _music[2]
 	elif cur_scene == "res://Levels/3. We Spreadin'.tscn":
 		cur_song = _music[3]
-	else:
+	elif cur_scene == "res://Levels/0. Prologue.tscn":
 		cur_song = _music[4]
+	else:
+		cur_song = _music[5]
 	
 	cur_song.set("playing", true)
 

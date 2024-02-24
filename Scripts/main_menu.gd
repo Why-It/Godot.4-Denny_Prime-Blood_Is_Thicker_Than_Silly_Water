@@ -17,8 +17,12 @@ func _on_quit_pressed():
 
 
 func _on_play_pressed():
-	levelTransition.PlayExit("res://Levels/1. Clyde's Place.tscn")
+	levelTransition.PlayExit("res://Levels/0. Prologue.tscn")
 
 
 func _on_credits_pressed():
 	levelTransition.PlayExit("res://Scenes/credits.tscn")
+
+
+func _on_skip_tutorial_pressed():
+	levelTransition.PlayExit("res://Levels/1. Clyde's Place.tscn")

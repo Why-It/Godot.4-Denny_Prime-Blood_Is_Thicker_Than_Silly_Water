@@ -1,0 +1,178 @@
+[gd_scene load_steps=16 format=3 uid="uid://0dc826pqsf6w"]
+
+[ext_resource type="Script" path="res://Scripts/prologue_enemy.gd" id="1_63y0c"]
+[ext_resource type="Texture2D" uid="uid://d0ilmxljljjkp" path="res://Art/sprites/WorkInProgress/Clyde_Spritesheet.png" id="2_6uydt"]
+[ext_resource type="Texture2D" uid="uid://c07v7fdq4gmrw" path="res://Art/sprites/Placeholder/enemy/enemy.png" id="3_uvl0n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u6jky"]
+
+[sub_resource type="Animation" id="Animation_kuio4"]
+resource_name = "Clyde_Idle"
+length = 0.10001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Torso:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [33]
+}
+
+[sub_resource type="Animation" id="Animation_1ijgc"]
+resource_name = "Clyde_Walk"
+length = 0.80001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Torso:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [33, 34, 35, 36, 37, 38, 39, 40, 41]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Legs:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [72, 73, 74, 75, 76, 77, 78, 80, 77]
+}
+
+[sub_resource type="Animation" id="Animation_dpenh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Torso:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [34]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Legs:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [72]
+}
+
+[sub_resource type="Animation" id="Animation_tmtx0"]
+resource_name = "death"
+length = 0.40001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Torso:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [11, 12, 13, 14, 15]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hpres"]
+_data = {
+"Clyde_Idle": SubResource("Animation_kuio4"),
+"Clyde_Walk": SubResource("Animation_1ijgc"),
+"RESET": SubResource("Animation_dpenh"),
+"death": SubResource("Animation_tmtx0")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w51vc"]
+animation = &"Clyde_Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e5nje"]
+animation = &"Clyde_Walk"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_tc3do"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_w51vc")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_e5nje")
+blend_point_1/pos = 1.0
+min_space = 0.0
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_101er"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_5ehqa"]
+states/walk/node = SubResource("AnimationNodeBlendSpace1D_tc3do")
+states/walk/position = Vector2(334, 100)
+transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_101er")]
+graph_offset = Vector2(-75, -29)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4cw5p"]
+
+[node name="PrologueEnemy" type="CharacterBody2D" groups=["ProEn"]]
+collision_layer = 0
+collision_mask = 0
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_63y0c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_u6jky")
+
+[node name="Legs" type="Sprite2D" parent="."]
+texture = ExtResource("2_6uydt")
+hframes = 9
+vframes = 9
+frame = 72
+
+[node name="Torso" type="Sprite2D" parent="."]
+texture = ExtResource("3_uvl0n")
+hframes = 11
+vframes = 6
+frame = 34
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hpres")
+}
+
+[node name="WalkingTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hpres")
+}
+tree_root = SubResource("AnimationNodeStateMachine_5ehqa")
+anim_player = NodePath("../AnimationPlayer")
+parameters/walk/blend_position = 0.183934
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+navigation_layers = 15
+
+[node name="RecalcTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 129
+collision_mask = 129
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_4cw5p")
+
+[connection signal="timeout" from="RecalcTimer" to="." method="_on_recalc_timer_timeout"]

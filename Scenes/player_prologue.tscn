@@ -145,3 +145,5 @@ visible = false
 texture = ExtResource("5_oildp")
 centered = false
 offset = Vector2(-16, -50)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

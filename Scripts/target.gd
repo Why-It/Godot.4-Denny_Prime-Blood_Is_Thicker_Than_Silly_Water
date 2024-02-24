@@ -39,18 +39,30 @@ func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "bott_break":
 		broken = true
 		self.hide()
+		$Bottle.set("monitorable", false)
+		$Bottle.set("monitoring", false)
 	if anim_name == "box_break":
 		broken = true
 		self.hide()
+		$Box.set("monitorable", false)
+		$Box.set("monitoring", false)
 	if anim_name == "clay_break":
 		broken = true
 		self.hide()
+		$Clays.set("monitorable", false)
+		$Clays.set("monitoring", false)
 	if anim_name == "jug_break":
 		broken = true
 		self.hide()
+		$Jugs.set("monitorable", false)
+		$Jugs.set("monitoring", false)
 	if anim_name == "dum_break":
 		broken = true
 		self.hide()
+		$Dummy.set("monitorable", false)
+		$Dummy.set("monitoring", false)
 	if anim_name == "can_break":
 		broken = true
 		self.hide()
+		$Cans.set("monitorable", false)
+		$Cans.set("monitoring", false)

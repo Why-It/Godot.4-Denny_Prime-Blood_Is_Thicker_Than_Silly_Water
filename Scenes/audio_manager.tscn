@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://bjxuanrrabulo"]
+[gd_scene load_steps=49 format=3 uid="uid://bjxuanrrabulo"]
 
 [ext_resource type="Script" path="res://Scripts/audio_manager.gd" id="1_he6tr"]
 [ext_resource type="AudioStream" uid="uid://d4jbmd1ot81g8" path="res://Audio/Music/kaleidoplasm - synthetic forgiveness.Mp3.mp3" id="2_5yayl"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://cs0j53go5ma77" path="res://Audio/Music/Broke For Free - Caught In The Beat.mp3" id="4_82dcs"]
 [ext_resource type="AudioStream" uid="uid://dlkkxv5ofl56t" path="res://Audio/Music/Broke For Free - Covered In Oil.mp3" id="5_atu4v"]
 [ext_resource type="AudioStream" uid="uid://doly6q2frmn6p" path="res://Audio/Music/Broke For Free - Nothing Like Captain Crunch.mp3" id="6_pqgtw"]
+[ext_resource type="AudioStream" uid="uid://ttobo4g1pn10" path="res://Audio/Music/Broke For Free - Night Owl.mp3" id="7_3xku2"]
 [ext_resource type="AudioStream" uid="uid://y0nbao0t8vxv" path="res://Audio/SFX/Alert_00.mp3" id="7_iqym4"]
 [ext_resource type="AudioStream" uid="uid://brg7quf3sf48h" path="res://Audio/SFX/Alert_01.mp3" id="8_dv6gr"]
 [ext_resource type="AudioStream" uid="uid://dndehg4sq24j" path="res://Audio/SFX/Alert_02.mp3" id="9_tu8kd"]
@@ -78,6 +79,10 @@ bus = &"MusicBus"
 stream = ExtResource("5_atu4v")
 volume_db = -5.0
 bus = &"MusicBus"
+
+[node name="night_owl" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("7_3xku2")
+volume_db = -8.0
 
 [node name="nothing_like_captain_crunch" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("6_pqgtw")

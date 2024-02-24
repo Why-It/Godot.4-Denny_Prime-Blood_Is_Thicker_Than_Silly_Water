@@ -59,10 +59,16 @@ layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Label" type="Label" parent="BoxContainer/VBoxContainer2/VBoxContainer/BoxContainer3/VBoxContainer/BoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="BoxContainer/VBoxContainer2/VBoxContainer/BoxContainer3/VBoxContainer/BoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 13
-text = "Game Designer/Developer:                     Wyatt Curtiss     
+
+[node name="HSeparator3" type="HSeparator" parent="BoxContainer/VBoxContainer2/VBoxContainer/BoxContainer3/VBoxContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="game" type="Label" parent="BoxContainer/VBoxContainer2/VBoxContainer/BoxContainer3/VBoxContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Game / Level Designer:                             Wyatt Curtiss     
 
 Narrative Direction:                         Joseph Cartwright
                                                                           Josh Marsik
@@ -70,16 +76,43 @@ Narrative Direction:                         Joseph Cartwright
 
 Game Art:                                                         Josh Marsik
                                                                         Wyatt Curtiss
+"
+horizontal_alignment = 1
 
-Made with Godot 4.2.1
+[node name="HSeparator" type="HSeparator" parent="BoxContainer/VBoxContainer2/VBoxContainer/BoxContainer3/VBoxContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
 
-Music:
-Menu>          \"synthetic Forgiveness.Mp3\" - kaleidoplasm
+[node name="engine" type="Label" parent="BoxContainer/VBoxContainer2/VBoxContainer/BoxContainer3/VBoxContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Made with Godot 4.2.1 and Aseprite 1.3.2"
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="BoxContainer/VBoxContainer2/VBoxContainer/BoxContainer3/VBoxContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="music" type="Label" parent="BoxContainer/VBoxContainer2/VBoxContainer/BoxContainer3/VBoxContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Music:
+Menu>              \"synthetic Forgiveness.Mp3\" - kaleidoplasm
+Level 0>                                        \"Night Owl\" - Broke For Free
 Level 1>                                                \"Level 1\" - Jesse Spillane
 Level 2>                       \"Caught In The Beat\" - Broke For Free
 Level 3>                                \"Covered In Oil\" - Broke For Free
 Credits>     \"Nothing Like Captain Crunch\" - Broke For Free"
 horizontal_alignment = 1
+
+[node name="discalimer" type="Label" parent="BoxContainer/VBoxContainer2/VBoxContainer/BoxContainer3/VBoxContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.611765, 0.611765, 0.611765, 1)
+theme_override_font_sizes/font_size = 10
+text = "All music was retrieved from freemusicarchive.org and were all under 
+Creative Commons Licensing for redistribution for any purpose (even commercially)."
+horizontal_alignment = 1
+
+[node name="HSeparator4" type="HSeparator" parent="BoxContainer/VBoxContainer2/VBoxContainer/BoxContainer3/VBoxContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
 
 [node name="BoxContainer3" type="BoxContainer" parent="BoxContainer/VBoxContainer2/VBoxContainer/BoxContainer3/VBoxContainer"]
 layout_mode = 2
@@ -89,14 +122,6 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
-
-[node name="discalimer" type="Label" parent="BoxContainer/VBoxContainer2/VBoxContainer/BoxContainer3/VBoxContainer/BoxContainer2"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.611765, 0.611765, 0.611765, 1)
-theme_override_font_sizes/font_size = 10
-text = "All music was retrieved from freemusicarchive.org and were all under 
-Creative Commons Licensing for redistribution for any purpose (even commercially)."
-horizontal_alignment = 1
 
 [node name="BoxContainer" type="BoxContainer" parent="BoxContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2

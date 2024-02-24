@@ -193,52 +193,12 @@ position = Vector2(0, 0)
 
 [node name="Transition" parent="." instance=ExtResource("10_84xgh")]
 
-[node name="Label" type="Label" parent="."]
-offset_left = -151.0
-offset_top = 663.0
-offset_right = -37.0
-offset_bottom = 686.0
-text = "'W' 'A' 'S' 'D' to move"
-horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="."]
-offset_left = -286.0
-offset_top = 696.0
-offset_right = 90.0
-offset_bottom = 719.0
-text = "'Q', 'E' and Mouse Wheel to cycle through shotguns"
-horizontal_alignment = 1
-
-[node name="Label5" type="Label" parent="."]
-offset_left = -286.0
-offset_top = 735.0
-offset_right = 106.0
-offset_bottom = 758.0
-text = "Left Click to shoot the shotgun"
-horizontal_alignment = 1
-
-[node name="Label3" type="Label" parent="."]
-offset_left = -286.0
-offset_top = 769.0
-offset_right = 106.0
-offset_bottom = 792.0
-text = "'R' to reload"
-horizontal_alignment = 1
-
 [node name="Label4" type="Label" parent="."]
-offset_left = -291.0
-offset_top = 802.0
-offset_right = 101.0
-offset_bottom = 825.0
-text = "Esc to pause"
-horizontal_alignment = 1
-
-[node name="Label6" type="Label" parent="."]
-offset_left = -291.0
-offset_top = 828.0
-offset_right = 101.0
-offset_bottom = 851.0
-text = "F2 to toggle fullscreen"
+offset_left = -295.0
+offset_top = 594.0
+offset_right = 97.0
+offset_bottom = 617.0
+text = "'Esc' to pause"
 horizontal_alignment = 1
 
 [connection signal="area_entered" from="PausableScenes/WinCondition/Area2D2" to="PausableScenes/WinCondition" method="_on_area_2d_2_area_entered"]

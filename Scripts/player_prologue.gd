@@ -78,6 +78,12 @@ func _physics_process(_delta):
 	
 	if gun_manager == null:
 		print("gun_manager is null (player)")
+	
+	if cur_state == "WalkToNode":
+		if !nav_agent.is_navigation_finished():
+			move_and_slide()
+			axis = to_local(nav_agent.get_next_path_position()).normalized()
+			velocity = axis * walk_speed
 
 func update_animation_parameters(move_input : Vector2):
 	if (move_input != Vector2.ZERO):
@@ -126,6 +132,16 @@ func TakeDamage(damage : int):
 		PlayerDeath()
 	else:
 		audio_man.PlayHurt()
+
+@onready var nav_agent = $NavigationAgent2D
+var cur_state : String
+var axis = null
+var walk_speed : float = 150
+
+func WalkToNode(node : Node):
+	cur_state = "WalkToNode"
+	nav_agent.target_position = node.global_position
+	
 
 func PlayerDeath():
 	anim_player.play("player_death")

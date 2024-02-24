@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkhs7fmxm7jh3"]
+
+[ext_resource type="Script" path="res://Scripts/tut_ending.gd" id="1_rwbre"]
+
+[node name="TutEnding" type="Node2D"]
+script = ExtResource("1_rwbre")

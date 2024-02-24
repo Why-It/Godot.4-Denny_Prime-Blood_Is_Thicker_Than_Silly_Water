@@ -5,7 +5,6 @@ extends Control
 @onready var audio_man = get_node("/root/AudioManager")
 @onready var anim_player = $AnimationPlayer
 
-@onready var text_container = $Label
 
 
 
@@ -14,10 +13,8 @@ func _ready():
 	if get_tree().current_scene.name == "0_ Prologue":
 		woke = false
 		anim_player.play("tran_idle")
-		text_container.set("visible", true)
 	else:
 		anim_player.play("tran_enter")
-		text_container.set("visible", false)
 
 var woke : bool = false
 func _input(_event):
@@ -36,7 +33,11 @@ func _process(_delta):
 var nextScene : String
 
 func PlayExit(toNextScene : String):
-	anim_player.play("tran_exit")
+	if get_tree().current_scene.name == "0_ Prologue":
+		anim_player.set("speed_scale", 0.5)
+		anim_player.play("tran_exit")
+	else:
+		anim_player.play("tran_exit")
 	nextScene = toNextScene
 
 var cleetus = null
@@ -46,11 +47,9 @@ func _on_animation_player_animation_finished(anim_name):
 		if get_tree().paused:
 			get_tree().paused = !get_tree().paused
 		
-		#audio_man.StopSong()
 		scene_loader.ChangeToScene(nextScene)
 	
 	if anim_name == "tran_enter":
 		if get_tree().current_scene.name == "0_ Prologue":
 			cleetus = $"../PausableScenes/Cletus"
 			cleetus.WalkToNode($"../PausableScenes/CletusNavPoints/00")
-
