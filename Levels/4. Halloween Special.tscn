@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://b45yrel8kkank"]
+
+[ext_resource type="PackedScene" uid="uid://bp5g1f6khondn" path="res://Scenes/bullet.tscn" id="1_cxk66"]
+[ext_resource type="PackedScene" uid="uid://d285v72v0g232" path="res://Scenes/win_condition.tscn" id="2_b8ve7"]
+[ext_resource type="PackedScene" uid="uid://cali6q4pooh6b" path="res://Scenes/player.tscn" id="3_paek1"]
+[ext_resource type="PackedScene" uid="uid://ccwl5bv648kxg" path="res://Scenes/camera_2d.tscn" id="4_qawgu"]
+[ext_resource type="PackedScene" uid="uid://dvfar3tkcrvek" path="res://Scenes/gun_manager.tscn" id="5_iaqt8"]
+[ext_resource type="PackedScene" uid="uid://c5ctjtyxw6snc" path="res://Scenes/gui.tscn" id="6_crbcb"]
+[ext_resource type="PackedScene" uid="uid://byled1opgohlw" path="res://Scenes/transition.tscn" id="7_q16gh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1s44o"]
+size = Vector2(347, 61.5)
+
+[node name="4_ Halloween Special" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2
+
+[node name="PausableScenes" type="Node" parent="."]
+process_mode = 1
+
+[node name="Bullet" parent="PausableScenes" instance=ExtResource("1_cxk66")]
+position = Vector2(2000, 2000)
+
+[node name="WinCondition" parent="PausableScenes" instance=ExtResource("2_b8ve7")]
+
+[node name="Area2D2" type="Area2D" parent="PausableScenes/WinCondition"]
+position = Vector2(0, -4000)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PausableScenes/WinCondition/Area2D2"]
+position = Vector2(-194.5, 279.25)
+shape = SubResource("RectangleShape2D_1s44o")
+
+[node name="Player" parent="PausableScenes" node_paths=PackedStringArray("player_legs", "player", "level_leave_node") instance=ExtResource("3_paek1")]
+position = Vector2(-94.295, 550)
+player_legs = NodePath("")
+player = NodePath("")
+level_leave_node = NodePath("")
+
+[node name="Camera2D" parent="PausableScenes/Player" instance=ExtResource("4_qawgu")]
+zoom = Vector2(0.65, 0.65)
+
+[node name="gun_manager" parent="PausableScenes/Player" node_paths=PackedStringArray("anim_player", "spread_shower") instance=ExtResource("5_iaqt8")]
+position = Vector2(0, 0)
+anim_player = NodePath("")
+spread_shower = NodePath("")
+
+[node name="GUI" parent="." instance=ExtResource("6_crbcb")]
+
+[node name="Transition" parent="." instance=ExtResource("7_q16gh")]
+
+[connection signal="area_entered" from="PausableScenes/WinCondition/Area2D2" to="PausableScenes/WinCondition" method="_on_area_2d_2_area_entered"]
